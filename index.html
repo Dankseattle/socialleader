@@ -1,154 +1,1047 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dan Kirk – Social Media & Digital Strategist</title>
-
-  <!-- SEO basics -->
-  <meta name="description" content="Award-winning social media strategist. Starbucks → T-Mobile → Cruise → Salesforce. Portfolio highlights, case studies, and contact." />
-  <link rel="canonical" href="https://dankirk.net/" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Dan Kirk – Social Media & Digital Strategist" />
-  <meta property="og:description" content="Award-winning social media strategist. Starbucks → T-Mobile → Cruise → Salesforce." />
-  <meta property="og:image" content="https://dankirk.net/images/og-card.jpg" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-
-  <!-- Inter font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Kirk - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --ink:#262626;--ink2:#8e8e8e;--line:#dbdbdb;--bg:#fff;--chip:#efefef;--blue:#0095f6
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background:var(--bg);color:var(--ink);display:flex;justify-content:center;min-height:100vh
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
     }
-    a{color:inherit}
-    .profile-container{max-width:935px;width:100%;margin:40px auto}
-    .profile-header{padding:44px 40px 24px;display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:start}
-    .profile-pic-container{display:flex;justify-content:center}
-    .profile-pic{width:150px;height:150px;border-radius:50%;background:linear-gradient(45deg,#f09433,#bc1888);padding:3px;display:flex;align-items:center;justify-content:center}
-    .profile-pic-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#e9e9ff}
-    .profile-pic-inner img{width:100%;height:100%;object-fit:cover}
-    .profile-info{padding-top:12px}
-    .username-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px;margin-bottom:20px}
-    .username{font-size:28px;font-weight:600;display:flex;align-items:center;gap:6px}
-    .verified{width:18px;height:18px}
-    .profile-actions{display:flex;gap:8px}
-    .ig-button{background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
-    .ig-button:hover{filter:brightness(0.95)}
-    .ig-button-secondary{background:#efefef;color:#000}
-    .ig-button-secondary:hover{background:#dbdbdb}
-    .profile-stats{display:flex;gap:40px;margin-bottom:20px}
-    .stat-number{font-weight:700}
-    .profile-bio{max-width:520px}
-    .bio-name{font-weight:700;margin-bottom:6px}
-    .bio-text{font-size:14px;line-height:1.55;margin-bottom:10px;white-space:pre-line}
-    .bio-link{color:#00376b;font-weight:600;text-decoration:none;font-size:14px}
-    .bio-link:hover{text-decoration:underline}
 
-    /* --- Highlights (clean circles only) --- */
-    .highlights{padding:16px 40px;display:flex;gap:24px;overflow-x:auto}
-    .highlight{
-      background:none;border:none;padding:0;margin:0;appearance:none;-webkit-appearance:none;
-      display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;cursor:pointer
+    .profile-container {
+      max-width: 935px;
+      width: 100%;
+      margin: 40px auto;
+      background: white;
+      border: none;
+      border-radius: 0;
     }
-    .highlight:focus-visible{outline:2px solid #0095f6;outline-offset:6px;border-radius:10px}
-    .highlight-circle{
-      width:92px;height:92px;border:none;box-shadow:none;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-size:1.7rem;transition:transform .2s
+
+    .profile-header {
+      padding: 44px 40px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 80px;
+      align-items: start;
     }
-    .highlight-circle:hover{transform:scale(1.05)}
-    .highlight-label{font-size:13px;color:#262626;text-align:center}
 
-    .profile-tabs{display:flex;justify-content:center;gap:60px}
-    .tab{padding:16px 0;color:var(--ink2);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-    .tab.active{color:var(--ink);border-top:1px solid var(--ink)}
+    .profile-pic-container {
+      display: flex;
+      justify-content: center;
+    }
 
-    /* Posts grid */
-    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0;max-width:935px;margin:0 auto}
-    .post-preview{aspect-ratio:1/1;position:relative;cursor:pointer;overflow:hidden;background:#f7f7f7}
-    .post-preview img,.post-preview video{width:100%;height:100%;object-fit:cover}
-    .post-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;gap:30px;opacity:0;transition:all .25s;color:#fff;font-weight:700;font-size:16px}
-    .post-preview:hover .post-overlay{background:rgba(0,0,0,.3);opacity:1}
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    footer{padding:28px 40px;color:var(--ink2);font-size:13px;display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:28px}
+    .profile-pic-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #e0e0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: #262626;
+      overflow: hidden;
+    }
 
-    @media (max-width: 768px){
-      .profile-header{grid-template-columns:auto 1fr;gap:28px;padding:16px}
-      .profile-pic{width:92px;height:92px}
-      .username{font-size:22px}
-      .posts-grid{padding:4px;gap:4px}
-      .profile-stats{gap:20px}
+    .profile-pic-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      padding-top: 12px;
+    }
+
+    .username-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .username {
+      font-size: 28px;
+      font-weight: 300;
+      color: #262626;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .verified {
+      width: 18px;
+      height: 18px;
+    }
+
+    .profile-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ig-button {
+      background: #0095f6;
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .ig-button:hover {
+      background: #1877f2;
+    }
+
+    .ig-button-secondary {
+      background: #efefef;
+      color: #000;
+    }
+
+    .ig-button-secondary:hover {
+      background: #dbdbdb;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      font-size: 16px;
+      color: #262626;
+    }
+
+    .stat-number {
+      font-weight: 600;
+    }
+
+    .profile-bio {
+      max-width: 500px;
+    }
+
+    .bio-name {
+      font-weight: 600;
+      color: #262626;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .bio-text {
+      color: #262626;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      white-space: pre-line;
+    }
+
+    .bio-link {
+      color: #00376b;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .bio-link:hover {
+      text-decoration: underline;
+    }
+
+    .highlights {
+      padding: 16px 40px;
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .highlight-circle {
+      width: 77px;
+      height: 77px;
+      border: 1px solid #dbdbdb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .highlight-circle:hover {
+      transform: scale(1.05);
+    }
+
+    .highlight-label {
+      font-size: 12px;
+      color: #262626;
+      text-align: center;
+    }
+
+    .profile-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .tab {
+      padding: 16px 0;
+      color: #8e8e8e;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-top: 1px solid transparent;
+      margin-top: -1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab.active {
+      color: #262626;
+      border-top-color: #262626;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 0;
+      max-width: 935px;
+      margin: 0 auto;
+    }
+
+    .post-preview {
+      aspect-ratio: 1;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .post-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      opacity: 0;
+      transition: all 0.3s;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .post-preview:hover .post-overlay {
+      background: rgba(0,0,0,0.3);
+      opacity: 1;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.2s;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 1200px;
+      width: 90%;
+      max-height: 90vh;
+      display: grid;
+      grid-template-columns: 1.2fr 500px;
+      position: relative;
+      animation: slideUp 0.3s;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .modal-media {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-media img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .modal-details {
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid #dbdbdb;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
+      padding: 2px;
+    }
+
+    .modal-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .modal-username {
+      font-weight: 600;
+      font-size: 14px;
+      color: #262626;
+    }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .modal-caption {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .caption-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      flex-shrink: 0;
+      padding: 2px;
+    }
+
+    .caption-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .caption-content {
+      flex: 1;
+    }
+
+    .caption-user {
+      font-weight: 600;
+      font-size: 14px;
+      color: #262626;
+      margin-right: 6px;
+    }
+
+    .caption-text {
+      font-size: 14px;
+      color: #262626;
+      line-height: 1.5;
+    }
+
+    .project-details {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #efefef;
+    }
+
+    .detail-section {
+      margin-bottom: 20px;
+    }
+
+    .detail-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #8e8e8e;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-content {
+      font-size: 14px;
+      color: #262626;
+      line-height: 1.5;
+    }
+
+    .metric-row {
+      display: flex;
+      gap: 30px;
+      margin-top: 12px;
+    }
+
+    .metric-item {
+      text-align: left;
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #262626;
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: #8e8e8e;
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .tag {
+      background: #efefef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #262626;
+    }
+
+    .modal-footer {
+      border-top: 1px solid #dbdbdb;
+      padding: 16px;
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .post-likes {
+      font-weight: 600;
+      font-size: 14px;
+      color: #262626;
+      margin-bottom: 8px;
+    }
+
+    .post-date {
+      font-size: 10px;
+      color: #8e8e8e;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+      }
+
+      .modal-media {
+        max-height: 50vh;
+      }
+
+      .profile-header {
+        grid-template-columns: auto 1fr;
+        gap: 28px;
+        padding: 16px;
+      }
+
+      .profile-pic {
+        width: 77px;
+        height: 77px;
+      }
+
+      .profile-pic-inner {
+        font-size: 2rem;
+      }
+
+      .username {
+        font-size: 20px;
+      }
+
+      .posts-grid {
+        padding: 4px;
+        gap: 4px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="profile-container">
-    <!-- Header -->
-    <header class="profile-header">
+    <div class="profile-header">
       <div class="profile-pic-container">
         <div class="profile-pic">
           <div class="profile-pic-inner">
-            <img src="images/dan-profile.png" alt="Portrait of Dan Kirk" />
+            <img src="images/dan-profile.png" alt="Dan Kirk">
           </div>
         </div>
       </div>
+
       <div class="profile-info">
         <div class="username-row">
-          <h1 class="username">dankirk</h1>
+          <h1 class="username">
+            dankirk
+            <svg class="verified" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.998 3.094L14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225l2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill="#0095F6"/>
+            </svg>
+          </h1>
           <div class="profile-actions">
             <a href="mailto:daniel.lawrence.kirk@gmail.com" class="ig-button">Message</a>
-            <a href="https://www.linkedin.com/in/danksocial" target="_blank" rel="noopener" class="ig-button ig-button-secondary">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/danksocial" target="_blank" class="ig-button ig-button-secondary">LinkedIn</a>
           </div>
         </div>
+
         <div class="profile-stats">
-          <div class="stat"><span class="stat-number">13</span> years experience</div>
-          <div class="stat"><span class="stat-number">4</span> major brands</div>
-          <div class="stat"><span class="stat-number">2</span> awards</div>
+          <div class="stat">
+            <span class="stat-number">13</span>
+            <span class="stat-label"> years experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">4</span>
+            <span class="stat-label"> major brands</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2</span>
+            <span class="stat-label"> awards</span>
+          </div>
         </div>
+
         <div class="profile-bio">
-          <div class="bio-name">Social Media Strategist • Digital Marketing</div>
+          <div class="bio-name">Social Media Strategist | Digital Marketing</div>
           <div class="bio-text">Award-winning social media strategist 🏆
+Launched lattes ☕ Leveled up enterprise tech 💼 
+Made robot cars relatable 🚗
+
 Starbucks → T-Mobile → Cruise → Salesforce
 
 📍 Seattle, WA</div>
           <a href="mailto:daniel.lawrence.kirk@gmail.com" class="bio-link">daniel.lawrence.kirk@gmail.com</a>
+          <div style="margin-top: 8px;">
+            <a href="tel:2012473012" class="bio-link">(201) 247-3012</a>
+          </div>
         </div>
       </div>
-    </header>
+    </div>
 
-    <!-- Highlights -->
-    <section class="highlights">
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#a8b7ff,#c4b5fd)">👤</div><div class="highlight-label">About</div></button>
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#7dd3fc,#0D9DDA)">☁️</div><div class="highlight-label">Salesforce</div></button>
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#ffa69e,#FF4D37)">🚗</div><div class="highlight-label">Cruise</div></button>
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#fb7185,#E30074)">📱</div><div class="highlight-label">T-Mobile</div></button>
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#6ee7b7,#296044)">☕</div><div class="highlight-label">Starbucks</div></button>
-      <button class="highlight"><div class="highlight-circle" style="background:linear-gradient(135deg,#fde68a,#fbbf24)">🏆</div><div class="highlight-label">Awards</div></button>
-    </section>
+    <div class="highlights">
+      <div class="highlight" onclick="openHighlight('about')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #a8b7ff 0%, #c4b5fd 100%);">👤</div>
+        <div class="highlight-label">About</div>
+      </div>
+      <div class="highlight" onclick="openHighlight('salesforce')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #7dd3fc 0%, #0D9DDA 100%);">☁️</div>
+        <div class="highlight-label">Salesforce</div>
+      </div>
+      <div class="highlight" onclick="openHighlight('cruise')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #ffa69e 0%, #FF4D37 100%);">🚗</div>
+        <div class="highlight-label">Cruise</div>
+      </div>
+      <div class="highlight" onclick="openHighlight('tmobile')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #fb7185 0%, #E30074 100%);">📱</div>
+        <div class="highlight-label">T-Mobile</div>
+      </div>
+      <div class="highlight" onclick="openHighlight('starbucks')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #6ee7b7 0%, #296044 100%);">☕</div>
+        <div class="highlight-label">Starbucks</div>
+      </div>
+      <div class="highlight" onclick="openHighlight('awards')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);">🏆</div>
+        <div class="highlight-label">Awards</div>
+      </div>
+    </div>
 
-    <!-- Posts -->
-    <nav class="profile-tabs"><div class="tab active">Posts</div></nav>
-    <section class="posts-grid" id="postsGrid"></section>
+    <div class="profile-tabs">
+      <div class="tab active">
+        <span>◫</span> POSTS
+      </div>
+    </div>
 
-    <footer>
-      <div>© <span id="yr"></span> Dan Kirk</div>
-      <div><a class="bio-link" href="mailto:daniel.lawrence.kirk@gmail.com">Get in touch</a></div>
-    </footer>
+    <div class="posts-grid">
+      <div class="post-preview" onclick="openModal(0)">
+        <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Salesforce" alt="Salesforce Campaign">
+        <div class="post-overlay">
+          <span>❤️ 2,847</span>
+          <span>💬 197%</span>
+        </div>
+      </div>
+      <div class="post-preview" onclick="openModal(1)">
+        <img src="https://via.placeholder.com/400x400/f093fb/ffffff?text=T-Mobile" alt="T-Mobile Campaign">
+        <div class="post-overlay">
+          <span>❤️ 5,429</span>
+          <span>🏆 Award</span>
+        </div>
+      </div>
+      <div class="post-preview" onclick="openModal(2)">
+        <img src="https://via.placeholder.com/400x400/4facfe/ffffff?text=Starbucks" alt="Starbucks Campaign">
+        <div class="post-overlay">
+          <span>❤️ 8,234</span>
+          <span>🏆 Award</span>
+        </div>
+      </div>
+      <div class="post-preview" onclick="openModal(3)">
+        <img src="https://via.placeholder.com/400x400/43e97b/ffffff?text=YouTube" alt="YouTube Campaign">
+        <div class="post-overlay">
+          <span>❤️ 4,891</span>
+          <span>📈 1.2M</span>
+        </div>
+      </div>
+      <div class="post-preview" onclick="openModal(4)">
+        <img src="https://via.placeholder.com/400x400/fa709a/ffffff?text=OnePlus" alt="OnePlus Campaign">
+        <div class="post-overlay">
+          <span>❤️ 6,732</span>
+          <span>💬 125%</span>
+        </div>
+      </div>
+      <div class="post-preview" onclick="openModal(5)">
+        <img src="https://via.placeholder.com/400x400/30cfd0/ffffff?text=Cruise" alt="Cruise Campaign">
+        <div class="post-overlay">
+          <span>❤️ 3,291</span>
+          <span>📊 359%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="postModal" onclick="closeModalBackground(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-details">
+        <div class="modal-header">
+          <div class="modal-avatar">
+            <img src="images/dan-profile.png" alt="Dan Kirk">
+          </div>
+          <div class="modal-username">dankirk</div>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+          <div class="post-actions">
+            <div class="action-buttons">
+              <button class="action-btn">❤️</button>
+              <button class="action-btn">💬</button>
+              <button class="action-btn">📤</button>
+            </div>
+          </div>
+          <div class="post-likes" id="postLikes"></div>
+          <div class="post-date" id="postDate"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="highlightModal" onclick="closeHighlightBackground(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeHighlight()">×</button>
+      <div class="modal-media" id="highlightMedia"></div>
+      <div class="modal-details">
+        <div class="modal-header">
+          <div class="modal-avatar">
+            <img src="images/dan-profile.png" alt="Dan Kirk">
+          </div>
+          <div class="modal-username">dankirk</div>
+        </div>
+        <div class="modal-body" id="highlightBody"></div>
+      </div>
+    </div>
   </div>
 
   <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    // (Keep your posts grid + modal JS here if you want functionality)
+    const posts = [
+      {
+        media: 'https://via.placeholder.com/800x800/667eea/ffffff?text=Salesforce',
+        caption: 'Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events. 🚀',
+        brand: 'Salesforce',
+        role: 'Sr. Manager, Social Media',
+        date: 'Feb 2024 - Present',
+        challenge: 'Scale social presence for Salesforce Commerce Cloud across multiple channels while managing Cyber Week campaigns.',
+        solution: 'Developed comprehensive content strategy and created 70+ social posts for Cyber Week, delivering engagement rates 30% above previous year.',
+        results: [
+          { value: '197%', label: 'YoY Engagement' },
+          { value: '128%', label: 'Engagement Rate' },
+          { value: '70+', label: 'Posts Created' }
+        ],
+        tags: ['B2B Social', 'Commerce Cloud', 'Content Strategy'],
+        likes: '2,847',
+        timestamp: '2024'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/f093fb/ffffff?text=T-Mobile',
+        caption: 'Lead social strategy for the \'Santa Calling\' campaign, which connected kids with virtual Santas during COVID. Won 2021 Shorty Award 🏆',
+        brand: 'T-Mobile',
+        role: 'Sr. Social Media Strategist',
+        date: 'Mar 2019 - May 2021',
+        challenge: 'Create meaningful holiday content during COVID lockdowns that would resonate emotionally.',
+        solution: 'Developed and executed "Santa Calling" campaign connecting kids with virtual Santas.',
+        results: [
+          { value: '2M+', label: 'Impressions' },
+          { value: '🏆', label: 'Shorty Award' },
+          { value: '#1', label: 'Holiday Campaign' }
+        ],
+        tags: ['Holiday Campaign', 'Community', 'Award Winner'],
+        likes: '5,429',
+        timestamp: '2020'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/4facfe/ffffff?text=Starbucks',
+        caption: 'Lead strategy and execution for experiential activation at VidCon. Won AdWeek Campaign of the Year 🏆',
+        brand: 'Starbucks',
+        role: 'Social Media Strategist',
+        date: 'Aug 2015 - Nov 2018',
+        challenge: 'Stand out at VidCon among hundreds of brands competing for attention.',
+        solution: 'Transformed a Starbucks location into an immersive, Instagram-worthy experience.',
+        results: [
+          { value: '🏆', label: 'AdWeek 2021' },
+          { value: '125%', label: 'Engagement Lift' },
+          { value: '300K+', label: 'Attendees' }
+        ],
+        tags: ['Experiential', 'Event Marketing', 'Award Winner'],
+        likes: '8,234',
+        timestamp: '2018'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/43e97b/ffffff?text=YouTube',
+        caption: 'Created YouTube series for Doubleshot featuring Unbox Therapy, MatPat and Aaron Kyro. Generated 1.2M views 📈',
+        brand: 'Starbucks',
+        role: 'Social Media Strategist',
+        date: 'Aug 2015 - Nov 2018',
+        challenge: 'Launch Starbucks Doubleshot to a younger, digital-native audience.',
+        solution: 'Developed YouTube creator series featuring top creators with authentic product integration.',
+        results: [
+          { value: '1.2M', label: 'Video Views' },
+          { value: '7x', label: 'Follower Growth' },
+          { value: '300K+', label: 'New Followers' }
+        ],
+        tags: ['YouTube', 'Influencer Marketing', 'Product Launch'],
+        likes: '4,891',
+        timestamp: '2017'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/fa709a/ffffff?text=OnePlus',
+        caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
+        brand: 'T-Mobile',
+        role: 'Sr. Social Media Strategist',
+        date: 'Mar 2019 - May 2021',
+        challenge: 'Drive engagement for OnePlus product launch partnership with T-Mobile.',
+        solution: 'Created interactive digital scavenger hunt combining online engagement with real-world discovery.',
+        results: [
+          { value: '125%', label: 'Above Benchmark' },
+          { value: '#1', label: 'Instagram Post' },
+          { value: 'Top', label: 'Partnership' }
+        ],
+        tags: ['Partnership', 'Interactive', 'Product Launch'],
+        likes: '6,732',
+        timestamp: '2020'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/30cfd0/ffffff?text=Cruise',
+        caption: 'Lead crisis communications for 50+ incidents, partnering with comms team to maintain brand trust 💪',
+        brand: 'Cruise',
+        role: 'Sr. Social Media Manager',
+        date: 'Jan 2022 - Jan 2024',
+        challenge: 'Manage social communications during 50+ incidents for autonomous vehicle company.',
+        solution: 'Developed crisis communication framework and partnered with comms team to deliver clear, timely responses.',
+        results: [
+          { value: '50+', label: 'Incidents Managed' },
+          { value: '359%', label: 'Engagement Growth' },
+          { value: '73%', label: 'Impressions Growth' }
+        ],
+        tags: ['Crisis Comms', 'Leadership', 'Strategy'],
+        likes: '3,291',
+        timestamp: '2022-2024'
+      }
+    ];
+
+    function openModal(index) {
+      const post = posts[index];
+      if (!post) return;
+      
+      const modal = document.getElementById('postModal');
+      const modalMedia = document.getElementById('modalMedia');
+      const modalBody = document.getElementById('modalBody');
+      const postLikes = document.getElementById('postLikes');
+      const postDate = document.getElementById('postDate');
+
+      modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
+
+      modalBody.innerHTML = `
+        <div class="modal-caption">
+          <div class="caption-avatar">
+            <img src="images/dan-profile.png" alt="Dan Kirk">
+          </div>
+          <div class="caption-content">
+            <span class="caption-user">dankirk</span>
+            <span class="caption-text">${post.caption}</span>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="detail-section">
+            <div class="detail-title">${post.brand} • ${post.role}</div>
+            <div class="detail-content">${post.date}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">Challenge</div>
+            <div class="detail-content">${post.challenge}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">Solution</div>
+            <div class="detail-content">${post.solution}</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">Results</div>
+            <div class="metric-row">
+              ${post.results.map(r => `
+                <div class="metric-item">
+                  <span class="metric-value">${r.value}</span>
+                  <span class="metric-label">${r.label}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="tags">
+              ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+
+      postLikes.textContent = `${post.likes} likes`;
+      postDate.textContent = post.timestamp;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('postModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalBackground(event) {
+      if (event.target.id === 'postModal') closeModal();
+    }
+
+    const highlights = {
+      about: {
+        title: 'About Dan',
+        content: `
+          <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Experience</h3>
+            
+            <div style="margin-bottom: 30px;">
+              <div style="font-weight: 600; font-size: 16px;">Senior Manager, Social Media</div>
+              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Salesforce | Seattle, WA | 2024 - Present</div>
+              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
+                <li>Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events.</li>
+                <li>Marketing lead for Cyber Week, developing strategy and content for Salesforce social media channels. Created over 70 social posts and delivered engagement rate 30% above previous year.</li>
+                <li>Created a new content strategy, resulting in YoY growth of 197% for engagements, and 128% for engagement rate.</li>
+                <li>Owned event social strategy and content creation, cover major events like Dreamforce, surpassing benchmarks by 215%.</li>
+                <li>Increased our webinar registrations 50% through engaging video content and close partnership with product team.</li>
+                <li>Planned and executed our first ever influencer for Cyber Week, delivering over 7M impressions</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+              <div style="font-weight: 600; font-size: 16px;">Senior Social Media Manager</div>
+              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Cruise | Seattle, WA (Remote) | 2022 - 2024</div>
+              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
+                <li>Improved social impressions 73% and engagements 359% over previous year by developing, testing and optimizing new platform and content strategies.</li>
+                <li>Grew social audiences 75% through insight driven content and community management.</li>
+                <li>Implemented a new briefing process, resulting in a 140% increase in social content over previous year.</li>
+                <li>Lead crisis communications on social media for over 50 incidents, partnering with communications team to craft strategy, statement, and reported results to leadership.</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+              <div style="font-weight: 600; font-size: 16px;">Senior Social Media Strategist</div>
+              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">T-Mobile | Bellevue, WA | 2019 - 2021</div>
+              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
+                <li>Social media lead for new product announcements, working with partners like Apple, Google and Samsung, and produced the brand's highest engaging Instagram post of the year.</li>
+                <li>Lead social strategy for the 'Santa Calling' social campaign, which connected kids with virtual Santas for the Holidays during COVID, earning over 2M organic impressions and Shorty Award.</li>
+                <li>Lead the 'Go Farther' social campaign in partnership with OnePlus to create a digital scavenger hunt that exceeded engagement benchmarks by over 125%.</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+              <div style="font-weight: 600; font-size: 16px;">Social Media Strategist</div>
+              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Starbucks | Seattle, WA | 2015 - 2018</div>
+              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
+                <li>Developed and implemented a new social strategy for Doubleshot social channels, growing them to over 300K followers in first year.</li>
+                <li>Created a YouTube series for Doubleshot that featured YouTubers Unbox Therapy, MatPat and Aaron Kyro. Videos garnered 1.2 million views and grew our following 7X.</li>
+                <li>Lead strategy and execution for an experiential activation at VidCon, turning a Starbucks store into an 'instagrammable' destination for attendees.</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      salesforce: {
+        title: 'Salesforce',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Salesforce</h3><div style="font-size: 14px; line-height: 1.8;">☁️ Commerce Cloud social channels<br>🛍️ Cyber Week: 197% YoY growth<br>🎤 Dreamforce social strategy<br>📊 50% increase in webinar registrations</div></div>'
+      },
+      cruise: {
+        title: 'Cruise',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Cruise</h3><div style="font-size: 14px; line-height: 1.8;">🚗 Lead crisis comms for 50+ incidents<br>📈 359% engagement growth<br>👥 75% audience growth<br>📋 140% content increase</div></div>'
+      },
+      tmobile: {
+        title: 'T-Mobile',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">T-Mobile</h3><div style="font-size: 14px; line-height: 1.8;">🎅 Santa Calling - Shorty Award<br>📱 Highest-engaging Instagram post<br>🎯 Go Farther: 125% above benchmarks<br>🤝 Apple, Google, Samsung partnerships</div></div>'
+      },
+      starbucks: {
+        title: 'Starbucks',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Starbucks</h3><div style="font-size: 14px; line-height: 1.8;">☕ 300K+ followers in first year<br>📺 YouTube series: 1.2M views<br>🎪 VidCon activation - AdWeek Award<br>📈 7X follower growth</div></div>'
+      },
+      awards: {
+        title: 'Awards',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Recognition</h3><div style="font-size: 14px; line-height: 2;">🏆 <strong>2021 Shorty Award</strong><br>Santa Calling - T-Mobile<br><br>🏆 <strong>AdWeek 2021 Campaign of the Year</strong><br>VidCon Activation - Starbucks</div></div>'
+      }
+    };
+
+    function openHighlight(type) {
+      const highlight = highlights[type];
+      if (!highlight) return;
+
+      const modal = document.getElementById('highlightModal');
+      document.getElementById('highlightMedia').innerHTML = `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">${highlight.title}</div>`;
+      document.getElementById('highlightBody').innerHTML = highlight.content;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHighlight() {
+      document.getElementById('highlightModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeHighlightBackground(event) {
+      if (event.target.id === 'highlightModal') closeHighlight();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeHighlight();
+      }
+    });
   </script>
 </body>
 </html>
