@@ -29,7 +29,6 @@
       border-radius: 0;
     }
 
-    /* Profile Header */
     .profile-header {
       padding: 44px 40px 24px;
       display: grid;
@@ -97,9 +96,6 @@
     .verified {
       width: 18px;
       height: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .profile-actions {
@@ -148,11 +144,6 @@
       font-weight: 600;
     }
 
-    .stat-label {
-      font-weight: 400;
-      color: #262626;
-    }
-
     .profile-bio {
       max-width: 500px;
     }
@@ -183,10 +174,8 @@
       text-decoration: underline;
     }
 
-    /* Highlights */
     .highlights {
       padding: 16px 40px;
-      border-top: none;
       display: flex;
       gap: 24px;
       overflow-x: auto;
@@ -209,7 +198,6 @@
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -221,16 +209,10 @@
     .highlight-label {
       font-size: 12px;
       color: #262626;
-      max-width: 77px;
       text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
-    /* Tabs */
     .profile-tabs {
-      border-top: none;
       display: flex;
       justify-content: center;
       gap: 60px;
@@ -256,7 +238,6 @@
       border-top-color: #262626;
     }
 
-    /* Posts Grid */
     .posts-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -299,7 +280,6 @@
       opacity: 1;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -367,7 +347,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
 
     .modal-media img {
@@ -570,7 +549,6 @@
       letter-spacing: 0.2px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .modal-content {
         grid-template-columns: 1fr;
@@ -609,7 +587,6 @@
 </head>
 <body>
   <div class="profile-container">
-    <!-- Profile Header -->
     <div class="profile-header">
       <div class="profile-pic-container">
         <div class="profile-pic">
@@ -665,7 +642,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
       </div>
     </div>
 
-    <!-- Story Highlights -->
     <div class="highlights">
       <div class="highlight" onclick="openHighlight('about')">
         <div class="highlight-circle" style="background: linear-gradient(135deg, #a8b7ff 0%, #c4b5fd 100%);">👤</div>
@@ -693,14 +669,12 @@ Starbucks → T-Mobile → Cruise → Salesforce
       </div>
     </div>
 
-    <!-- Tabs -->
     <div class="profile-tabs">
       <div class="tab active">
         <span>◫</span> POSTS
       </div>
     </div>
 
-    <!-- Posts Grid -->
     <div class="posts-grid">
       <div class="post-preview" onclick="openModal(0)">
         <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Salesforce" alt="Salesforce Campaign">
@@ -709,7 +683,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
           <span>💬 197%</span>
         </div>
       </div>
-
       <div class="post-preview" onclick="openModal(1)">
         <img src="https://via.placeholder.com/400x400/f093fb/ffffff?text=T-Mobile" alt="T-Mobile Campaign">
         <div class="post-overlay">
@@ -717,7 +690,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
           <span>🏆 Award</span>
         </div>
       </div>
-
       <div class="post-preview" onclick="openModal(2)">
         <img src="https://via.placeholder.com/400x400/4facfe/ffffff?text=Starbucks" alt="Starbucks Campaign">
         <div class="post-overlay">
@@ -725,7 +697,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
           <span>🏆 Award</span>
         </div>
       </div>
-
       <div class="post-preview" onclick="openModal(3)">
         <img src="https://via.placeholder.com/400x400/43e97b/ffffff?text=YouTube" alt="YouTube Campaign">
         <div class="post-overlay">
@@ -733,7 +704,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
           <span>📈 1.2M</span>
         </div>
       </div>
-
       <div class="post-preview" onclick="openModal(4)">
         <img src="https://via.placeholder.com/400x400/fa709a/ffffff?text=OnePlus" alt="OnePlus Campaign">
         <div class="post-overlay">
@@ -741,7 +711,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
           <span>💬 125%</span>
         </div>
       </div>
-
       <div class="post-preview" onclick="openModal(5)">
         <img src="https://via.placeholder.com/400x400/30cfd0/ffffff?text=Cruise" alt="Cruise Campaign">
         <div class="post-overlay">
@@ -752,15 +721,10 @@ Starbucks → T-Mobile → Cruise → Salesforce
     </div>
   </div>
 
-  <!-- Modal -->
   <div class="modal" id="postModal" onclick="closeModalBackground(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal()">×</button>
-      
-      <div class="modal-media" id="modalMedia">
-        <!-- Media populated by JS -->
-      </div>
-
+      <div class="modal-media" id="modalMedia"></div>
       <div class="modal-details">
         <div class="modal-header">
           <div class="modal-avatar">
@@ -768,11 +732,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           </div>
           <div class="modal-username">dankirk</div>
         </div>
-
-        <div class="modal-body" id="modalBody">
-          <!-- Content populated by JS -->
-        </div>
-
+        <div class="modal-body" id="modalBody"></div>
         <div class="modal-footer">
           <div class="post-actions">
             <div class="action-buttons">
@@ -788,15 +748,10 @@ Starbucks → T-Mobile → Cruise → Salesforce
     </div>
   </div>
 
-  <!-- Highlight Modal -->
   <div class="modal" id="highlightModal" onclick="closeHighlightBackground(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeHighlight()">×</button>
-      
-      <div class="modal-media" id="highlightMedia">
-        <!-- Content populated by JS -->
-      </div>
-
+      <div class="modal-media" id="highlightMedia"></div>
       <div class="modal-details">
         <div class="modal-header">
           <div class="modal-avatar">
@@ -804,10 +759,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           </div>
           <div class="modal-username">dankirk</div>
         </div>
-
-        <div class="modal-body" id="highlightBody">
-          <!-- Content populated by JS -->
-        </div>
+        <div class="modal-body" id="highlightBody"></div>
       </div>
     </div>
   </div>
@@ -815,19 +767,104 @@ Starbucks → T-Mobile → Cruise → Salesforce
   <script>
     const posts = [
       {
-        media: 'https://via.placeholder.com/800x800/30cfd0/ffffff?text=Crisis+Comms',
-        caption: 'Lead crisis communications for 50+ incidents, partnering with comms team to maintain brand trust during challenging times 💪',
+        media: 'https://via.placeholder.com/800x800/667eea/ffffff?text=Salesforce',
+        caption: 'Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events. 🚀',
+        brand: 'Salesforce',
+        role: 'Sr. Manager, Social Media',
+        date: 'Feb 2024 - Present',
+        challenge: 'Scale social presence for Salesforce Commerce Cloud across multiple channels while managing Cyber Week campaigns.',
+        solution: 'Developed comprehensive content strategy and created 70+ social posts for Cyber Week, delivering engagement rates 30% above previous year.',
+        results: [
+          { value: '197%', label: 'YoY Engagement' },
+          { value: '128%', label: 'Engagement Rate' },
+          { value: '70+', label: 'Posts Created' }
+        ],
+        tags: ['B2B Social', 'Commerce Cloud', 'Content Strategy'],
+        likes: '2,847',
+        timestamp: '2024'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/f093fb/ffffff?text=T-Mobile',
+        caption: 'Lead social strategy for the \'Santa Calling\' campaign, which connected kids with virtual Santas during COVID. Won 2021 Shorty Award 🏆',
+        brand: 'T-Mobile',
+        role: 'Sr. Social Media Strategist',
+        date: 'Mar 2019 - May 2021',
+        challenge: 'Create meaningful holiday content during COVID lockdowns that would resonate emotionally.',
+        solution: 'Developed and executed "Santa Calling" campaign connecting kids with virtual Santas.',
+        results: [
+          { value: '2M+', label: 'Impressions' },
+          { value: '🏆', label: 'Shorty Award' },
+          { value: '#1', label: 'Holiday Campaign' }
+        ],
+        tags: ['Holiday Campaign', 'Community', 'Award Winner'],
+        likes: '5,429',
+        timestamp: '2020'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/4facfe/ffffff?text=Starbucks',
+        caption: 'Lead strategy and execution for experiential activation at VidCon. Won AdWeek Campaign of the Year 🏆',
+        brand: 'Starbucks',
+        role: 'Social Media Strategist',
+        date: 'Aug 2015 - Nov 2018',
+        challenge: 'Stand out at VidCon among hundreds of brands competing for attention.',
+        solution: 'Transformed a Starbucks location into an immersive, Instagram-worthy experience.',
+        results: [
+          { value: '🏆', label: 'AdWeek 2021' },
+          { value: '125%', label: 'Engagement Lift' },
+          { value: '300K+', label: 'Attendees' }
+        ],
+        tags: ['Experiential', 'Event Marketing', 'Award Winner'],
+        likes: '8,234',
+        timestamp: '2018'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/43e97b/ffffff?text=YouTube',
+        caption: 'Created YouTube series for Doubleshot featuring Unbox Therapy, MatPat and Aaron Kyro. Generated 1.2M views 📈',
+        brand: 'Starbucks',
+        role: 'Social Media Strategist',
+        date: 'Aug 2015 - Nov 2018',
+        challenge: 'Launch Starbucks Doubleshot to a younger, digital-native audience.',
+        solution: 'Developed YouTube creator series featuring top creators with authentic product integration.',
+        results: [
+          { value: '1.2M', label: 'Video Views' },
+          { value: '7x', label: 'Follower Growth' },
+          { value: '300K+', label: 'New Followers' }
+        ],
+        tags: ['YouTube', 'Influencer Marketing', 'Product Launch'],
+        likes: '4,891',
+        timestamp: '2017'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/fa709a/ffffff?text=OnePlus',
+        caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
+        brand: 'T-Mobile',
+        role: 'Sr. Social Media Strategist',
+        date: 'Mar 2019 - May 2021',
+        challenge: 'Drive engagement for OnePlus product launch partnership with T-Mobile.',
+        solution: 'Created interactive digital scavenger hunt combining online engagement with real-world discovery.',
+        results: [
+          { value: '125%', label: 'Above Benchmark' },
+          { value: '#1', label: 'Instagram Post' },
+          { value: 'Top', label: 'Partnership' }
+        ],
+        tags: ['Partnership', 'Interactive', 'Product Launch'],
+        likes: '6,732',
+        timestamp: '2020'
+      },
+      {
+        media: 'https://via.placeholder.com/800x800/30cfd0/ffffff?text=Cruise',
+        caption: 'Lead crisis communications for 50+ incidents, partnering with comms team to maintain brand trust 💪',
         brand: 'Cruise',
         role: 'Sr. Social Media Manager',
         date: 'Jan 2022 - Jan 2024',
-        challenge: 'Manage social communications during 50+ incidents for autonomous vehicle company navigating public scrutiny.',
-        solution: 'Developed crisis communication framework and partnered with comms team to deliver clear, timely responses that maintained brand trust.',
+        challenge: 'Manage social communications during 50+ incidents for autonomous vehicle company.',
+        solution: 'Developed crisis communication framework and partnered with comms team to deliver clear, timely responses.',
         results: [
           { value: '50+', label: 'Incidents Managed' },
           { value: '359%', label: 'Engagement Growth' },
           { value: '73%', label: 'Impressions Growth' }
         ],
-        tags: ['Crisis Comms', 'Leadership', 'Strategy', 'Autonomous Vehicles'],
+        tags: ['Crisis Comms', 'Leadership', 'Strategy'],
         likes: '3,291',
         timestamp: '2022-2024'
       }
@@ -835,13 +872,15 @@ Starbucks → T-Mobile → Cruise → Salesforce
 
     function openModal(index) {
       const post = posts[index];
+      if (!post) return;
+      
       const modal = document.getElementById('postModal');
       const modalMedia = document.getElementById('modalMedia');
       const modalBody = document.getElementById('modalBody');
       const postLikes = document.getElementById('postLikes');
       const postDate = document.getElementById('postDate');
 
-      modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand} Campaign">`;
+      modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
 
       modalBody.innerHTML = `
         <div class="modal-caption">
@@ -853,23 +892,19 @@ Starbucks → T-Mobile → Cruise → Salesforce
             <span class="caption-text">${post.caption}</span>
           </div>
         </div>
-
         <div class="project-details">
           <div class="detail-section">
             <div class="detail-title">${post.brand} • ${post.role}</div>
             <div class="detail-content">${post.date}</div>
           </div>
-
           <div class="detail-section">
             <div class="detail-title">Challenge</div>
             <div class="detail-content">${post.challenge}</div>
           </div>
-
           <div class="detail-section">
             <div class="detail-title">Solution</div>
             <div class="detail-content">${post.solution}</div>
           </div>
-
           <div class="detail-section">
             <div class="detail-title">Results</div>
             <div class="metric-row">
@@ -881,7 +916,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
               `).join('')}
             </div>
           </div>
-
           <div class="detail-section">
             <div class="tags">
               ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
@@ -898,168 +932,38 @@ Starbucks → T-Mobile → Cruise → Salesforce
     }
 
     function closeModal() {
-      const modal = document.getElementById('postModal');
-      modal.classList.remove('active');
+      document.getElementById('postModal').classList.remove('active');
       document.body.style.overflow = 'auto';
     }
 
     function closeModalBackground(event) {
-      if (event.target.id === 'postModal') {
-        closeModal();
-      }
+      if (event.target.id === 'postModal') closeModal();
     }
 
     const highlights = {
       about: {
         title: 'About Dan',
-        content: `
-          <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Experience</h3>
-            
-            <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Sr. Manager, Social Media</div>
-              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Salesforce | Seattle, WA | Feb 2024 - Present</div>
-              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
-                <li>Managed Commerce Cloud social media channels</li>
-                <li>Marketing lead for Cyber Week (197% YoY engagement growth)</li>
-                <li>Owned event social strategy for Dreamforce (215% above benchmarks)</li>
-                <li>Increased webinar registrations 50% through video content</li>
-              </ul>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Sr. Social Media Manager</div>
-              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Cruise | Seattle, WA (Remote) | Jan 2022 - Jan 2024</div>
-              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
-                <li>Improved social impressions 73% and engagements 359%</li>
-                <li>Grew social audiences 75% through insight-driven content</li>
-                <li>Lead crisis communications for 50+ incidents</li>
-                <li>Implemented new briefing process (140% content increase)</li>
-              </ul>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Sr. Social Media Strategist</div>
-              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">T-Mobile | Bellevue, WA | Mar 2019 - May 2021</div>
-              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
-                <li>Lead social strategy for Santa Calling campaign (2M+ impressions, Shorty Award)</li>
-                <li>Produced brand's highest-engaging Instagram post of the year</li>
-                <li>Lead Go Farther campaign with OnePlus (125% above benchmarks)</li>
-              </ul>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Social Media Strategist</div>
-              <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Starbucks | Seattle, WA | Aug 2015 - Nov 2018</div>
-              <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
-                <li>Grew Doubleshot channels to 300K+ followers in first year</li>
-                <li>Created YouTube series (1.2M views, 7X follower growth)</li>
-                <li>Lead VidCon experiential activation (AdWeek Campaign of the Year)</li>
-              </ul>
-            </div>
-
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; margin-top: 30px;">Education</h3>
-            
-            <div style="margin-bottom: 20px;">
-              <div style="font-weight: 600; font-size: 16px;">Master of Communication, Digital Media</div>
-              <div style="color: #8e8e8e; font-size: 14px;">University of Washington | 2012 - 2014</div>
-            </div>
-
-            <div style="margin-bottom: 20px;">
-              <div style="font-weight: 600; font-size: 16px;">Bachelor of Arts, Journalism & Media Studies</div>
-              <div style="color: #8e8e8e; font-size: 14px;">Rutgers University | 2008 - 2012</div>
-            </div>
-
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; margin-top: 30px;">Awards</h3>
-            <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-              🏆 2021 Shorty Award Winner - Santa Calling Campaign<br>
-              🏆 AdWeek 2021 Experiential Campaign of the Year - VidCon Activation
-            </div>
-          </div>
-        `
-      },
-      starbucks: {
-        title: 'Starbucks',
-        content: `
-          <div style="padding: 20px;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Starbucks Work</h3>
-            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
-              Social Media Strategist | Aug 2015 - Nov 2018
-            </p>
-            <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-              ☕ Grew Doubleshot channels to 300K+ followers in first year<br>
-              📺 Created YouTube series with top creators (1.2M views)<br>
-              🎪 Lead VidCon experiential activation (AdWeek Award)<br>
-              📈 Achieved 7X follower growth through strategic partnerships
-            </div>
-          </div>
-        `
-      },
-      tmobile: {
-        title: 'T-Mobile',
-        content: `
-          <div style="padding: 20px;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">T-Mobile Work</h3>
-            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
-              Sr. Social Media Strategist | Mar 2019 - May 2021
-            </p>
-            <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-              🎅 Santa Calling campaign - 2M+ impressions, Shorty Award winner<br>
-              📱 Produced brand's highest-engaging Instagram post<br>
-              🎯 Go Farther campaign with OnePlus - 125% above benchmarks<br>
-              🤝 Partnerships with Apple, Google, and Samsung
-            </div>
-          </div>
-        `
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Experience</h3><div style="margin-bottom: 30px;"><div style="font-weight: 600; font-size: 16px;">Sr. Manager, Social Media</div><div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Salesforce | Feb 2024 - Present</div><ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;"><li>Managed Commerce Cloud social channels</li><li>Marketing lead for Cyber Week (197% YoY growth)</li><li>Event social strategy for Dreamforce</li></ul></div><div style="margin-bottom: 30px;"><div style="font-weight: 600; font-size: 16px;">Sr. Social Media Manager</div><div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Cruise | Jan 2022 - Jan 2024</div><ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;"><li>359% engagement growth</li><li>Lead crisis comms for 50+ incidents</li><li>Grew audiences 75%</li></ul></div><div style="margin-bottom: 30px;"><div style="font-weight: 600; font-size: 16px;">Sr. Social Media Strategist</div><div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">T-Mobile | Mar 2019 - May 2021</div><ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;"><li>Santa Calling campaign (Shorty Award)</li><li>Brand\'s highest-engaging Instagram post</li></ul></div><div style="margin-bottom: 30px;"><div style="font-weight: 600; font-size: 16px;">Social Media Strategist</div><div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Starbucks | Aug 2015 - Nov 2018</div><ul style="font-size: 14px; line-height: 1.6; padding-left: 20px;"><li>Grew Doubleshot to 300K+ followers</li><li>YouTube series: 1.2M views</li><li>VidCon activation (AdWeek Award)</li></ul></div></div>'
       },
       salesforce: {
         title: 'Salesforce',
-        content: `
-          <div style="padding: 20px;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Salesforce Work</h3>
-            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
-              Sr. Manager, Social Media | Feb 2024 - Present
-            </p>
-            <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-              ☁️ Managed Commerce Cloud social media channels<br>
-              🛍️ Cyber Week strategy - 197% YoY engagement growth<br>
-              🎤 Dreamforce social strategy - 215% above benchmarks<br>
-              📊 Increased webinar registrations 50%
-            </div>
-          </div>
-        `
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Salesforce</h3><div style="font-size: 14px; line-height: 1.8;">☁️ Commerce Cloud social channels<br>🛍️ Cyber Week: 197% YoY growth<br>🎤 Dreamforce social strategy<br>📊 50% increase in webinar registrations</div></div>'
       },
       cruise: {
         title: 'Cruise',
-        content: `
-          <div style="padding: 20px;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Cruise Work</h3>
-            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
-              Sr. Social Media Manager | Jan 2022 - Jan 2024
-            </p>
-            <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-              🚗 Lead crisis communications for 50+ incidents<br>
-              📈 359% engagement growth, 73% impressions growth<br>
-              👥 Grew social audiences 75%<br>
-              📋 Implemented new briefing process (140% content increase)
-            </div>
-          </div>
-        `
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Cruise</h3><div style="font-size: 14px; line-height: 1.8;">🚗 Lead crisis comms for 50+ incidents<br>📈 359% engagement growth<br>👥 75% audience growth<br>📋 140% content increase</div></div>'
+      },
+      tmobile: {
+        title: 'T-Mobile',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">T-Mobile</h3><div style="font-size: 14px; line-height: 1.8;">🎅 Santa Calling - Shorty Award<br>📱 Highest-engaging Instagram post<br>🎯 Go Farther: 125% above benchmarks<br>🤝 Apple, Google, Samsung partnerships</div></div>'
+      },
+      starbucks: {
+        title: 'Starbucks',
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Starbucks</h3><div style="font-size: 14px; line-height: 1.8;">☕ 300K+ followers in first year<br>📺 YouTube series: 1.2M views<br>🎪 VidCon activation - AdWeek Award<br>📈 7X follower growth</div></div>'
       },
       awards: {
         title: 'Awards',
-        content: `
-          <div style="padding: 20px;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Recognition</h3>
-            <div style="font-size: 14px; line-height: 2; color: #262626;">
-              🏆 <strong>2021 Shorty Award</strong><br>
-              Santa Calling Campaign - T-Mobile<br><br>
-              
-              🏆 <strong>AdWeek 2021 Experiential Campaign of the Year</strong><br>
-              VidCon Activation - Starbucks
-            </div>
-          </div>
-        `
+        content: '<div style="padding: 20px;"><h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Recognition</h3><div style="font-size: 14px; line-height: 2;">🏆 <strong>2021 Shorty Award</strong><br>Santa Calling - T-Mobile<br><br>🏆 <strong>AdWeek 2021 Campaign of the Year</strong><br>VidCon Activation - Starbucks</div></div>'
       }
     };
 
@@ -1068,31 +972,20 @@ Starbucks → T-Mobile → Cruise → Salesforce
       if (!highlight) return;
 
       const modal = document.getElementById('highlightModal');
-      const highlightMedia = document.getElementById('highlightMedia');
-      const highlightBody = document.getElementById('highlightBody');
-
-      highlightMedia.innerHTML = `
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
-          ${highlight.title}
-        </div>
-      `;
-
-      highlightBody.innerHTML = highlight.content;
+      document.getElementById('highlightMedia').innerHTML = `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">${highlight.title}</div>`;
+      document.getElementById('highlightBody').innerHTML = highlight.content;
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
     function closeHighlight() {
-      const modal = document.getElementById('highlightModal');
-      modal.classList.remove('active');
+      document.getElementById('highlightModal').classList.remove('active');
       document.body.style.overflow = 'auto';
     }
 
     function closeHighlightBackground(event) {
-      if (event.target.id === 'highlightModal') {
-        closeHighlight();
-      }
+      if (event.target.id === 'highlightModal') closeHighlight();
     }
 
     document.addEventListener('keydown', (e) => {
@@ -1103,90 +996,4 @@ Starbucks → T-Mobile → Cruise → Salesforce
     });
   </script>
 </body>
-</html>/800x800/667eea/ffffff?text=Salesforce+Commerce+Cloud',
-        caption: 'Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events. 🚀',
-        brand: 'Salesforce',
-        role: 'Sr. Manager, Social Media',
-        date: 'Feb 2024 - Present',
-        challenge: 'Scale social presence for Salesforce Commerce Cloud across multiple channels while managing Cyber Week campaigns.',
-        solution: 'Developed comprehensive content strategy and created 70+ social posts for Cyber Week, delivering engagement rates 30% above previous year.',
-        results: [
-          { value: '197%', label: 'YoY Engagement Growth' },
-          { value: '128%', label: 'Engagement Rate' },
-          { value: '70+', label: 'Posts Created' }
-        ],
-        tags: ['B2B Social', 'Commerce Cloud', 'Content Strategy', 'Cyber Week'],
-        likes: '2,847',
-        timestamp: '2024'
-      },
-      {
-        media: 'https://via.placeholder.com/800x800/f093fb/ffffff?text=Santa+Calling',
-        caption: 'Lead social strategy for the \'Santa Calling\' campaign, which connected kids with virtual Santas during COVID. Won 2021 Shorty Award 🏆',
-        brand: 'T-Mobile',
-        role: 'Sr. Social Media Strategist',
-        date: 'Mar 2019 - May 2021',
-        challenge: 'Create meaningful holiday content during COVID lockdowns that would resonate emotionally while showcasing T-Mobile\'s connectivity.',
-        solution: 'Developed and executed "Santa Calling" campaign connecting kids with virtual Santas, creating heartwarming moments families could share.',
-        results: [
-          { value: '2M+', label: 'Organic Impressions' },
-          { value: '🏆', label: '2021 Shorty Award' },
-          { value: '#1', label: 'Holiday Campaign' }
-        ],
-        tags: ['Holiday Campaign', 'Community', 'Award Winner', 'Social Strategy'],
-        likes: '5,429',
-        timestamp: '2020'
-      },
-      {
-        media: 'https://via.placeholder.com/800x800/4facfe/ffffff?text=VidCon+Activation',
-        caption: 'Lead strategy and execution for experiential activation at VidCon, turning a Starbucks into an \'instagrammable\' destination. Won AdWeek Campaign of the Year 🏆',
-        brand: 'Starbucks',
-        role: 'Social Media Strategist',
-        date: 'Aug 2015 - Nov 2018',
-        challenge: 'Stand out at VidCon among hundreds of brands competing for creator and attendee attention.',
-        solution: 'Transformed a Starbucks location into an immersive, Instagram-worthy experience that seamlessly blended physical activation with social content.',
-        results: [
-          { value: '🏆', label: 'AdWeek 2021' },
-          { value: '125%', label: 'Engagement Lift' },
-          { value: '300K+', label: 'Attendees Reached' }
-        ],
-        tags: ['Experiential', 'Event Marketing', 'Instagram', 'Award Winner'],
-        likes: '8,234',
-        timestamp: '2018'
-      },
-      {
-        media: 'https://via.placeholder.com/800x800/43e97b/ffffff?text=YouTube+Series',
-        caption: 'Created YouTube series for Doubleshot featuring Unbox Therapy, MatPat and Aaron Kyro. Generated 1.2M views and 7X follower growth 📈',
-        brand: 'Starbucks',
-        role: 'Social Media Strategist',
-        date: 'Aug 2015 - Nov 2018',
-        challenge: 'Launch Starbucks Doubleshot to a younger, digital-native audience through authentic creator partnerships.',
-        solution: 'Developed YouTube creator series featuring top creators (Unbox Therapy, MatPat, Aaron Kyro) with authentic product integration.',
-        results: [
-          { value: '1.2M', label: 'Video Views' },
-          { value: '7x', label: 'Follower Growth' },
-          { value: '300K+', label: 'New Followers' }
-        ],
-        tags: ['YouTube', 'Influencer Marketing', 'Product Launch', 'Creator Strategy'],
-        likes: '4,891',
-        timestamp: '2017'
-      },
-      {
-        media: 'https://via.placeholder.com/800x800/fa709a/ffffff?text=Go+Farther',
-        caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
-        brand: 'T-Mobile',
-        role: 'Sr. Social Media Strategist',
-        date: 'Mar 2019 - May 2021',
-        challenge: 'Drive engagement for OnePlus product launch partnership with T-Mobile through innovative social activation.',
-        solution: 'Created interactive digital scavenger hunt that combined online engagement with real-world discovery, driving massive participation.',
-        results: [
-          { value: '125%', label: 'Above Benchmark' },
-          { value: '#1', label: 'Instagram Post' },
-          { value: 'Top', label: 'Partnership' }
-        ],
-        tags: ['Partnership', 'Interactive', 'Product Launch', 'OnePlus'],
-        likes: '6,732',
-        timestamp: '2020'
-      },
-      {
-        media: 'https://via.placeholder.com
-    
+</html>
