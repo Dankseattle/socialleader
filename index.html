@@ -323,10 +323,10 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: transparent;
+      background: rgba(0, 0, 0, 0.7);
       border: none;
       color: white;
-      font-size: 30px;
+      font-size: 24px;
       cursor: pointer;
       z-index: 10;
       width: 40px;
@@ -339,7 +339,7 @@
     }
 
     .modal-close:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(0, 0, 0, 0.9);
     }
 
     .modal-media {
@@ -582,6 +582,24 @@
         padding: 4px;
         gap: 4px;
       }
+
+      .highlights {
+        padding: 16px;
+      }
+
+      .highlight-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+
+      .modal-details {
+        padding: 0 16px;
+      }
+
+      .modal-body {
+        padding: 16px;
+      }
     }
   </style>
 </head>
@@ -726,12 +744,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
       <button class="modal-close" onclick="closeModal()">×</button>
       <div class="modal-media" id="modalMedia"></div>
       <div class="modal-details">
-        <div class="modal-header">
-          <div class="modal-avatar">
-            <img src="images/dan-profile.png" alt="Dan Kirk">
-          </div>
-          <div class="modal-username">dankirk</div>
-        </div>
         <div class="modal-body" id="modalBody"></div>
         <div class="modal-footer">
           <div class="post-actions">
@@ -753,12 +765,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
       <button class="modal-close" onclick="closeHighlight()">×</button>
       <div class="modal-media" id="highlightMedia"></div>
       <div class="modal-details">
-        <div class="modal-header">
-          <div class="modal-avatar">
-            <img src="images/dan-profile.png" alt="Dan Kirk">
-          </div>
-          <div class="modal-username">dankirk</div>
-        </div>
         <div class="modal-body" id="highlightBody"></div>
       </div>
     </div>
@@ -883,15 +889,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
       modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
 
       modalBody.innerHTML = `
-        <div class="modal-caption">
-          <div class="caption-avatar">
-            <img src="images/dan-profile.png" alt="Dan Kirk">
-          </div>
-          <div class="caption-content">
-            <span class="caption-user">dankirk</span>
-            <span class="caption-text">${post.caption}</span>
-          </div>
-        </div>
         <div class="project-details">
           <div class="detail-section">
             <div class="detail-title">${post.brand} • ${post.role}</div>
