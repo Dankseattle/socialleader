@@ -665,6 +665,10 @@ Starbucks → T-Mobile → Cruise → Salesforce
         <div class="highlight-circle" style="background: linear-gradient(135deg, #a8b7ff 0%, #c4b5fd 100%);">👤</div>
         <div class="highlight-label">About</div>
       </div>
+      <div class="highlight" onclick="openHighlight('resume')">
+        <div class="highlight-circle" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">📄</div>
+        <div class="highlight-label">Resume</div>
+      </div>
       <div class="highlight" onclick="openHighlight('salesforce')">
         <div class="highlight-circle" style="background: linear-gradient(135deg, #7dd3fc 0%, #0D9DDA 100%);">☁️</div>
         <div class="highlight-label">Salesforce</div>
@@ -942,10 +946,58 @@ Starbucks → T-Mobile → Cruise → Salesforce
         title: 'About Dan',
         content: `
           <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Experience</h3>
+            <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">👋 A bit about me</h3>
+            
+            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 16px;">
+              Hi, I'm Dan Kirk—a social media strategist with 10+ years of experience helping brands tell better stories online. I've led social campaigns at household names like <strong>Starbucks</strong>, <strong>T-Mobile</strong>, and <strong>Salesforce</strong>, and helped emerging tech like <strong>Cruise</strong> build trust (and a little personality) in the world of driverless cars.
+            </p>
+
+            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 16px;">
+              I specialize in <strong>making complex topics feel simple</strong>, and content that's creative, data-backed, and aligned with business goals. Whether it's launching a new product, navigating a brand crisis, or scaling community engagement, I bring a calm head, clear strategy, and creative instincts to the table.
+            </p>
+
+            <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
+              When I'm not working, I'm probably deep in a book, fly fishing, snowboarding, or exploring Seattle.
+            </p>
+
+            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
+              <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Education</h4>
+              
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 600; font-size: 14px;">Master of Communication, Digital Media</div>
+                <div style="color: #8e8e8e; font-size: 14px;">University of Washington | 2012 - 2014</div>
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 600; font-size: 14px;">Bachelor of Arts, Journalism & Media Studies</div>
+                <div style="color: #8e8e8e; font-size: 14px;">Rutgers University | 2008 - 2012</div>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
+              <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Skills</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Social Strategy</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Community Management</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Crisis Management</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Content Creation</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Analytics & Reporting</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Influencer Marketing</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Video Editing</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Copywriting</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      resume: {
+        title: 'Resume',
+        content: `
+          <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Work Experience</h3>
             
             <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Senior Manager, Social Media</div>
+              <div style="font-weight: 600; font-size: 16px;">Social Media Manager</div>
               <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Salesforce | Seattle, WA | 2024 - Present</div>
               <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
                 <li>Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events.</li>
@@ -953,7 +1005,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
                 <li>Created a new content strategy, resulting in YoY growth of 197% for engagements, and 128% for engagement rate.</li>
                 <li>Owned event social strategy and content creation, cover major events like Dreamforce, surpassing benchmarks by 215%.</li>
                 <li>Increased our webinar registrations 50% through engaging video content and close partnership with product team.</li>
-                <li>Planned and executed our first ever influencer for Cyber Week, delivering over 7M impressions</li>
               </ul>
             </div>
 
@@ -973,7 +1024,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
               <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">T-Mobile | Bellevue, WA | 2019 - 2021</div>
               <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
                 <li>Social media lead for new product announcements, working with partners like Apple, Google and Samsung, and produced the brand's highest engaging Instagram post of the year.</li>
-                <li>Lead social strategy for the 'Santa Calling' social campaign, which connected kids with virtual Santas for the Holidays during COVID, earning over 2M organic impressions and Shorty Award.</li>
+                <li>Lead social strategy for the 'Santa Calling' social campaign, which connected kids with virtual Santas for the Holidays during COVID, earning over 2 million organic impressions and Shorty Award.</li>
                 <li>Lead the 'Go Farther' social campaign in partnership with OnePlus to create a digital scavenger hunt that exceeded engagement benchmarks by over 125%.</li>
               </ul>
             </div>
@@ -986,6 +1037,23 @@ Starbucks → T-Mobile → Cruise → Salesforce
                 <li>Created a YouTube series for Doubleshot that featured YouTubers Unbox Therapy, MatPat and Aaron Kyro. Videos garnered 1.2 million views and grew our following 7X.</li>
                 <li>Lead strategy and execution for an experiential activation at VidCon, turning a Starbucks store into an 'instagrammable' destination for attendees.</li>
               </ul>
+            </div>
+
+            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Awards</h3>
+              <div style="font-size: 14px; line-height: 1.8; color: #262626;">
+                🏆 <strong>Shorty Award Winner</strong> - Santa Calling Campaign (2021)<br>
+                🏆 <strong>AdWeek Experiential Campaign of the Year</strong> - VidCon Activation (2021)
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Contact</h3>
+              <div style="font-size: 14px; line-height: 1.8; color: #262626;">
+                📧 <a href="mailto:daniel.lawrence.kirk@gmail.com" style="color: #0095f6; text-decoration: none;">daniel.lawrence.kirk@gmail.com</a><br>
+                📱 <a href="tel:2012473012" style="color: #0095f6; text-decoration: none;">(201) 247-3012</a><br>
+                📍 Seattle, WA
+              </div>
             </div>
           </div>
         `
