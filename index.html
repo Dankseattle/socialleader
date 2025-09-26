@@ -1114,8 +1114,14 @@ Starbucks → T-Mobile → Cruise → Salesforce
     }
 
     function closeHighlight() {
-      document.getElementById('highlightModal').classList.remove('active');
+      const modal = document.getElementById('highlightModal');
+      modal.classList.remove('active');
       document.body.style.overflow = 'auto';
+      
+      // Reset grid layout when closing
+      const highlightMedia = document.getElementById('highlightMedia');
+      highlightMedia.style.display = 'flex';
+      modal.querySelector('.modal-content').style.gridTemplateColumns = '1.2fr 500px';
     }
 
     function closeHighlightBackground(event) {
