@@ -262,6 +262,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 4px;
       padding: 0;
+      max-width: 935px;
+      margin: 0 auto;
     }
 
     .post-preview {
@@ -597,6 +599,11 @@
       .username {
         font-size: 20px;
       }
+
+      .posts-grid {
+        padding: 4px;
+        gap: 4px;
+      }
     }
   </style>
 </head>
@@ -773,7 +780,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
               <button class="action-btn">💬</button>
               <button class="action-btn">📤</button>
             </div>
-            <button class="action-btn">🔖</button>
           </div>
           <div class="post-likes" id="postLikes"></div>
           <div class="post-date" id="postDate"></div>
@@ -895,4 +901,3 @@ Starbucks → T-Mobile → Cruise → Salesforce
       },
       {
         media: 'https://via.placeholder.com
-      
