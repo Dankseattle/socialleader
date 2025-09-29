@@ -492,6 +492,21 @@
         padding: 16px;
       }
 
+      .username-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .profile-actions {
+        width: 100%;
+      }
+
+      .ig-button {
+        flex: 1;
+        text-align: center;
+      }
+
       .profile-pic {
         width: 77px;
         height: 77px;
@@ -893,34 +908,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
             <p style="font-size: 14px; line-height: 1.6; color: #262626; margin-bottom: 20px;">
               When I'm not working, I'm probably deep in a book, fly fishing, snowboarding, or exploring Seattle.
             </p>
-
-            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
-              <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Education</h4>
-              
-              <div style="margin-bottom: 16px;">
-                <div style="font-weight: 600; font-size: 14px;">Master of Communication, Digital Media</div>
-                <div style="color: #8e8e8e; font-size: 14px;">University of Washington | 2012 - 2014</div>
-              </div>
-
-              <div style="margin-bottom: 16px;">
-                <div style="font-weight: 600; font-size: 14px;">Bachelor of Arts, Journalism & Media Studies</div>
-                <div style="color: #8e8e8e; font-size: 14px;">Rutgers University | 2008 - 2012</div>
-              </div>
-            </div>
-
-            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
-              <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Skills</h4>
-              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Social Strategy</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Community Management</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Crisis Management</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Content Creation</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Analytics & Reporting</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Influencer Marketing</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Video Editing</span>
-                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Copywriting</span>
-              </div>
-            </div>
           </div>
         `
       },
@@ -931,7 +918,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
             <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px;">Work Experience</h3>
             
             <div style="margin-bottom: 30px;">
-              <div style="font-weight: 600; font-size: 16px;">Social Media Manager</div>
+              <div style="font-weight: 600; font-size: 16px;">Senior Manager, Social Media</div>
               <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 8px;">Salesforce | Seattle, WA | 2024 - Present</div>
               <ul style="font-size: 14px; line-height: 1.6; color: #262626; padding-left: 20px;">
                 <li>Managed Commerce Cloud social media channels, responsible for strategy, community management, reporting, content creation, and events.</li>
@@ -974,31 +961,48 @@ Starbucks → T-Mobile → Cruise → Salesforce
             </div>
 
             <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
+              <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Education</h3>
+              
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 600; font-size: 14px;">Master of Communication, Digital Media</div>
+                <div style="color: #8e8e8e; font-size: 14px;">University of Washington | 2012 - 2014</div>
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <div style="font-weight: 600; font-size: 14px;">Bachelor of Arts, Journalism & Media Studies</div>
+                <div style="color: #8e8e8e; font-size: 14px;">Rutgers University | 2008 - 2012</div>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
               <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Skills</h3>
-              <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-                • Social strategy & execution<br>
-                • Creative Strategy<br>
-                • Community management<br>
-                • Social listening<br>
-                • Analytics and reporting<br>
-                • Influencer management<br>
-                • Crisis management<br>
-                • Copywriting<br>
-                • Graphic design<br>
-                • Video editing<br>
-                • Social management tools<br>
-                • Sprout<br>
-                • Sprinklr<br>
-                • Opal<br>
-                • BrandWatch, etc
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Social Strategy & Execution</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Creative Strategy</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Community Management</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Social Listening</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Analytics & Reporting</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Influencer Management</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Crisis Management</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Copywriting</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Graphic Design</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Video Editing</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Sprout</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Sprinklr</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">Opal</span>
+                <span style="background: #efefef; padding: 6px 12px; border-radius: 16px; font-size: 13px;">BrandWatch</span>
               </div>
             </div>
 
             <div style="border-top: 1px solid #efefef; padding-top: 20px; margin-top: 20px;">
               <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Awards</h3>
               <div style="font-size: 14px; line-height: 1.8; color: #262626;">
-                • Shorty Award Winner | Santa Calling<br>
-                • AdWeek Experiential Campaign of the Year | Go Farther
+                <a href="https://shortyawards.com/13th/santa-calling" target="_blank" rel="noopener noreferrer" style="color: #0095f6; text-decoration: none; display: block; margin-bottom: 12px;">
+                  🏆 <strong>Shorty Award Winner</strong> | Santa Calling →
+                </a>
+                <a href="https://www.adweek.com/performance-marketing/these-innovative-campaigns-and-execs-delivered-results-and-accountability-when-it-mattered-most/" target="_blank" rel="noopener noreferrer" style="color: #0095f6; text-decoration: none; display: block;">
+                  🏆 <strong>AdWeek Experiential Campaign of the Year</strong> | Go Farther →
+                </a>
               </div>
             </div>
 
@@ -1017,7 +1021,8 @@ Starbucks → T-Mobile → Cruise → Salesforce
         title: 'Salesforce',
         content: `
           <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Salesforce</h3>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Salesforce</h3>
+            <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 16px;">Senior Manager, Social Media | 2024 - Present</div>
             <div style="font-size: 14px; line-height: 1.8; color: #262626;">
               ☁️ Commerce Cloud social channels<br>
               🛍️ Cyber Week: 197% YoY growth<br>
@@ -1031,7 +1036,8 @@ Starbucks → T-Mobile → Cruise → Salesforce
         title: 'Cruise',
         content: `
           <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Cruise</h3>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Cruise</h3>
+            <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 16px;">Senior Social Media Manager | 2022 - 2024</div>
             <div style="font-size: 14px; line-height: 1.8; color: #262626;">
               🚗 Lead crisis comms for 50+ incidents<br>
               📈 359% engagement growth<br>
@@ -1045,7 +1051,8 @@ Starbucks → T-Mobile → Cruise → Salesforce
         title: 'T-Mobile',
         content: `
           <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">T-Mobile</h3>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">T-Mobile</h3>
+            <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 16px;">Senior Social Media Strategist | 2019 - 2021</div>
             <div style="font-size: 14px; line-height: 1.8; color: #262626;">
               🎅 Santa Calling - Shorty Award<br>
               📱 Highest-engaging Instagram post<br>
@@ -1059,7 +1066,8 @@ Starbucks → T-Mobile → Cruise → Salesforce
         title: 'Starbucks',
         content: `
           <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
-            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Starbucks</h3>
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Starbucks</h3>
+            <div style="color: #8e8e8e; font-size: 14px; margin-bottom: 16px;">Social Media Strategist | 2015 - 2018</div>
             <div style="font-size: 14px; line-height: 1.8; color: #262626;">
               ☕ 300K+ followers in first year<br>
               📺 YouTube series: 1.2M views<br>
