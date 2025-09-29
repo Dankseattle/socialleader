@@ -1108,20 +1108,10 @@ Starbucks → T-Mobile → Cruise → Salesforce
       const highlightMedia = document.getElementById('highlightMedia');
       const highlightBody = document.getElementById('highlightBody');
 
-      if (type === 'resume') {
-        highlightMedia.style.display = 'none';
-        modalContent.style.gridTemplateColumns = '1fr';
-        modalContent.style.maxWidth = '800px';
-      } else {
-        highlightMedia.style.display = 'flex';
-        highlightMedia.innerHTML = `
-          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
-            ${highlight.title}
-          </div>
-        `;
-        modalContent.style.gridTemplateColumns = '1.2fr 500px';
-        modalContent.style.maxWidth = '1200px';
-      }
+      // Hide media for all highlights, show full-width content
+      highlightMedia.style.display = 'none';
+      modalContent.style.gridTemplateColumns = '1fr';
+      modalContent.style.maxWidth = '800px';
 
       highlightBody.innerHTML = highlight.content;
 
