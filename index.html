@@ -287,11 +287,12 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.75);
       z-index: 1000;
       align-items: center;
       justify-content: center;
       animation: fadeIn 0.2s;
+      backdrop-filter: blur(4px);
     }
 
     .modal.active {
@@ -312,6 +313,9 @@
       grid-template-columns: 1.2fr 500px;
       position: relative;
       animation: slideUp 0.3s;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     @keyframes slideUp {
@@ -1108,10 +1112,16 @@ Starbucks → T-Mobile → Cruise → Salesforce
       const highlightMedia = document.getElementById('highlightMedia');
       const highlightBody = document.getElementById('highlightBody');
 
-      // Hide media for all highlights, show full-width content
+      // Hide media for all highlights
       highlightMedia.style.display = 'none';
       modalContent.style.gridTemplateColumns = '1fr';
-      modalContent.style.maxWidth = '800px';
+      
+      // Adjust width based on content length
+      if (type === 'about' || type === 'resume') {
+        modalContent.style.maxWidth = '800px';
+      } else {
+        modalContent.style.maxWidth = '400px';
+      }
 
       highlightBody.innerHTML = highlight.content;
 
