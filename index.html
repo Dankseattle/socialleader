@@ -858,71 +858,71 @@ Starbucks → T-Mobile → Cruise → Salesforce
       }
     ];
 
-    function openModal(index) {
-      const post = posts[index];
-      if (!post) return;
-      
-      const modal = document.getElementById('postModal');
-      const modalMedia = document.getElementById('modalMedia');
-      const modalBody = document.getElementById('modalBody');
-      const postLikes = document.getElementById('postLikes');
-      const postDate = document.getElementById('postDate');
+   function openModal(index) {
+  const post = posts[index];
+  if (!post) return;
+  
+  const modal = document.getElementById('postModal');
+  const modalMedia = document.getElementById('modalMedia');
+  const modalBody = document.getElementById('modalBody');
+  const postLikes = document.getElementById('postLikes');
+  const postDate = document.getElementById('postDate');
 
-     if (post.mediaType === 'video') {
-  modalMedia.innerHTML = `<iframe src="${post.media}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-} else if (post.mediaType === 'carousel') {
-  let html = '<div class="carousel-container">';
-  post.media.forEach((img, i) => {
-    html += `<img src="${img}" class="carousel-slide ${i === 0 ? 'active' : ''}">`;
-  });
-  html += `<button class="carousel-btn prev" onclick="changeSlide(-1, event)">‹</button>
-           <button class="carousel-btn next" onclick="changeSlide(1, event)">›</button>
-           <div class="carousel-counter"><span id="currentSlide">1</span> / ${post.media.length}</div></div>`;
-  modalMedia.innerHTML = html;
-  window.currentSlideIndex = 0;
-} else {
-  modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
-}
+  if (post.mediaType === 'video') {
+    modalMedia.innerHTML = `<iframe src="${post.media}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  } else if (post.mediaType === 'carousel') {
+    let html = '<div class="carousel-container">';
+    post.media.forEach((img, i) => {
+      html += `<img src="${img}" class="carousel-slide ${i === 0 ? 'active' : ''}">`;
+    });
+    html += `<button class="carousel-btn prev" onclick="changeSlide(-1, event)">‹</button>
+             <button class="carousel-btn next" onclick="changeSlide(1, event)">›</button>
+             <div class="carousel-counter"><span id="currentSlide">1</span> / ${post.media.length}</div></div>`;
+    modalMedia.innerHTML = html;
+    window.currentSlideIndex = 0;
+  } else {
+    modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
+  }
 
-      modalBody.innerHTML = `
-        <div class="project-details">
-          <div class="detail-section">
-            <div class="detail-title">${post.brand} • ${post.role}</div>
-            <div class="detail-content">${post.date}</div>
-          </div>
-          <div class="detail-section">
-            <div class="detail-title">Challenge</div>
-            <div class="detail-content">${post.challenge}</div>
-         </div>
-          <div class="detail-section">
-            <div class="detail-title">Solution</div>
-            <div class="detail-content">${post.solution}</div>
-          </div>
-          <div class="detail-section">
-            <div class="detail-title">Results</div>
-            <div class="metric-row">
-              ${post.results.map(r => `
-                <div class="metric-item">
-                  <span class="metric-value">${r.value}</span>
-                  <span class="metric-label">${r.label}</span>
-                </div>
-              `).join('')}
+  modalBody.innerHTML = `
+    <div class="project-details">
+      <div class="detail-section">
+        <div class="detail-title">${post.brand} • ${post.role}</div>
+        <div class="detail-content">${post.date}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-title">Challenge</div>
+        <div class="detail-content">${post.challenge}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-title">Solution</div>
+        <div class="detail-content">${post.solution}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-title">Results</div>
+        <div class="metric-row">
+          ${post.results.map(r => `
+            <div class="metric-item">
+              <span class="metric-value">${r.value}</span>
+              <span class="metric-label">${r.label}</span>
             </div>
-          </div>
-          <div class="detail-section">
-            <div class="tags">
-              ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-            </div>
-          </div>
+          `).join('')}
         </div>
-      `;
+      </div>
+      <div class="detail-section">
+        <div class="tags">
+          ${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
 
-      postLikes.textContent = `${post.likes} likes`;
-      postDate.textContent = post.timestamp;
+  postLikes.textContent = `${post.likes} likes`;
+  postDate.textContent = post.timestamp;
 
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
     function closeModal() {
       const modal = document.getElementById('postModal');
