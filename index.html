@@ -560,6 +560,14 @@
         word-wrap: break-word;
       }
     }
+    .carousel-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000; }
+.carousel-slide { display: none; width: 100%; height: 100%; object-fit: contain; }
+.carousel-slide.active { display: block; }
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; z-index: 5; }
+.carousel-btn:hover { background: rgba(255,255,255,1); }
+.carousel-btn.prev { left: 20px; }
+.carousel-btn.next { right: 20px; }
+.carousel-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; z-index: 5; }
   </style>
 </head>
 <body>
@@ -810,23 +818,25 @@ Starbucks → T-Mobile → Cruise → Salesforce
         timestamp: '2017'
       },
      {
-  media: 'https://www.youtube.com/embed/duCuk05iG2c',
-  mediaType: 'video',
+  {
+  media: ['images/gofarther-1.png', 'images/gofarther-2.png', 'images/gofarther-3.png', 'images/gofarther-4.png', 'images/gofarther-5.png'],
+  mediaType: 'carousel',
   thumbnail: 'images/gofarther-thumb.png',
-        caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
-        brand: 'T-Mobile',
-        role: 'Sr. Social Media Strategist',
-        date: 'Mar 2019 - May 2021',
-        challenge: 'Drive engagement for OnePlus product launch partnership with T-Mobile.',
-        solution: 'Created interactive digital scavenger hunt combining online engagement with real-world discovery.',
-        results: [
-          { value: '125%', label: 'Above Benchmark' },
-          { value: '#1', label: 'Instagram Post' },
-          { value: 'Top', label: 'Partnership' }
-        ],
-        tags: ['Partnership', 'Interactive', 'Product Launch'],
-        likes: '6,732',
-        timestamp: '2020'
+  caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
+  brand: 'T-Mobile',
+  role: 'Sr. Social Media Strategist',
+  date: 'Mar 2019 - May 2021',
+  challenge: 'Drive engagement for OnePlus product launch partnership with T-Mobile.',
+  solution: 'Created interactive digital scavenger hunt combining online engagement with real-world discovery.',
+  results: [
+    { value: '125%', label: 'Above Benchmark' },
+    { value: '#1', label: 'Instagram Post' },
+    { value: 'Top', label: 'Partnership' }
+  ],
+  tags: ['Partnership', 'Interactive', 'Product Launch'],
+  likes: '6,732',
+  timestamp: '2020'
+},
       },
       {
         media: 'https://via.placeholder.com/800x800/30cfd0/ffffff?text=Cruise',
@@ -858,11 +868,21 @@ Starbucks → T-Mobile → Cruise → Salesforce
       const postLikes = document.getElementById('postLikes');
       const postDate = document.getElementById('postDate');
 
-      if (post.mediaType === 'video') {
-        modalMedia.innerHTML = `<iframe src="${post.media}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-      } else {
-        modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
-      }
+     if (post.mediaType === 'video') {
+  modalMedia.innerHTML = `<iframe src="${post.media}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+} else if (post.mediaType === 'carousel') {
+  let html = '<div class="carousel-container">';
+  post.media.forEach((img, i) => {
+    html += `<img src="${img}" class="carousel-slide ${i === 0 ? 'active' : ''}">`;
+  });
+  html += `<button class="carousel-btn prev" onclick="changeSlide(-1, event)">‹</button>
+           <button class="carousel-btn next" onclick="changeSlide(1, event)">›</button>
+           <div class="carousel-counter"><span id="currentSlide">1</span> / ${post.media.length}</div></div>`;
+  modalMedia.innerHTML = html;
+  window.currentSlideIndex = 0;
+} else {
+  modalMedia.innerHTML = `<img src="${post.media}" alt="${post.brand}">`;
+}
 
       modalBody.innerHTML = `
         <div class="project-details">
@@ -1178,6 +1198,16 @@ Starbucks → T-Mobile → Cruise → Salesforce
         closeHighlight();
       }
     });
+    function changeSlide(dir, e) {
+  e.stopPropagation();
+  const slides = document.querySelectorAll('.carousel-slide');
+  slides[window.currentSlideIndex].classList.remove('active');
+  window.currentSlideIndex += dir;
+  if (window.currentSlideIndex >= slides.length) window.currentSlideIndex = 0;
+  if (window.currentSlideIndex < 0) window.currentSlideIndex = slides.length - 1;
+  slides[window.currentSlideIndex].classList.add('active');
+  document.getElementById('currentSlide').textContent = window.currentSlideIndex + 1;
+}
   </script>
 </body>
 </html>
