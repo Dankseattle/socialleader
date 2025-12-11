@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dan Kirk - Social Strategist</title>
+    
+    <meta property="og:title" content="Dan Kirk - Social Strategist">
+    <meta property="og:description" content="Social Strategist for brands like Salesforce, T-Mobile, and Starbucks.">
+    <meta property="og:image" content="https://www.dankirk.net/images/social-preview.png">
+    
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+    
+    <title>Dan Kirk - Social Strategist</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -64,9 +71,8 @@
         .contact-info { 
             display: flex; 
             flex-direction: column; 
-            font-size: 16px; 
-            /* Added gap for mobile touch targets */
             gap: 16px; 
+            font-size: 16px; 
         }
 
         .contact-link { 
@@ -82,13 +88,11 @@
         }
         .contact-link:hover { opacity: 1; }
         
-        /* RESUME BUTTON (The Pill) */
         .resume-btn {
-            /* Increased spacing for mobile safety */
             margin-bottom: 12px;
             margin-top: 10px; 
             background: rgba(255,255,255,0.15);
-            padding: 14px 28px; /* Bigger touch target */
+            padding: 14px 28px;
             border-radius: 50px;
             font-weight: 600;
             opacity: 1;
@@ -108,7 +112,7 @@
             padding: 100px 80px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center; /* Default centers vertically */
             border-bottom: 1px solid rgba(0,0,0,0.03);
             position: relative;
         }
@@ -202,47 +206,21 @@
         }
         .modal-overlay.active { display: flex; }
         .modal-container { width: 90%; height: 90%; max-width: 1000px; background: white; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
-        
-        .close-btn { 
-            position: absolute; top: -40px; right: 0; 
-            background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px;
-        }
-        
+        .close-btn { position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px; }
         .resume-frame { width: 100%; height: 100%; border: none; border-radius: 8px; }
-        .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; }
 
-        /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
-            
-            .sidebar { 
-                width: 100%; 
-                height: auto; 
-                position: relative; 
-                padding: 60px 30px 80px; /* Extra bottom padding */
-            }
-            
+            .sidebar { width: 100%; height: auto; position: relative; padding: 60px 30px 80px; }
             .logo { font-size: 36px; }
             .tagline { font-size: 22px; }
-            
-            /* Give the Resume button even more room on mobile */
-            .contact-info { margin-top: 20px; gap: 20px; }
-            
             .content { width: 100%; }
             .project-section { padding: 80px 30px; min-height: auto; }
-            
-            /* Fix Modal for Mobile */
             .resume-frame { display: none; }
             .mobile-download-btn { display: block; }
-            .modal-container { 
-                height: auto; 
-                padding: 40px 20px; 
-                background: transparent; 
-                box-shadow: none; 
-                justify-content: center;
-            }
-            .close-btn { top: 20px; right: 20px; } /* Move close button inside for safety */
-            
+            .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; justify-content: center; }
+            .close-btn { top: 20px; right: 20px; }
             .header-group { border-left: none; padding-left: 0; }
             .project-title { font-size: 34px; }
             .stat-grid { gap: 20px; }
@@ -260,7 +238,7 @@
                     I help brands like <span class="no-break">Salesforce</span>, <span class="no-break">T-Mobile</span> and <span class="no-break">Starbucks</span> behave like humans on the internet.
                 </div>
                 
-                <div style="margin-top: 24px; font-size: 16px; opacity: 0.6; display: flex; align-items: center; gap: 6px;">
+                <div style="margin-top: 24px; font-size: 16px; color: #ffffff; display: flex; align-items: center; gap: 6px;">
                     📍 Based in Seattle, WA
                 </div>
             </div>
@@ -274,13 +252,13 @@
 
         <main class="content">
 
-            <section class="project-section" data-color="#1a1a1a" data-text="#ffffff">
+            <section class="project-section" data-color="#1a1a1a" data-text="#ffffff" style="justify-content: flex-start; padding-top: 140px;">
                 <div class="project-number">INTRO</div>
                 <h1 class="project-title" style="font-size: 52px;">Social Strategist with 13 years of experience.</h1>
                 <p class="body-text" style="font-size: 20px; max-width: 500px; margin-bottom: 0;">
                     I don't just post content; I build digital ecosystems. From launching lattes at Starbucks to humanizing robot cars at Cruise, I specialize in turning enterprise business goals into internet culture.
                 </p>
-                </section>
+            </section>
 
             <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
                 <div class="project-number">01 / 04</div>
@@ -378,7 +356,7 @@
                 </div>
             </section>
 
-            <section class="project-section" data-color="#ffffff" data-text="#1a1a1a" style="min-height: 50vh; justify-content: flex-start;">
+            <section class="project-section" data-color="#ffffff" data-text="#1a1a1a" style="min-height: 50vh; justify-content: flex-start; padding-top: 100px;">
                 <h2 class="project-title" style="font-size: 32px;">Ready to work?</h2>
                 <a href="mailto:daniel.lawrence.kirk@gmail.com" style="font-size: 24px; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; width: max-content;">daniel.lawrence.kirk@gmail.com</a>
                 <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2025 Dan Kirk. Built in Seattle.</p>
@@ -417,6 +395,7 @@
                         const links = sidebar.querySelectorAll('.contact-link');
                         const btn = sidebar.querySelector('.resume-btn');
                         
+                        // Update links color
                         links.forEach(link => {
                             if (!link.classList.contains('resume-btn')) {
                                 link.style.borderBottomColor = newTextColor === '#ffffff' 
@@ -425,6 +404,7 @@
                             }
                         });
                         
+                        // Update Resume Button Style
                         if (newTextColor === '#ffffff') {
                             btn.style.background = 'rgba(255,255,255,0.15)';
                             btn.style.color = '#fff';
