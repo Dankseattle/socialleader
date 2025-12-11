@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dan Kirk - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Dan Kirk - Social Strategist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: 'Space Grotesk', sans-serif; /* Modern, slightly quirky font */
+            font-family: 'Space Grotesk', sans-serif;
             margin: 0;
             overflow-x: hidden;
+            background-color: #f4f4f4; /* Default bg to avoid white flash */
         }
 
         /* --- LAYOUT GRID --- */
@@ -20,7 +21,7 @@
             min-height: 100vh;
         }
 
-        /* --- LEFT SIDE (FIXED) --- */
+        /* --- LEFT SIDEBAR (FIXED) --- */
         .sidebar {
             width: 40%;
             height: 100vh;
@@ -30,98 +31,174 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: #ffffff; /* Default Color */
-            transition: background-color 0.5s ease, color 0.5s ease;
-            color: #1a1a1a;
+            background-color: #1a1a1a; /* Starts Dark for the "About" section */
+            color: #ffffff;
+            transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease;
+            z-index: 10;
         }
 
-        .logo { font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 20px; }
-        .tagline { font-size: 24px; font-weight: 300; line-height: 1.4; max-width: 400px; }
+        .logo { 
+            font-size: 42px; 
+            font-weight: 700; 
+            letter-spacing: -1px; 
+            margin-bottom: 24px;
+            cursor: pointer;
+        }
+
+        .tagline { 
+            font-size: 26px; 
+            font-weight: 300; 
+            line-height: 1.4; 
+            max-width: 440px; 
+            opacity: 0.9;
+        }
         
-        .contact-info { font-size: 16px; font-weight: 400; }
-        .contact-info a { 
-            display: block; 
-            margin-bottom: 10px; 
+        .contact-info { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+            font-size: 16px; 
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-link { 
             text-decoration: none; 
             color: inherit; 
-            border-bottom: 1px solid currentColor; 
+            border-bottom: 1px solid rgba(255,255,255, 0.3); 
             width: max-content;
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
         }
+        
+        .contact-link:hover { border-bottom-color: currentColor; }
 
-        /* --- RIGHT SIDE (SCROLLABLE) --- */
+        /* --- RIGHT CONTENT (SCROLLABLE) --- */
         .content {
             width: 60%;
-            background: #f4f4f4; /* Light grey backdrop for work */
+            background: #ffffff;
         }
 
         .project-section {
-            min-height: 90vh; /* Each project takes up full screen height almost */
+            min-height: 100vh;
             padding: 100px 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
         }
 
+        /* Typography */
         .brand-label {
-            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 20px;
-            color: #666;
+            color: #888;
+            display: block;
         }
 
-        .project-title {
-            font-size: 48px;
+        .section-headline {
+            font-size: 52px;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.05;
             margin-bottom: 30px;
-            color: #1a1a1a;
+            color: #111;
+            letter-spacing: -1px;
         }
 
-        .project-image {
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #444;
+            max-width: 620px;
+            margin-bottom: 30px;
+        }
+
+        /* Images */
+        .media-wrapper {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
+            border-radius: 16px;
+            overflow: hidden;
             margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            background: #f0f0f0;
+            transition: transform 0.4s ease;
         }
         
-        .project-image:hover { transform: translateY(-5px); }
-
-        .project-details {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #444;
-            max-width: 600px;
+        .media-wrapper:hover { transform: translateY(-5px); }
+        
+        .media-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
+        /* Stats Grid */
         .stat-grid {
-            display: flex;
-            gap: 40px;
-            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            border-top: 1px solid #eee;
             padding-top: 30px;
-            border-top: 1px solid #ddd;
+            max-width: 500px;
         }
 
-        .stat-box strong { font-size: 32px; display: block; color: #1a1a1a; }
-        .stat-box span { font-size: 14px; text-transform: uppercase; color: #666; }
+        .stat-box strong { 
+            font-size: 36px; 
+            font-weight: 700; 
+            display: block; 
+            color: #111; 
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        
+        .stat-box span { 
+            font-family: 'Inter', sans-serif;
+            font-size: 13px; 
+            text-transform: uppercase; 
+            color: #666; 
+            letter-spacing: 0.5px;
+        }
 
-        /* --- MOBILE STYLES --- */
+        /* Resume / History List style */
+        .experience-list {
+            list-style: none;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .experience-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #444;
+            border-bottom: 1px solid #f9f9f9;
+            padding-bottom: 12px;
+        }
+        
+        .experience-item strong { color: #111; font-weight: 600; }
+
+        /* --- MOBILE --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
             .sidebar { 
                 width: 100%; 
                 height: auto; 
+                min-height: auto;
                 position: relative; 
-                padding: 60px 30px; 
-                min-height: 50vh;
+                padding: 60px 30px;
             }
             .content { width: 100%; }
             .project-section { padding: 60px 30px; min-height: auto; }
-            .project-title { font-size: 32px; }
+            .section-headline { font-size: 36px; }
+            .sidebar { position: static; height: auto; }
         }
     </style>
 </head>
@@ -131,142 +208,186 @@
         
         <aside class="sidebar" id="sidebar">
             <div class="top-content">
-                <div class="logo">Dan Kirk.</div>
-                <div class="tagline">I help brands like T-Mobile and Starbucks behave like humans on the internet.</div>
+                <div class="logo" onclick="window.scrollTo(0,0)">Dan Kirk.</div>
+                <div class="tagline">I help brands like Salesforce, T-Mobile and Starbucks behave like humans on the internet.</div>
             </div>
             
-            <div class="contact-info">
-                <a href="Dan_Kirk_Resume.pdf" target="_blank">Download Resume ↗</a>
-                <a href="mailto:daniel.lawrence.kirk@gmail.com">Email Me ↗</a>
-                <a href="https://linkedin.com/in/danksocial" target="_blank">LinkedIn ↗</a>
-            </div>
+            <nav class="contact-info">
+                <a href="Dan_Kirk_Resume.pdf" target="_blank" class="contact-link">View Resume ↗</a>
+                <a href="mailto:daniel.lawrence.kirk@gmail.com" class="contact-link">Email Me ↗</a>
+                <a href="https://linkedin.com/in/danksocial" target="_blank" class="contact-link">LinkedIn ↗</a>
+            </nav>
         </aside>
 
         <main class="content">
-            
-            <div class="project-section" data-color="#ffffff" data-text="#1a1a1a" style="min-height: 50vh;">
-                <p style="font-size: 24px; color: #666;">↓ Scroll to see selected works</p>
-            </div>
 
-            <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
-                <span class="brand-label">Salesforce</span>
-                <h2 class="project-title">Reinventing B2B for Cyber Week</h2>
-                <img src="https://via.placeholder.com/1000x600/00a1e0/ffffff?text=Salesforce+Campaign" class="project-image" alt="Salesforce">
+            <section class="project-section" data-color="#1a1a1a" data-text="#ffffff">
+                <span class="brand-label">Introduction</span>
+                <h1 class="section-headline">Social Strategist with 13 years of experience.</h1>
                 
-                <div class="project-details">
-                    <p>The challenge: Make B2B cloud software interesting during the busiest shopping week of the year. I developed a content strategy focusing on real user value over jargon.</p>
-                    
-                    <div class="stat-grid">
-                        <div class="stat-box">
-                            <strong>197%</strong>
-                            <span>YoY Growth</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>70+</strong>
-                            <span>Assets Created</span>
-                        </div>
-                    </div>
-                </div>
+                <p class="body-text">
+                    I don't just post content; I build digital ecosystems. From launching lattes at Starbucks to humanizing robot cars at Cruise, I specialize in turning enterprise business goals into internet culture.
+                </p>
+                
+                <p class="body-text">
+                    Currently based in Seattle, WA.
+                </p>
+
+                <ul class="experience-list">
+                    <li class="experience-item">
+                        <strong>Salesforce</strong> <span>2024 — Present</span>
+                    </li>
+                    <li class="experience-item">
+                        <strong>Cruise</strong> <span>2022 — 2024</span>
+                    </li>
+                    <li class="experience-item">
+                        <strong>T-Mobile</strong> <span>2019 — 2021</span>
+                    </li>
+                    <li class="experience-item">
+                        <strong>Starbucks</strong> <span>2015 — 2018</span>
+                    </li>
+                </ul>
             </section>
 
-            <section class="project-section" data-color="#ea0a8e" data-text="#ffffff">
-                <span class="brand-label">T-Mobile</span>
-                <h2 class="project-title">Santa Calling</h2>
-                <img src="images/santacalling-thumb.png" class="project-image" alt="Santa Calling">
+            <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
+                <span class="brand-label">Salesforce • Senior Manager</span>
+                <h2 class="section-headline">Reinventing B2B for Cyber Week</h2>
                 
-                <div class="project-details">
-                    <p>During COVID lockdowns, we needed a holiday campaign that wasn't tone-deaf. I led "Santa Calling," a digital experience connecting kids with virtual Santas. It wasn't just an ad; it was a utility that won hearts (and awards).</p>
-                    
-                    <div class="stat-grid">
-                        <div class="stat-box">
-                            <strong>2M+</strong>
-                            <span>Impressions</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>🏆</strong>
-                            <span>Shorty Award</span>
-                        </div>
+                <div class="media-wrapper">
+                    <img src="https://via.placeholder.com/1000x600/00a1e0/ffffff?text=Salesforce+Campaign" alt="Salesforce">
+                </div>
+                
+                <p class="body-text">
+                    <strong>The Challenge:</strong> Make B2B cloud software interesting during the busiest shopping week of the year. <br><br>
+                    <strong>The Strategy:</strong> I developed a content strategy focusing on real user value over jargon. We created 70+ social assets that delivered engagement rates 30% above the previous year.
+                </p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <strong>197%</strong>
+                        <span>YoY Growth</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>70+</strong>
+                        <span>Assets Created</span>
                     </div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#ff4d00" data-text="#ffffff">
-                <span class="brand-label">Cruise</span>
-                <h2 class="project-title">Humanizing Robot Cars</h2>
-                <img src="https://via.placeholder.com/1000x600/ff4d00/ffffff?text=Cruise+Vehicles" class="project-image" alt="Cruise">
+                <span class="brand-label">Cruise • Sr. Social Media Manager</span>
+                <h2 class="section-headline">Humanizing Robot Cars</h2>
                 
-                <div class="project-details">
-                    <p>Autonomous vehicles face skepticism. My role was to humanize the technology. I managed comms for 50+ on-road incidents while simultaneously building a community that celebrated the tech.</p>
-                    
-                    <div class="stat-grid">
-                        <div class="stat-box">
-                            <strong>359%</strong>
-                            <span>Eng. Growth</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>50+</strong>
-                            <span>Incidents</span>
-                        </div>
+                <div class="media-wrapper">
+                    <img src="https://via.placeholder.com/1000x600/ff4d00/ffffff?text=Cruise+Vehicles" alt="Cruise">
+                </div>
+                
+                <p class="body-text">
+                    <strong>The Challenge:</strong> Autonomous vehicles face public skepticism. <br><br>
+                    <strong>The Strategy:</strong> My role was to humanize the technology. I managed comms for 50+ on-road incidents while simultaneously building a community that celebrated the tech, driving massive engagement growth.
+                </p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <strong>359%</strong>
+                        <span>Eng. Growth</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>50+</strong>
+                        <span>Crisis Incidents</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section" data-color="#ea0a8e" data-text="#ffffff">
+                <span class="brand-label">T-Mobile • Sr. Social Strategist</span>
+                <h2 class="section-headline">Santa Calling</h2>
+                
+                <div class="media-wrapper">
+                    <img src="images/santacalling-thumb.png" alt="Santa Calling">
+                </div>
+                
+                <p class="body-text">
+                    <strong>The Challenge:</strong> During COVID lockdowns, we needed a holiday campaign that wasn't tone-deaf. <br><br>
+                    <strong>The Strategy:</strong> I led "Santa Calling," a digital experience connecting kids with virtual Santas. It wasn't just an ad; it was a utility that won hearts (and awards).
+                </p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <strong>2M+</strong>
+                        <span>Impressions</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>🏆</strong>
+                        <span>Shorty Award</span>
                     </div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#00704a" data-text="#ffffff">
-                <span class="brand-label">Starbucks</span>
-                <h2 class="project-title">VidCon Activation</h2>
-                <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+VidCon" class="project-image" alt="Starbucks">
+                <span class="brand-label">Starbucks • Social Strategist</span>
+                <h2 class="section-headline">VidCon Activation</h2>
                 
-                <div class="project-details">
-                    <p>We turned a store into a content playground for creators. I led the strategy for this experiential activation that became a destination for attendees and won AdWeek's Campaign of the Year.</p>
-                    
-                    <div class="stat-grid">
-                        <div class="stat-box">
-                            <strong>🏆</strong>
-                            <span>AdWeek Award</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>300K</strong>
-                            <span>Attendees</span>
-                        </div>
+                <div class="media-wrapper">
+                    <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+VidCon" alt="Starbucks">
+                </div>
+                
+                <p class="body-text">
+                    <strong>The Strategy:</strong> We turned a store into a content playground for creators. I led the strategy for this experiential activation that became a destination for attendees and won AdWeek's Campaign of the Year.
+                </p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <strong>🏆</strong>
+                        <span>AdWeek Award</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>300K</strong>
+                        <span>Attendees</span>
                     </div>
                 </div>
             </section>
-            
-            <div class="project-section" data-color="#1a1a1a" data-text="#ffffff" style="min-height: 40vh; align-items: center; text-align: center;">
-                <h2 style="font-size: 32px; margin-bottom: 20px;">Let's work together.</h2>
-                <a href="mailto:daniel.lawrence.kirk@gmail.com" style="font-size: 24px; color: #888; text-decoration: none; border-bottom: 1px solid #888;">daniel.lawrence.kirk@gmail.com</a>
-            </div>
+
+            <section class="project-section" data-color="#ffffff" data-text="#1a1a1a" style="min-height: 50vh; justify-content: flex-start;">
+                <h2 class="section-headline" style="font-size: 32px;">Ready to work?</h2>
+                <a href="mailto:daniel.lawrence.kirk@gmail.com" style="font-size: 28px; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; width: max-content;">daniel.lawrence.kirk@gmail.com</a>
+                <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2025 Dan Kirk. Built in Seattle.</p>
+            </section>
 
         </main>
     </div>
 
     <script>
-        // THE MAGIC SCRIPT
-        // This watches the scroll position and updates the sidebar color
+        // --- CHAMELEON SCRIPT ---
+        // Watches for sections crossing the center of the screen
         
         const sidebar = document.getElementById('sidebar');
         const sections = document.querySelectorAll('.project-section');
 
         const observerOptions = {
             root: null,
-            rootMargin: '-50% 0px -50% 0px', // Trigger when section is in middle of screen
+            rootMargin: '-40% 0px -40% 0px', // Trigger when section is in middle 20% of screen
             threshold: 0
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Get color from the section HTML
                     const newColor = entry.target.getAttribute('data-color');
                     const newTextColor = entry.target.getAttribute('data-text');
                     
-                    // Apply to sidebar
-                    sidebar.style.backgroundColor = newColor;
-                    sidebar.style.color = newTextColor;
-                    
-                    // Also update links to match text color
-                    const links = sidebar.querySelectorAll('a');
-                    links.forEach(link => link.style.borderColor = newTextColor);
+                    if (newColor) {
+                        sidebar.style.backgroundColor = newColor;
+                        sidebar.style.color = newTextColor;
+                        
+                        // Update border colors for links
+                        const links = sidebar.querySelectorAll('.contact-link');
+                        links.forEach(link => {
+                            link.style.borderBottomColor = newTextColor === '#ffffff' 
+                                ? 'rgba(255,255,255,0.3)' 
+                                : 'rgba(0,0,0,0.2)';
+                        });
+                    }
                 }
             });
         }, observerOptions);
