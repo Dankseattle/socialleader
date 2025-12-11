@@ -12,7 +12,7 @@
             font-family: 'Space Grotesk', sans-serif;
             margin: 0;
             overflow-x: hidden;
-            background-color: #f4f4f4; /* Default bg to avoid white flash */
+            background-color: #f4f4f4;
         }
 
         /* --- LAYOUT GRID --- */
@@ -31,7 +31,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: #1a1a1a; /* Starts Dark for the "About" section */
+            background-color: #1a1a1a;
             color: #ffffff;
             transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease;
             z-index: 10;
@@ -68,6 +68,7 @@
             width: max-content;
             padding-bottom: 2px;
             transition: border-color 0.2s;
+            cursor: pointer;
         }
         
         .contact-link:hover { border-bottom-color: currentColor; }
@@ -88,7 +89,6 @@
             position: relative;
         }
 
-        /* Typography */
         .brand-label {
             font-family: 'Inter', sans-serif;
             font-size: 13px;
@@ -164,7 +164,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Resume / History List style */
+        /* Experience List */
         .experience-list {
             list-style: none;
             margin-top: 30px;
@@ -185,6 +185,71 @@
         
         .experience-item strong { color: #111; font-weight: 600; }
 
+        /* --- RESUME MODAL --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-container {
+            width: 90%;
+            height: 90%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .resume-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .mobile-download-btn {
+            display: none;
+            padding: 20px;
+            background: #00a1e0;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            margin: auto;
+            border-radius: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* --- MOBILE --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
@@ -198,7 +263,11 @@
             .content { width: 100%; }
             .project-section { padding: 60px 30px; min-height: auto; }
             .section-headline { font-size: 36px; }
-            .sidebar { position: static; height: auto; }
+            
+            /* Hide iframe on small mobile, show button instead */
+            .resume-frame { display: none; }
+            .mobile-download-btn { display: block; }
+            .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; }
         }
     </style>
 </head>
@@ -213,7 +282,7 @@
             </div>
             
             <nav class="contact-info">
-                <a href="Dan_Kirk_Resume.pdf" target="_blank" class="contact-link">View Resume ↗</a>
+                <a href="#" onclick="openResume(event)" class="contact-link">View Resume</a>
                 <a href="mailto:daniel.lawrence.kirk@gmail.com" class="contact-link">Email Me ↗</a>
                 <a href="https://linkedin.com/in/danksocial" target="_blank" class="contact-link">LinkedIn ↗</a>
             </nav>
@@ -224,127 +293,79 @@
             <section class="project-section" data-color="#1a1a1a" data-text="#ffffff">
                 <span class="brand-label">Introduction</span>
                 <h1 class="section-headline">Social Strategist with 13 years of experience.</h1>
-                
                 <p class="body-text">
                     I don't just post content; I build digital ecosystems. From launching lattes at Starbucks to humanizing robot cars at Cruise, I specialize in turning enterprise business goals into internet culture.
                 </p>
-                
-                <p class="body-text">
-                    Currently based in Seattle, WA.
-                </p>
+                <p class="body-text">Currently based in Seattle, WA.</p>
 
                 <ul class="experience-list">
-                    <li class="experience-item">
-                        <strong>Salesforce</strong> <span>2024 — Present</span>
-                    </li>
-                    <li class="experience-item">
-                        <strong>Cruise</strong> <span>2022 — 2024</span>
-                    </li>
-                    <li class="experience-item">
-                        <strong>T-Mobile</strong> <span>2019 — 2021</span>
-                    </li>
-                    <li class="experience-item">
-                        <strong>Starbucks</strong> <span>2015 — 2018</span>
-                    </li>
+                    <li class="experience-item"><strong>Salesforce</strong> <span>2024 — Present</span></li>
+                    <li class="experience-item"><strong>Cruise</strong> <span>2022 — 2024</span></li>
+                    <li class="experience-item"><strong>T-Mobile</strong> <span>2019 — 2021</span></li>
+                    <li class="experience-item"><strong>Starbucks</strong> <span>2015 — 2018</span></li>
                 </ul>
             </section>
 
             <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
                 <span class="brand-label">Salesforce • Senior Manager</span>
                 <h2 class="section-headline">Reinventing B2B for Cyber Week</h2>
-                
                 <div class="media-wrapper">
                     <img src="https://via.placeholder.com/1000x600/00a1e0/ffffff?text=Salesforce+Campaign" alt="Salesforce">
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> Make B2B cloud software interesting during the busiest shopping week of the year. <br><br>
                     <strong>The Strategy:</strong> I developed a content strategy focusing on real user value over jargon. We created 70+ social assets that delivered engagement rates 30% above the previous year.
                 </p>
-                
                 <div class="stat-grid">
-                    <div class="stat-box">
-                        <strong>197%</strong>
-                        <span>YoY Growth</span>
-                    </div>
-                    <div class="stat-box">
-                        <strong>70+</strong>
-                        <span>Assets Created</span>
-                    </div>
+                    <div class="stat-box"><strong>197%</strong><span>YoY Growth</span></div>
+                    <div class="stat-box"><strong>70+</strong><span>Assets Created</span></div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#ff4d00" data-text="#ffffff">
                 <span class="brand-label">Cruise • Sr. Social Media Manager</span>
                 <h2 class="section-headline">Humanizing Robot Cars</h2>
-                
                 <div class="media-wrapper">
                     <img src="https://via.placeholder.com/1000x600/ff4d00/ffffff?text=Cruise+Vehicles" alt="Cruise">
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> Autonomous vehicles face public skepticism. <br><br>
                     <strong>The Strategy:</strong> My role was to humanize the technology. I managed comms for 50+ on-road incidents while simultaneously building a community that celebrated the tech, driving massive engagement growth.
                 </p>
-                
                 <div class="stat-grid">
-                    <div class="stat-box">
-                        <strong>359%</strong>
-                        <span>Eng. Growth</span>
-                    </div>
-                    <div class="stat-box">
-                        <strong>50+</strong>
-                        <span>Crisis Incidents</span>
-                    </div>
+                    <div class="stat-box"><strong>359%</strong><span>Eng. Growth</span></div>
+                    <div class="stat-box"><strong>50+</strong><span>Crisis Incidents</span></div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#ea0a8e" data-text="#ffffff">
                 <span class="brand-label">T-Mobile • Sr. Social Strategist</span>
                 <h2 class="section-headline">Santa Calling</h2>
-                
                 <div class="media-wrapper">
                     <img src="images/santacalling-thumb.png" alt="Santa Calling">
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> During COVID lockdowns, we needed a holiday campaign that wasn't tone-deaf. <br><br>
                     <strong>The Strategy:</strong> I led "Santa Calling," a digital experience connecting kids with virtual Santas. It wasn't just an ad; it was a utility that won hearts (and awards).
                 </p>
-                
                 <div class="stat-grid">
-                    <div class="stat-box">
-                        <strong>2M+</strong>
-                        <span>Impressions</span>
-                    </div>
-                    <div class="stat-box">
-                        <strong>🏆</strong>
-                        <span>Shorty Award</span>
-                    </div>
+                    <div class="stat-box"><strong>2M+</strong><span>Impressions</span></div>
+                    <div class="stat-box"><strong>🏆</strong><span>Shorty Award</span></div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#00704a" data-text="#ffffff">
                 <span class="brand-label">Starbucks • Social Strategist</span>
                 <h2 class="section-headline">VidCon Activation</h2>
-                
                 <div class="media-wrapper">
                     <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+VidCon" alt="Starbucks">
                 </div>
-                
                 <p class="body-text">
                     <strong>The Strategy:</strong> We turned a store into a content playground for creators. I led the strategy for this experiential activation that became a destination for attendees and won AdWeek's Campaign of the Year.
                 </p>
-                
                 <div class="stat-grid">
-                    <div class="stat-box">
-                        <strong>🏆</strong>
-                        <span>AdWeek Award</span>
-                    </div>
-                    <div class="stat-box">
-                        <strong>300K</strong>
-                        <span>Attendees</span>
-                    </div>
+                    <div class="stat-box"><strong>🏆</strong><span>AdWeek Award</span></div>
+                    <div class="stat-box"><strong>300K</strong><span>Attendees</span></div>
                 </div>
             </section>
 
@@ -353,20 +374,25 @@
                 <a href="mailto:daniel.lawrence.kirk@gmail.com" style="font-size: 28px; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; width: max-content;">daniel.lawrence.kirk@gmail.com</a>
                 <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2025 Dan Kirk. Built in Seattle.</p>
             </section>
-
         </main>
+    </div>
+
+    <div id="resumeModal" class="modal-overlay" onclick="closeResume(event)">
+        <div class="modal-content modal-container" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeResume(event)">×</button>
+            <iframe src="Dan_Kirk_Resume.pdf" class="resume-frame"></iframe>
+            <a href="Dan_Kirk_Resume.pdf" download class="mobile-download-btn">Download Resume PDF</a>
+        </div>
     </div>
 
     <script>
         // --- CHAMELEON SCRIPT ---
-        // Watches for sections crossing the center of the screen
-        
         const sidebar = document.getElementById('sidebar');
         const sections = document.querySelectorAll('.project-section');
 
         const observerOptions = {
             root: null,
-            rootMargin: '-40% 0px -40% 0px', // Trigger when section is in middle 20% of screen
+            rootMargin: '-40% 0px -40% 0px',
             threshold: 0
         };
 
@@ -380,7 +406,6 @@
                         sidebar.style.backgroundColor = newColor;
                         sidebar.style.color = newTextColor;
                         
-                        // Update border colors for links
                         const links = sidebar.querySelectorAll('.contact-link');
                         links.forEach(link => {
                             link.style.borderBottomColor = newTextColor === '#ffffff' 
@@ -395,6 +420,19 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        // --- RESUME MODAL SCRIPT ---
+        function openResume(e) {
+            e.preventDefault();
+            document.getElementById('resumeModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeResume(e) {
+            // Only close if clicking overlay or close button
+            document.getElementById('resumeModal').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
     </script>
 </body>
 </html>
