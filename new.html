@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        /* --- SIDEBAR (Fixed Left) --- */
+        /* --- SIDEBAR --- */
         .sidebar {
             width: 40%;
             height: 100vh;
@@ -58,7 +58,6 @@
             opacity: 0.9;
         }
 
-        /* Prevent T-Mobile from breaking */
         .no-break { white-space: nowrap; }
         
         .contact-info { 
@@ -78,10 +77,8 @@
             align-items: center;
             gap: 8px;
         }
-        
         .contact-link:hover { opacity: 1; }
         
-        /* Resume Button Styling */
         .resume-btn {
             margin-bottom: 10px;
             background: rgba(255,255,255,0.15);
@@ -93,17 +90,16 @@
             transition: background 0.2s, color 0.2s;
             border: 1px solid transparent;
         }
-        
         .resume-btn:hover { background: #ffffff; color: #000; }
 
-        /* --- CONTENT (Scrollable Right) --- */
+        /* --- CONTENT --- */
         .content {
             width: 60%;
             background: #ffffff;
         }
 
         .project-section {
-            min-height: 100vh; /* Full height for each project */
+            min-height: 100vh;
             padding: 100px 80px;
             display: flex;
             flex-direction: column;
@@ -112,34 +108,34 @@
             position: relative;
         }
 
-        /* Project Counter (01 / 04) */
         .project-number {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 14px;
             color: #ccc;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* More space */
             font-weight: 600;
         }
 
-        /* --- TYPOGRAPHY UPGRADE --- */
+        /* --- IMPROVED HEADER TYPOGRAPHY --- */
         .header-group {
             margin-bottom: 30px;
+            border-left: 4px solid #eee; /* Visual anchor line */
+            padding-left: 24px;
         }
 
+        /* New "Clearer" Brand Name Style */
         .brand-name {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 24px; /* Much Bigger */
             font-weight: 700;
-            color: #888;
             margin-bottom: 8px;
             display: block;
+            /* Color is set inline in HTML */
         }
 
         .project-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 48px;
+            font-size: 42px; /* Slightly smaller to balance the larger brand name */
             font-weight: 700;
             line-height: 1.1;
             color: #111;
@@ -149,20 +145,20 @@
 
         .role-pill {
             display: inline-block;
-            background: #f0f0f0;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 13px;
+            background: #1a1a1a; /* Dark pill for contrast */
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
             font-weight: 600;
-            color: #555;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* --- IMAGES (Smaller & Contained) --- */
+        /* --- IMAGES --- */
         .media-wrapper {
             width: 100%;
-            max-width: 650px; /* Limits width so it doesn't scream at you */
+            max-width: 650px;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 40px;
@@ -170,14 +166,8 @@
             background: #f8f8f8;
             transition: transform 0.4s ease;
         }
-        
         .media-wrapper:hover { transform: translateY(-3px); }
-        
-        .media-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .media-wrapper img { width: 100%; height: auto; display: block; }
 
         /* --- TEXT & STATS --- */
         .body-text {
@@ -187,7 +177,6 @@
             max-width: 600px;
             margin-bottom: 40px;
         }
-        
         .body-text strong { color: #111; font-weight: 600; }
 
         .stat-grid {
@@ -201,64 +190,22 @@
 
         .stat-box strong { 
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 32px; 
-            font-weight: 700; 
-            display: block; 
-            color: #111; 
-            line-height: 1.1;
-            margin-bottom: 4px;
+            font-size: 32px; font-weight: 700; display: block; color: #111; line-height: 1.1; margin-bottom: 4px;
         }
-        
         .stat-box span { 
-            font-size: 13px; 
-            text-transform: uppercase; 
-            color: #888; 
-            letter-spacing: 0.5px;
-            font-weight: 500;
+            font-size: 13px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; font-weight: 500;
         }
 
         /* --- RESUME MODAL --- */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; backdrop-filter: blur(5px); align-items: center; justify-content: center;
         }
         .modal-overlay.active { display: flex; }
-
-        .modal-container {
-            width: 90%;
-            height: 90%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none; border: none;
-            color: white; font-size: 32px; cursor: pointer;
-        }
-
+        .modal-container { width: 90%; height: 90%; max-width: 1000px; background: white; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
+        .close-btn { position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 32px; cursor: pointer; }
         .resume-frame { width: 100%; height: 100%; border: none; border-radius: 8px; }
         .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* --- MOBILE --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 60px 30px; }
@@ -267,6 +214,7 @@
             .resume-frame { display: none; }
             .mobile-download-btn { display: block; }
             .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; }
+            .header-group { border-left: none; padding-left: 0; }
         }
     </style>
 </head>
@@ -294,11 +242,9 @@
             <section class="project-section" data-color="#1a1a1a" data-text="#ffffff">
                 <div class="project-number">INTRO</div>
                 <h1 class="project-title" style="font-size: 56px;">Social Strategist with 13 years of experience.</h1>
-                
                 <p class="body-text" style="font-size: 20px; max-width: 500px;">
                     I don't just post content; I build digital ecosystems. From launching lattes at Starbucks to humanizing robot cars at Cruise, I specialize in turning enterprise business goals into internet culture.
                 </p>
-                
                 <p class="body-text" style="font-size: 16px; color: #666;">
                     Based in Seattle, WA.<br>
                     Currently at Salesforce.
@@ -308,8 +254,8 @@
             <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
                 <div class="project-number">01 / 04</div>
                 
-                <div class="header-group">
-                    <span class="brand-name">Salesforce</span>
+                <div class="header-group" style="border-left-color: #00a1e0;">
+                    <span class="brand-name" style="color: #00a1e0;">Salesforce</span>
                     <h2 class="project-title">Reinventing B2B for Cyber Week</h2>
                     <span class="role-pill">Senior Manager, Social Media</span>
                 </div>
@@ -332,8 +278,8 @@
             <section class="project-section" data-color="#ff4d00" data-text="#ffffff">
                 <div class="project-number">02 / 04</div>
 
-                <div class="header-group">
-                    <span class="brand-name">Cruise</span>
+                <div class="header-group" style="border-left-color: #ff4d00;">
+                    <span class="brand-name" style="color: #ff4d00;">Cruise</span>
                     <h2 class="project-title">Humanizing Robot Cars</h2>
                     <span class="role-pill">Sr. Social Media Manager</span>
                 </div>
@@ -356,8 +302,8 @@
             <section class="project-section" data-color="#ea0a8e" data-text="#ffffff">
                 <div class="project-number">03 / 04</div>
 
-                <div class="header-group">
-                    <span class="brand-name no-break">T-Mobile</span>
+                <div class="header-group" style="border-left-color: #ea0a8e;">
+                    <span class="brand-name no-break" style="color: #ea0a8e;">T-Mobile</span>
                     <h2 class="project-title">Santa Calling</h2>
                     <span class="role-pill">Sr. Social Strategist</span>
                 </div>
@@ -380,8 +326,8 @@
             <section class="project-section" data-color="#00704a" data-text="#ffffff">
                 <div class="project-number">04 / 04</div>
 
-                <div class="header-group">
-                    <span class="brand-name">Starbucks</span>
+                <div class="header-group" style="border-left-color: #00704a;">
+                    <span class="brand-name" style="color: #00704a;">Starbucks</span>
                     <h2 class="project-title">VidCon Activation</h2>
                     <span class="role-pill">Social Strategist</span>
                 </div>
@@ -417,7 +363,6 @@
     </div>
 
     <script>
-        // --- CHAMELEON SCRIPT ---
         const sidebar = document.getElementById('sidebar');
         const sections = document.querySelectorAll('.project-section');
 
@@ -440,7 +385,6 @@
                         const links = sidebar.querySelectorAll('.contact-link');
                         const btn = sidebar.querySelector('.resume-btn');
                         
-                        // Update Links
                         links.forEach(link => {
                             if (!link.classList.contains('resume-btn')) {
                                 link.style.borderBottomColor = newTextColor === '#ffffff' 
@@ -449,7 +393,6 @@
                             }
                         });
                         
-                        // Update Resume Button Style based on background brightness
                         if (newTextColor === '#ffffff') {
                             btn.style.background = 'rgba(255,255,255,0.15)';
                             btn.style.color = '#fff';
