@@ -63,8 +63,9 @@
         .contact-info { 
             display: flex; 
             flex-direction: column; 
-            gap: 12px; 
             font-size: 16px; 
+            /* Added gap for mobile touch targets */
+            gap: 16px; 
         }
 
         .contact-link { 
@@ -76,15 +77,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            width: fit-content;
         }
         .contact-link:hover { opacity: 1; }
         
+        /* RESUME BUTTON (The Pill) */
         .resume-btn {
-            margin-bottom: 10px;
+            /* Increased spacing for mobile safety */
+            margin-bottom: 12px;
+            margin-top: 10px; 
             background: rgba(255,255,255,0.15);
-            padding: 12px 24px;
+            padding: 14px 28px; /* Bigger touch target */
             border-radius: 50px;
-            width: max-content;
             font-weight: 600;
             opacity: 1;
             transition: background 0.2s, color 0.2s;
@@ -112,30 +116,27 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 14px;
             color: #ccc;
-            margin-bottom: 40px; /* More space */
+            margin-bottom: 40px; 
             font-weight: 600;
         }
 
-        /* --- IMPROVED HEADER TYPOGRAPHY --- */
         .header-group {
             margin-bottom: 30px;
-            border-left: 4px solid #eee; /* Visual anchor line */
+            border-left: 4px solid #eee; 
             padding-left: 24px;
         }
 
-        /* New "Clearer" Brand Name Style */
         .brand-name {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px; /* Much Bigger */
+            font-size: 24px; 
             font-weight: 700;
             margin-bottom: 8px;
             display: block;
-            /* Color is set inline in HTML */
         }
 
         .project-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px; /* Slightly smaller to balance the larger brand name */
+            font-size: 42px; 
             font-weight: 700;
             line-height: 1.1;
             color: #111;
@@ -145,7 +146,7 @@
 
         .role-pill {
             display: inline-block;
-            background: #1a1a1a; /* Dark pill for contrast */
+            background: #1a1a1a; 
             color: #fff;
             padding: 8px 16px;
             border-radius: 50px;
@@ -155,7 +156,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- IMAGES --- */
         .media-wrapper {
             width: 100%;
             max-width: 650px;
@@ -169,7 +169,6 @@
         .media-wrapper:hover { transform: translateY(-3px); }
         .media-wrapper img { width: 100%; height: auto; display: block; }
 
-        /* --- TEXT & STATS --- */
         .body-text {
             font-size: 18px;
             line-height: 1.7;
@@ -202,19 +201,50 @@
         }
         .modal-overlay.active { display: flex; }
         .modal-container { width: 90%; height: 90%; max-width: 1000px; background: white; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
-        .close-btn { position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 32px; cursor: pointer; }
+        
+        .close-btn { 
+            position: absolute; top: -40px; right: 0; 
+            background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px;
+        }
+        
         .resume-frame { width: 100%; height: 100%; border: none; border-radius: 8px; }
-        .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; }
+        .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
+        /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 60px 30px; }
+            
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+                padding: 60px 30px 80px; /* Extra bottom padding */
+            }
+            
+            .logo { font-size: 36px; }
+            .tagline { font-size: 22px; }
+            
+            /* Give the Resume button even more room on mobile */
+            .contact-info { margin-top: 20px; gap: 20px; }
+            
             .content { width: 100%; }
-            .project-section { padding: 60px 30px; min-height: auto; }
+            .project-section { padding: 80px 30px; min-height: auto; }
+            
+            /* Fix Modal for Mobile */
             .resume-frame { display: none; }
             .mobile-download-btn { display: block; }
-            .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; }
+            .modal-container { 
+                height: auto; 
+                padding: 40px 20px; 
+                background: transparent; 
+                box-shadow: none; 
+                justify-content: center;
+            }
+            .close-btn { top: 20px; right: 20px; } /* Move close button inside for safety */
+            
             .header-group { border-left: none; padding-left: 0; }
+            .project-title { font-size: 34px; }
+            .stat-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -241,7 +271,7 @@
 
             <section class="project-section" data-color="#1a1a1a" data-text="#ffffff">
                 <div class="project-number">INTRO</div>
-                <h1 class="project-title" style="font-size: 56px;">Social Strategist with 13 years of experience.</h1>
+                <h1 class="project-title" style="font-size: 52px;">Social Strategist with 13 years of experience.</h1>
                 <p class="body-text" style="font-size: 20px; max-width: 500px;">
                     I don't just post content; I build digital ecosystems. From launching lattes at Starbucks to humanizing robot cars at Cruise, I specialize in turning enterprise business goals into internet culture.
                 </p>
