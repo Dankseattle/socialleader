@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta property="og:title" content="Dan Kirk - Social Media Strategist">
+  <meta property="og:description" content="Award-winning social strategist. Starbucks, T-Mobile, Cruise, Salesforce.">
+  <meta property="og:image" content="images/dan-profile.png">
+  <meta property="og:url" content="https://www.dankirk.net">
+  <meta property="og:type" content="website">
+
   <title>Dan Kirk - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -14,14 +21,14 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #fafafa; /* Slightly grey background like IG */
+      background: #fafafa;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
     }
 
-    /* --- NAVIGATION BAR STYLES --- */
+    /* --- NAVIGATION BAR --- */
     .main-nav {
       position: sticky;
       top: 0;
@@ -46,6 +53,7 @@
       font-weight: 700;
       font-size: 24px;
       letter-spacing: -1px;
+      cursor: pointer;
     }
 
     .nav-search {
@@ -58,6 +66,7 @@
       display: flex; 
       align-items: center;
       gap: 6px;
+      cursor: text;
     }
 
     .nav-icons {
@@ -66,6 +75,11 @@
       font-size: 24px;
       cursor: pointer;
       align-items: center;
+    }
+    
+    .nav-icons span:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s;
     }
     
     .nav-profile-pic {
@@ -87,7 +101,7 @@
       .profile-container { margin-top: 0; border: none; }
     }
 
-    /* --- MAIN LAYOUT --- */
+    /* --- PROFILE HEADER --- */
     .profile-container {
       max-width: 935px;
       width: 100%;
@@ -97,7 +111,7 @@
     }
 
     .profile-header {
-      padding: 0 40px 44px; /* Adjusted padding */
+      padding: 0 40px 44px;
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 80px;
@@ -171,11 +185,12 @@
       gap: 8px;
     }
 
+    /* Primary Button (Blue) */
     .ig-button {
       background: #0095f6;
       color: white;
       border: none;
-      padding: 7px 16px;
+      padding: 7px 20px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 14px;
@@ -188,9 +203,11 @@
       background: #1877f2;
     }
 
+    /* Secondary Button (Gray) */
     .ig-button-secondary {
       background: #efefef;
       color: #000;
+      padding: 7px 16px;
     }
 
     .ig-button-secondary:hover {
@@ -242,14 +259,15 @@
       text-decoration: underline;
     }
 
+    /* --- HIGHLIGHTS --- */
     .highlights {
       padding: 0 40px 44px;
       display: flex;
       gap: 40px;
       overflow-x: auto;
-      scrollbar-width: none; /* Hide scrollbar Firefox */
+      scrollbar-width: none;
     }
-    .highlights::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+    .highlights::-webkit-scrollbar { display: none; }
 
     .highlight {
       display: flex;
@@ -270,7 +288,7 @@
       justify-content: center;
       font-size: 1.8rem;
       transition: transform 0.2s;
-      background: white; /* Fallback */
+      background: white;
     }
 
     .highlight-circle:hover {
@@ -311,10 +329,11 @@
       border-top-color: #262626;
     }
 
+    /* --- POSTS GRID --- */
     .posts-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px; /* Tighter gap like real IG */
+      gap: 4px;
       padding: 0;
       max-width: 935px;
       margin: 0 auto;
@@ -353,7 +372,7 @@
       opacity: 1;
     }
 
-    /* --- MODAL STYLES --- */
+    /* --- MODAL --- */
     .modal {
       display: none;
       position: fixed;
@@ -367,7 +386,7 @@
       justify-content: center;
       animation: fadeIn 0.2s;
       backdrop-filter: blur(4px);
-      padding: 20px; /* Safety padding */
+      padding: 20px;
     }
 
     .modal.active {
@@ -383,9 +402,9 @@
       background: white;
       max-width: 1100px;
       width: 100%;
-      height: 85vh; /* Fixed height for consistency */
+      height: 85vh;
       display: grid;
-      grid-template-columns: 1fr 400px; /* Fixed sidebar width */
+      grid-template-columns: 1fr 400px;
       position: relative;
       animation: slideUp 0.3s;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -413,7 +432,6 @@
       justify-content: center;
     }
     
-    /* Make close button dark on highlight modal since background is white */
     #highlightModal .modal-close {
         color: #262626;
     }
@@ -613,15 +631,15 @@
 
   <nav class="main-nav">
     <div class="nav-content">
-      <div class="nav-logo">dankirk</div>
-      <div class="nav-search">
+      <div class="nav-logo" onclick="window.scrollTo(0,0)">dankirk</div>
+      <div class="nav-search" id="navSearchBox">
          <span>🔍</span>
          <span style="color: #8e8e8e;">Search</span>
       </div>
       <div class="nav-icons">
-        <span>🏠</span>
-        <span>💬</span>
-        <span>❤️</span>
+        <span id="navIconHome">🏠</span>
+        <span id="navIconMsg">💬</span>
+        <span id="navIconHeart">❤️</span>
         <div class="nav-profile-pic">
             <img src="images/dan-profile.png" alt="Profile">
         </div>
@@ -648,7 +666,9 @@
             </svg>
           </h1>
           <div class="profile-actions">
-            <a href="mailto:daniel.lawrence.kirk@gmail.com" class="ig-button">Message</a>
+            <a href="Dan_Kirk_Resume.pdf" target="_blank" class="ig-button">Download CV</a>
+            
+            <a href="mailto:daniel.lawrence.kirk@gmail.com" class="ig-button ig-button-secondary">Email</a>
             <a href="https://www.linkedin.com/in/danksocial" target="_blank" class="ig-button ig-button-secondary">LinkedIn</a>
           </div>
         </div>
@@ -805,6 +825,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
   </div>
 
   <script>
+    // --- POST DATA ---
     const posts = [
       {
         media: 'https://via.placeholder.com/800x800/667eea/ffffff?text=Salesforce',
@@ -1028,6 +1049,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
       if (event.target.id === 'postModal') closeModal();
     }
 
+    // --- HIGHLIGHT DATA ---
     const highlights = {
       about: {
         title: 'About Dan',
@@ -1313,6 +1335,26 @@ Starbucks → T-Mobile → Cruise → Salesforce
       // Update counter text
       document.getElementById('currentSlide').textContent = window.currentSlideIndex + 1;
     }
+
+    // --- INTERACTIVE EASTER EGGS ---
+    
+    // 1. Search Bar Logic
+    document.getElementById('navSearchBox').addEventListener('click', () => {
+        alert("🔍 Searching for: 'The best Social Strategist in Seattle'...\n\nResult: You found him. (And he knows how to use JavaScript) 😉");
+    });
+
+    // 2. Nav Icons Logic
+    document.getElementById('navIconHome').addEventListener('click', () => {
+        alert("🏠 You are already home! (Well, on my home page at least)");
+    });
+
+    document.getElementById('navIconMsg').addEventListener('click', () => {
+        alert("💬 DMs are open! But email is faster: daniel.lawrence.kirk@gmail.com");
+    });
+
+    document.getElementById('navIconHeart').addEventListener('click', () => {
+        alert("❤️ Thanks for the love! I appreciate you stopping by.");
+    });
   </script>
 </body>
 </html>
