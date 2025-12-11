@@ -14,27 +14,95 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #ffffff;
+      background: #fafafa; /* Slightly grey background like IG */
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       min-height: 100vh;
     }
 
+    /* --- NAVIGATION BAR STYLES --- */
+    .main-nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: white;
+      border-bottom: 1px solid #dbdbdb;
+      z-index: 100;
+      padding: 0 20px;
+    }
+
+    .nav-content {
+      max-width: 935px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif; 
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -1px;
+    }
+
+    .nav-search {
+      background: #efefef;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: #8e8e8e;
+      font-size: 14px;
+      width: 260px;
+      display: flex; 
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 22px;
+      font-size: 24px;
+      cursor: pointer;
+      align-items: center;
+    }
+    
+    .nav-profile-pic {
+        width: 28px;
+        height: 28px;
+        background: #dbdbdb;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    
+    .nav-profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .nav-search { display: none; }
+      .profile-container { margin-top: 0; border: none; }
+    }
+
+    /* --- MAIN LAYOUT --- */
     .profile-container {
       max-width: 935px;
       width: 100%;
-      margin: 40px auto;
+      margin: 30px auto;
       background: white;
       border: none;
-      border-radius: 0;
     }
 
     .profile-header {
-      padding: 44px 40px 24px;
+      padding: 0 40px 44px; /* Adjusted padding */
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 80px;
       align-items: start;
+      margin-top: 30px;
     }
 
     .profile-pic-container {
@@ -175,18 +243,21 @@
     }
 
     .highlights {
-      padding: 16px 40px;
+      padding: 0 40px 44px;
       display: flex;
-      gap: 24px;
+      gap: 40px;
       overflow-x: auto;
+      scrollbar-width: none; /* Hide scrollbar Firefox */
     }
+    .highlights::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
 
     .highlight {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-shrink: 0;
+      cursor: pointer;
     }
 
     .highlight-circle {
@@ -198,8 +269,8 @@
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
-      cursor: pointer;
       transition: transform 0.2s;
+      background: white; /* Fallback */
     }
 
     .highlight-circle:hover {
@@ -208,6 +279,7 @@
 
     .highlight-label {
       font-size: 12px;
+      font-weight: 600;
       color: #262626;
       text-align: center;
     }
@@ -216,6 +288,7 @@
       display: flex;
       justify-content: center;
       gap: 60px;
+      border-top: 1px solid #dbdbdb;
     }
 
     .tab {
@@ -241,7 +314,7 @@
     .posts-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      gap: 4px; /* Tighter gap like real IG */
       padding: 0;
       max-width: 935px;
       margin: 0 auto;
@@ -252,6 +325,7 @@
       position: relative;
       cursor: pointer;
       overflow: hidden;
+      background: #efefef;
     }
 
     .post-preview img {
@@ -263,23 +337,23 @@
     .post-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0);
+      background: rgba(0,0,0,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 30px;
       opacity: 0;
-      transition: all 0.3s;
+      transition: opacity 0.2s;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 16px;
     }
 
     .post-preview:hover .post-overlay {
-      background: rgba(0,0,0,0.3);
       opacity: 1;
     }
 
+    /* --- MODAL STYLES --- */
     .modal {
       display: none;
       position: fixed;
@@ -287,12 +361,13 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.6);
       z-index: 1000;
       align-items: center;
       justify-content: center;
       animation: fadeIn 0.2s;
       backdrop-filter: blur(4px);
+      padding: 20px; /* Safety padding */
     }
 
     .modal.active {
@@ -306,15 +381,15 @@
 
     .modal-content {
       background: white;
-      max-width: 1200px;
-      width: 90%;
-      max-height: 90vh;
+      max-width: 1100px;
+      width: 100%;
+      height: 85vh; /* Fixed height for consistency */
       display: grid;
-      grid-template-columns: 1.2fr 500px;
+      grid-template-columns: 1fr 400px; /* Fixed sidebar width */
       position: relative;
       animation: slideUp 0.3s;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
       overflow: hidden;
     }
 
@@ -327,23 +402,20 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: rgba(0, 0, 0, 0.7);
+      background: transparent;
       border: none;
       color: white;
-      font-size: 24px;
+      font-size: 30px;
       cursor: pointer;
-      z-index: 10;
-      width: 40px;
-      height: 40px;
+      z-index: 20;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      transition: background 0.2s;
     }
-
-    .modal-close:hover {
-      background: rgba(0, 0, 0, 0.9);
+    
+    /* Make close button dark on highlight modal since background is white */
+    #highlightModal .modal-close {
+        color: #262626;
     }
 
     .modal-media {
@@ -351,26 +423,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100%;
+      width: 100%;
+      position: relative;
     }
 
     .modal-media img {
       max-width: 100%;
-      max-height: 90vh;
+      max-height: 100%;
       object-fit: contain;
     }
 
     .modal-media iframe {
       width: 100%;
       height: 100%;
-      min-height: 500px;
     }
 
     .modal-details {
       display: flex;
       flex-direction: column;
-      max-height: 90vh;
-      overflow: hidden;
+      height: 100%;
       width: 100%;
+      border-left: 1px solid #efefef;
+      background: white;
     }
 
     .modal-body {
@@ -381,22 +456,14 @@
       word-wrap: break-word;
     }
 
-    .project-details {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    .detail-section {
-      margin-bottom: 20px;
-    }
+    .project-details { margin-top: 0; }
+    .detail-section { margin-bottom: 24px; }
 
     .detail-title {
       font-weight: 600;
       font-size: 14px;
-      color: #8e8e8e;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
+      color: #262626;
+      margin-bottom: 4px;
     }
 
     .detail-content {
@@ -407,16 +474,14 @@
 
     .metric-row {
       display: flex;
-      gap: 30px;
-      margin-top: 12px;
+      gap: 20px;
+      margin-top: 8px;
     }
 
-    .metric-item {
-      text-align: left;
-    }
+    .metric-item { text-align: left; }
 
     .metric-value {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: #262626;
       display: block;
@@ -425,34 +490,30 @@
     .metric-label {
       font-size: 12px;
       color: #8e8e8e;
-      text-transform: uppercase;
     }
 
     .tags {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
-      margin-top: 12px;
     }
 
     .tag {
-      background: #efefef;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      color: #262626;
+      color: #00376b;
+      font-size: 14px;
     }
 
     .modal-footer {
-      border-top: 1px solid #dbdbdb;
+      border-top: 1px solid #efefef;
       padding: 16px;
+      background: white;
     }
 
     .post-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .action-buttons {
@@ -466,13 +527,16 @@
       font-size: 24px;
       cursor: pointer;
       padding: 0;
+      color: #262626;
     }
+    
+    .action-btn:hover { opacity: 0.6; }
 
     .post-likes {
       font-weight: 600;
       font-size: 14px;
       color: #262626;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .post-date {
@@ -482,24 +546,36 @@
       letter-spacing: 0.2px;
     }
 
+    /* Carousel CSS */
+    .carousel-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000; }
+    .carousel-slide { display: none; width: 100%; height: 100%; object-fit: contain; }
+    .carousel-slide.active { display: block; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 18px; z-index: 5; display: flex; align-items: center; justify-content: center; }
+    .carousel-btn:hover { background: rgba(255,255,255,1); }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-counter { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 14px; font-size: 12px; z-index: 5; }
+
     @media (max-width: 768px) {
       .modal-content {
         grid-template-columns: 1fr !important;
         max-height: 95vh;
         max-width: 100% !important;
-        width: 95%;
-        margin: 0 auto;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        margin-top: 40px;
       }
 
       .modal-media {
-        max-height: 50vh;
-        display: none;
+        height: 50vh; 
+        background: #000;
       }
 
       .profile-header {
         grid-template-columns: auto 1fr;
-        gap: 28px;
-        padding: 16px;
+        gap: 20px;
+        padding: 16px 16px 24px;
+        margin-top: 0;
       }
 
       .username-row {
@@ -508,69 +584,51 @@
         gap: 12px;
       }
 
-      .profile-actions {
-        width: 100%;
+      .profile-actions { width: 100%; }
+      .ig-button { flex: 1; text-align: center; }
+
+      .profile-pic { width: 80px; height: 80px; }
+
+      .profile-stats {
+        border-top: 1px solid #efefef;
+        padding: 12px 0;
+        justify-content: space-around;
+        gap: 0;
+        margin-bottom: 0;
+      }
+      
+      .stat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 14px;
       }
 
-      .ig-button {
-        flex: 1;
-        text-align: center;
-      }
-
-      .profile-pic {
-        width: 77px;
-        height: 77px;
-      }
-
-      .profile-pic-inner {
-        font-size: 2rem;
-      }
-
-      .username {
-        font-size: 20px;
-      }
-
-      .posts-grid {
-        padding: 4px;
-        gap: 4px;
-      }
-
-      .highlights {
-        padding: 16px;
-      }
-
-      .highlight-circle {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-      }
-
-      .modal-details {
-        padding: 0;
-        width: 100%;
-      }
-
-      .modal-body {
-        padding: 20px 16px;
-        overflow-x: hidden;
-      }
-
-      .modal-body * {
-        max-width: 100%;
-        word-wrap: break-word;
-      }
+      .highlights { padding: 10px 16px; gap: 16px; }
+      .highlight-circle { width: 64px; height: 64px; font-size: 1.5rem; }
     }
-    .carousel-container { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000; }
-.carousel-slide { display: none; width: 100%; height: 100%; object-fit: contain; }
-.carousel-slide.active { display: block; }
-.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; z-index: 5; }
-.carousel-btn:hover { background: rgba(255,255,255,1); }
-.carousel-btn.prev { left: 20px; }
-.carousel-btn.next { right: 20px; }
-.carousel-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; z-index: 5; }
   </style>
 </head>
 <body>
+
+  <nav class="main-nav">
+    <div class="nav-content">
+      <div class="nav-logo">dankirk</div>
+      <div class="nav-search">
+         <span>🔍</span>
+         <span style="color: #8e8e8e;">Search</span>
+      </div>
+      <div class="nav-icons">
+        <span>🏠</span>
+        <span>💬</span>
+        <span>❤️</span>
+        <div class="nav-profile-pic">
+            <img src="images/dan-profile.png" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="profile-container">
     <div class="profile-header">
       <div class="profile-pic-container">
@@ -598,11 +656,11 @@
         <div class="profile-stats">
           <div class="stat">
             <span class="stat-number">13</span>
-            <span class="stat-label"> years experience</span>
+            <span class="stat-label"> years exp</span>
           </div>
           <div class="stat">
             <span class="stat-number">4</span>
-            <span class="stat-label"> major brands</span>
+            <span class="stat-label"> brands</span>
           </div>
           <div class="stat">
             <span class="stat-number">2</span>
@@ -621,9 +679,6 @@ Starbucks → T-Mobile → Cruise → Salesforce
 
 📍 Seattle, WA</div>
           <a href="mailto:daniel.lawrence.kirk@gmail.com" class="bio-link">daniel.lawrence.kirk@gmail.com</a>
-          <div style="margin-top: 8px;">
-            <a href="tel:2012473012" class="bio-link">(201) 247-3012</a>
-          </div>
         </div>
       </div>
     </div>
@@ -674,7 +729,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
         </div>
       </div>
       <div class="post-preview" onclick="openModal(1)">
-        <img src="images/santacalling-thumb.png" alt="T-Mobile Campaign">
+        <img src="images/santacalling-thumb.png" alt="T-Mobile Campaign" onerror="this.src='https://via.placeholder.com/400x400?text=Video+Thumbnail'">
         <div class="post-overlay">
           <span>❤️ 5,429</span>
           <span>🏆 Award</span>
@@ -688,14 +743,14 @@ Starbucks → T-Mobile → Cruise → Salesforce
         </div>
       </div>
       <div class="post-preview" onclick="openModal(3)">
-        <img src="images/uploaded-thumb.png" alt="YouTube Campaign">
+        <img src="images/uploaded-thumb.png" alt="YouTube Campaign" onerror="this.src='https://via.placeholder.com/400x400?text=YouTube+Series'">
         <div class="post-overlay">
           <span>❤️ 4,891</span>
           <span>📈 1.2M</span>
         </div>
       </div>
       <div class="post-preview" onclick="openModal(4)">
-        <img src="images/GoFarther-thumb.png" alt="OnePlus Campaign">
+        <img src="images/GoFarther-thumb.png" alt="OnePlus Campaign" onerror="this.src='https://via.placeholder.com/400x400?text=OnePlus+Campaign'">
         <div class="post-overlay">
           <span>❤️ 6,732</span>
           <span>💬 125%</span>
@@ -709,7 +764,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
         </div>
       </div>
       <div class="post-preview" onclick="openModal(6)">
-        <img src="images/gron-thumb.png" alt="T-Mobile Super Bowl">
+        <img src="images/gron-thumb.png" alt="T-Mobile Super Bowl" onerror="this.src='https://via.placeholder.com/400x400?text=Super+Bowl'">
         <div class="post-overlay">
           <span>❤️ 7,500</span>
           <span>🏈 Super Bowl</span>
@@ -765,7 +820,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           { value: '128%', label: 'Engagement Rate' },
           { value: '70+', label: 'Posts Created' }
         ],
-        tags: ['B2B Social', 'Commerce Cloud', 'Content Strategy'],
+        tags: ['#B2B Social', '#CommerceCloud', '#ContentStrategy'],
         likes: '2,847',
         timestamp: '2024'
       },
@@ -784,7 +839,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           { value: '🏆', label: 'Shorty Award' },
           { value: '#1', label: 'Holiday Campaign' }
         ],
-        tags: ['Holiday Campaign', 'Community', 'Award Winner'],
+        tags: ['#HolidayCampaign', '#Community', '#AwardWinner'],
         likes: '5,429',
         timestamp: '2020'
       },
@@ -802,7 +857,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           { value: '125%', label: 'Engagement Lift' },
           { value: '300K+', label: 'Attendees' }
         ],
-        tags: ['Experiential', 'Event Marketing', 'Award Winner'],
+        tags: ['#Experiential', '#EventMarketing', '#AwardWinner'],
         likes: '8,234',
         timestamp: '2018'
       },
@@ -821,12 +876,19 @@ Starbucks → T-Mobile → Cruise → Salesforce
           { value: '7x', label: 'Follower Growth' },
           { value: '300K+', label: 'New Followers' }
         ],
-        tags: ['YouTube', 'Influencer Marketing', 'Product Launch'],
+        tags: ['#YouTube', '#InfluencerMarketing', '#ProductLaunch'],
         likes: '4,891',
         timestamp: '2017'
       },
       {
-        media: ['images/gofarther-1.png', 'images/gofarther-2.png', 'images/gofarther-3.png', 'images/gofarther-4.png', 'images/gofarther-5.png'],
+        // CAROUSEL DEMO DATA
+        media: [
+            'images/gofarther-1.png', 
+            'images/gofarther-2.png', 
+            'images/gofarther-3.png', 
+            'images/gofarther-4.png', 
+            'images/gofarther-5.png'
+        ],
         mediaType: 'carousel',
         thumbnail: 'images/gofarther-thumb.png',
         caption: 'Lead the \'Go Farther\' campaign with OnePlus - digital scavenger hunt that exceeded engagement benchmarks by 125% 🎯',
@@ -840,7 +902,7 @@ Starbucks → T-Mobile → Cruise → Salesforce
           { value: '#1', label: 'Instagram Post' },
           { value: 'Top', label: 'Partnership' }
         ],
-        tags: ['Partnership', 'Interactive', 'Product Launch'],
+        tags: ['#Partnership', '#Interactive', '#ProductLaunch'],
         likes: '6,732',
         timestamp: '2020'
       },
@@ -852,13 +914,13 @@ Starbucks → T-Mobile → Cruise → Salesforce
         role: 'Sr. Social Media Manager',
         date: 'Jan 2022 - Jan 2024',
         challenge: 'Manage social communications during 50+ incidents for autonomous vehicle company.',
-solution: 'Developed crisis communication framework and partnered with comms team to deliver clear, timely responses.',
+        solution: 'Developed crisis communication framework and partnered with comms team to deliver clear, timely responses.',
         results: [
           { value: '50+', label: 'Incidents Managed' },
           { value: '359%', label: 'Engagement Growth' },
           { value: '73%', label: 'Impressions Growth' }
         ],
-        tags: ['Crisis Comms', 'Leadership', 'Strategy'],
+        tags: ['#CrisisComms', '#Leadership', '#Strategy'],
         likes: '3,291',
         timestamp: '2022-2024'
       },
@@ -877,7 +939,7 @@ solution: 'Developed crisis communication framework and partnered with comms tea
           { value: 'XX%', label: 'Engagement' },
           { value: 'XX', label: 'Views' }
         ],
-        tags: ['Super Bowl', 'Video Content', 'Brand Campaign'],
+        tags: ['#SuperBowl', '#VideoContent', '#BrandCampaign'],
         likes: '7,500',
         timestamp: '2021'
       }
@@ -893,12 +955,17 @@ solution: 'Developed crisis communication framework and partnered with comms tea
       const postLikes = document.getElementById('postLikes');
       const postDate = document.getElementById('postDate');
 
+      // Clear previous content
+      modalMedia.innerHTML = '';
+
       if (post.mediaType === 'video') {
         modalMedia.innerHTML = `<iframe src="${post.media}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
       } else if (post.mediaType === 'carousel') {
         let html = '<div class="carousel-container">';
+        // Use placeholders if images array is strings (and files might be missing)
         post.media.forEach((img, i) => {
-          html += `<img src="${img}" class="carousel-slide ${i === 0 ? 'active' : ''}">`;
+          // Check if it looks like a local file, if so we assume it exists, otherwise use placeholder fallback in img tag
+          html += `<img src="${img}" class="carousel-slide ${i === 0 ? 'active' : ''}" onerror="this.src='https://via.placeholder.com/800x800?text=Image+Missing'">`;
         });
         html += `<button class="carousel-btn prev" onclick="changeSlide(-1, event)">‹</button>
                  <button class="carousel-btn next" onclick="changeSlide(1, event)">›</button>
@@ -1186,14 +1253,12 @@ solution: 'Developed crisis communication framework and partnered with comms tea
       const highlightMedia = document.getElementById('highlightMedia');
       const highlightBody = document.getElementById('highlightBody');
 
+      // Adjust layout for highlights (text heavy, so hide the empty black media box)
       highlightMedia.style.display = 'none';
       modalContent.style.gridTemplateColumns = '1fr';
-      
-      if (type === 'about' || type === 'resume') {
-        modalContent.style.maxWidth = '800px';
-      } else {
-        modalContent.style.maxWidth = '550px';
-      }
+      modalContent.style.maxWidth = '600px'; 
+      modalContent.style.height = 'auto';
+      modalContent.style.maxHeight = '90vh';
 
       highlightBody.innerHTML = highlight.content;
       modal.classList.add('active');
@@ -1208,9 +1273,13 @@ solution: 'Developed crisis communication framework and partnered with comms tea
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
       
-      highlightMedia.style.display = 'flex';
-      modalContent.style.gridTemplateColumns = '1.2fr 500px';
-      modalContent.style.maxWidth = '1200px';
+      // Reset styles for next time (in case we open a regular post later)
+      setTimeout(() => {
+          highlightMedia.style.display = 'flex';
+          modalContent.style.gridTemplateColumns = '1fr 400px';
+          modalContent.style.maxWidth = '1100px';
+          modalContent.style.height = '85vh';
+      }, 200);
     }
 
     function closeHighlightBackground(event) {
@@ -1227,11 +1296,21 @@ solution: 'Developed crisis communication framework and partnered with comms tea
     function changeSlide(dir, e) {
       e.stopPropagation();
       const slides = document.querySelectorAll('.carousel-slide');
+      
+      // Remove active class from current
       slides[window.currentSlideIndex].classList.remove('active');
+      
+      // Update index
       window.currentSlideIndex += dir;
+      
+      // Loop logic
       if (window.currentSlideIndex >= slides.length) window.currentSlideIndex = 0;
       if (window.currentSlideIndex < 0) window.currentSlideIndex = slides.length - 1;
+      
+      // Add active class to new
       slides[window.currentSlideIndex].classList.add('active');
+      
+      // Update counter text
       document.getElementById('currentSlide').textContent = window.currentSlideIndex + 1;
     }
   </script>
