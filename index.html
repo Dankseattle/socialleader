@@ -135,7 +135,7 @@
             background: #ffffff;
         }
 
-        /* --- ANIMATION STYLES (Upgraded) --- */
+        /* --- ANIMATION STYLES (Punchy) --- */
         .project-section {
             min-height: 100vh;
             padding: 100px 80px;
@@ -147,8 +147,8 @@
             
             /* Initial Hidden State */
             opacity: 0;
-            transform: translateY(60px); /* Increased distance for visibility */
-            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1); /* "Snap" effect */
+            transform: translateY(60px); 
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1); 
         }
 
         /* Visible State */
@@ -439,8 +439,8 @@
     <div id="resumeModal" class="modal-overlay" onclick="closeResume(event)">
         <div class="modal-content modal-container" onclick="event.stopPropagation()">
             <button class="close-btn" onclick="closeResume(event)">×</button>
-            <iframe src="Dan_Kirk_Resume.pdf" class="resume-frame"></iframe>
-            <a href="Dan_Kirk_Resume.pdf" download class="mobile-download-btn">Download Resume PDF</a>
+            <iframe src="resume.html" class="resume-frame"></iframe>
+            <a href="resume.html" target="_blank" class="mobile-download-btn">Open Full Resume</a>
         </div>
     </div>
 
@@ -457,10 +457,10 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // NEW: Triggers the Fade Up Animation
+                    // Triggers the Animation
                     entry.target.classList.add('visible'); 
 
-                    // Existing Color Logic
+                    // Changes Colors
                     const newColor = entry.target.getAttribute('data-color');
                     const newTextColor = entry.target.getAttribute('data-text');
                     
