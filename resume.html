@@ -9,7 +9,7 @@
         @page { margin: 0; size: auto; }
         @media print { 
             body { -webkit-print-color-adjust: exact; } 
-            .no-print { display: none; }
+            .no-print { display: none !important; }
         }
 
         /* RESET & TYPOGRAPHY */
@@ -18,8 +18,8 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1a1a1a;
-            background: #f4f4f4; /* Grey background for screen, white for print */
-            font-size: 10.5pt; /* Readable size for print */
+            background: #f4f4f4; /* Grey background for screen */
+            font-size: 10.5pt;
             line-height: 1.5;
         }
 
@@ -122,16 +122,30 @@
         .skill-label { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
         .skill-list { color: #444; }
 
-        /* UTILITY FOR SCREEN */
+        /* UTILITY: Hide button inside iframe */
         .download-btn {
-            position: fixed; bottom: 20px; right: 20px;
+            position: fixed; bottom: 30px; right: 30px;
             background: #000; color: white; padding: 15px 30px;
             border-radius: 50px; text-decoration: none; font-weight: 600;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             font-family: 'Inter', sans-serif;
             cursor: pointer;
+            z-index: 999;
+        }
+
+        /* If this page is loaded in an iframe (like on your site), hide the button */
+        @media screen and (max-width: 1000px) {
+           .download-btn { display: none; }
         }
     </style>
+    <script>
+        // Extra check: Hide button if inside iframe context
+        window.onload = function() {
+            if (window.self !== window.top) {
+                document.querySelector('.download-btn').style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -200,8 +214,8 @@
                 </div>
                 <div class="role" style="margin-bottom: 6px;">Senior Social Strategist</div>
                 <ul>
-                    <li><strong>Super Bowl Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and a dominant <strong>80% share-of-voice</strong>. Generated <strong>3.9M engagements</strong>—surpassing the previous three years combined.</li>
-                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into consumer benefits, driving higher recall than traditional product assets.</li>
+                    <li><strong>Super Bowl Social Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and a dominant <strong>80% share-of-voice</strong> against competitors. The campaign generated <strong>3.9M engagements</strong>—surpassing the previous three years of performance combined.</li>
+                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher engagement and recall than traditional product assets.</li>
                     <li><strong>Campaign Innovation:</strong> Directed "Santa Calling," a digital utility campaign during the 2020 lockdown. Secured a <strong>Shorty Award</strong> and generated <strong>2M+ organic impressions</strong> with zero paid media.</li>
                 </ul>
             </div>
@@ -239,7 +253,7 @@
         </section>
     </div>
 
-    <div class="no-print" onclick="window.print()" style="position:fixed; bottom:30px; right:30px; background:black; color:white; padding:15px 30px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+    <div class="download-btn no-print" onclick="window.print()">
         Save as PDF
     </div>
 
