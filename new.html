@@ -24,6 +24,18 @@
             overflow-x: hidden;
             background-color: #f4f4f4;
             color: #1a1a1a;
+            position: relative;
+        }
+
+        /* --- 1. FILM GRAIN TEXTURE (New) --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* CSS-only noise generation */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
         }
 
         /* --- LAYOUT GRID --- */
@@ -67,7 +79,7 @@
         }
 
         .location-text {
-            font-family: 'Space Grotesk', sans-serif; /* Matches Logo/Tagline */
+            font-family: 'Space Grotesk', sans-serif;
             margin-top: 24px; 
             font-size: 16px; 
             color: #ffffff; 
@@ -118,7 +130,6 @@
             background: #ffffff;
         }
 
-        /* General Project Section */
         .project-section {
             min-height: 100vh;
             padding: 100px 80px;
@@ -129,12 +140,9 @@
             position: relative;
         }
 
-        /* Specific Intro Section Styling */
         .intro-section {
-            /* Desktop: 80vh height keeps it prominent but pulls the next section up */
             min-height: 80vh; 
             justify-content: center;
-            /* Visual trick: Padding bottom lifts the text slightly above true center */
             padding-bottom: 10vh; 
         }
 
@@ -182,6 +190,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* --- 2. IMAGE STYLES (Hover Zoom Added) --- */
         .media-wrapper {
             width: 100%;
             max-width: 650px;
@@ -190,10 +199,22 @@
             margin-bottom: 40px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.06);
             background: #f8f8f8;
-            transition: transform 0.4s ease;
+            /* Setup for zoom */
+            transform: translateZ(0); 
         }
-        .media-wrapper:hover { transform: translateY(-3px); }
-        .media-wrapper img { width: 100%; height: auto; display: block; }
+        
+        .media-wrapper img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            /* Smooth Zoom Transition */
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* The Zoom Effect */
+        .media-wrapper:hover img {
+            transform: scale(1.05);
+        }
 
         .body-text {
             font-size: 18px;
@@ -236,15 +257,12 @@
         .resume-frame { width: 100%; height: 100%; border: none; border-radius: 8px; }
         .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; }
 
-        /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 60px 30px 80px; }
-            .logo { font-size: 36px; }
-            .tagline { font-size: 22px; }
             .content { width: 100%; }
             .project-section { padding: 80px 30px; min-height: auto; }
-            .intro-section { min-height: auto; padding-top: 80px; padding-bottom: 80px; } /* Reset intro height on mobile */
+            .intro-section { min-height: auto; padding-top: 80px; padding-bottom: 80px; }
             .resume-frame { display: none; }
             .mobile-download-btn { display: block; }
             .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; justify-content: center; }
@@ -293,22 +311,22 @@
                 
                 <div class="header-group" style="border-left-color: #00a1e0;">
                     <span class="brand-name" style="color: #00a1e0;">Salesforce</span>
-                    <h2 class="project-title">Reinventing B2B for Cyber Week</h2>
+                    <h2 class="project-title">Activating 1.5 Billion Shopper Data for Cyber Week</h2>
                     <span class="role-pill">Senior Manager, Social Media</span>
                 </div>
                 
                 <div class="media-wrapper">
-                    <img src="https://via.placeholder.com/1000x600/00a1e0/ffffff?text=Salesforce+Campaign" alt="Salesforce">
+                    <img src="https://via.placeholder.com/1000x600/00a1e0/ffffff?text=Salesforce+Newsroom" alt="Salesforce">
                 </div>
                 
                 <p class="body-text">
-                    <strong>The Challenge:</strong> Cyber Week is dominated by B2C retail. How does a B2B cloud software company cut through the noise? <br><br>
-                    <strong>The Solution:</strong> I pivoted our strategy from "feature announcements" to "customer empowerment." We built a content engine that produced 70+ assets in real-time, focusing on the heroes behind the e-commerce sites.
+                    <strong>The Challenge:</strong> Cyber Week is dominated by B2C retail noise. How does a B2B giant with data on 1.5B global shoppers cut through the clutter to showcase industry leadership? <br><br>
+                    <strong>The Solution:</strong> I developed a social strategy to transform our data into an indispensable industry resource. I structured and led a cross-functional content engine—working with designers, writers, and data analysts—that produced 50+ real-time insights.
                 </p>
                 
                 <div class="stat-grid">
-                    <div class="stat-box"><strong>197%</strong><span>YoY Growth</span></div>
-                    <div class="stat-box"><strong>70+</strong><span>Assets Created</span></div>
+                    <div class="stat-box"><strong>197%</strong><span>YoY Eng. Growth</span></div>
+                    <div class="stat-box"><strong>7M</strong><span>Impressions</span></div>
                 </div>
             </section>
 
@@ -317,17 +335,17 @@
 
                 <div class="header-group" style="border-left-color: #ff4d00;">
                     <span class="brand-name" style="color: #ff4d00;">Cruise</span>
-                    <h2 class="project-title">Humanizing Robot Cars</h2>
+                    <h2 class="project-title">Scaling Trust in Autonomous Tech</h2>
                     <span class="role-pill">Sr. Social Media Manager</span>
                 </div>
                 
                 <div class="media-wrapper">
-                    <img src="https://via.placeholder.com/1000x600/ff4d00/ffffff?text=Cruise+Vehicles" alt="Cruise">
+                    <img src="https://via.placeholder.com/1000x600/ff4d00/ffffff?text=Cruise+TikTok+Launch" alt="Cruise">
                 </div>
                 
                 <p class="body-text">
-                    <strong>The Challenge:</strong> Building trust for autonomous vehicles while managing real-time crisis comms for on-road incidents. <br><br>
-                    <strong>The Solution:</strong> I operationalized our response framework. We moved from "defensive PR" to "community education," turning incident reports into opportunities to explain the AI technology transparently.
+                    <strong>The Challenge:</strong> Building trust for robot cars required navigating a complex mix of public skepticism, regulatory hurdles, and crisis moments. <br><br>
+                    <strong>The Solution:</strong> I built a hybrid strategy merging Brand Marketing with Government Affairs. Beyond managing crisis comms, I launched Cruise on TikTok and developed content frameworks that supported key policy votes.
                 </p>
                 
                 <div class="stat-grid">
@@ -365,29 +383,29 @@
 
                 <div class="header-group" style="border-left-color: #00704a;">
                     <span class="brand-name" style="color: #00704a;">Starbucks</span>
-                    <h2 class="project-title">VidCon Activation</h2>
+                    <h2 class="project-title">Doubleshot "Uploaded" Series</h2>
                     <span class="role-pill">Social Strategist</span>
                 </div>
                 
                 <div class="media-wrapper">
-                    <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+VidCon" alt="Starbucks">
+                     <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+Doubleshot" alt="Starbucks">
                 </div>
                 
                 <p class="body-text">
-                    <strong>The Challenge:</strong> Starbucks needed to show up at VidCon not as a coffee vendor, but as a creator brand. <br><br>
-                    <strong>The Solution:</strong> We ignored the "corporate booth" playbook and built a content playground. I led the experiential strategy that turned the physical space into a digital content factory.
+                    <strong>The Challenge:</strong> Launching Starbucks Doubleshot to a younger, digital-native audience that skips traditional advertising. <br><br>
+                    <strong>The Solution:</strong> I developed "Uploaded," a 3-part YouTube creator series featuring Unbox Therapy and MatPat. We ditched the corporate script and let creators integrate the product authentically into their own formats.
                 </p>
                 
                 <div class="stat-grid">
-                    <div class="stat-box"><strong>🏆</strong><span>AdWeek Award</span></div>
-                    <div class="stat-box"><strong>300K</strong><span>Attendees</span></div>
+                    <div class="stat-box"><strong>1.2M</strong><span>Video Views</span></div>
+                    <div class="stat-box"><strong>7x</strong><span>Follower Growth</span></div>
                 </div>
             </section>
 
             <section class="project-section" data-color="#ffffff" data-text="#1a1a1a" style="min-height: 50vh; justify-content: flex-start; padding-top: 100px;">
                 <h2 class="project-title" style="font-size: 32px;">Ready to work?</h2>
                 <a href="mailto:daniel.lawrence.kirk@gmail.com" style="font-size: 24px; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; width: max-content;">daniel.lawrence.kirk@gmail.com</a>
-                <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2025 Dan Kirk. Built in Seattle.</p>
+                <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2026 Dan Kirk. Built in Seattle.</p>
             </section>
         </main>
     </div>
