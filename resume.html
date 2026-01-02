@@ -36,7 +36,7 @@
         .back-link:hover { color: #000; text-decoration: underline; }
 
         /* HEADER */
-        header { margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 30px; }
+        header { margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 20px; }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
@@ -73,28 +73,28 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
             color: #888;
         }
 
-        .summary { margin-bottom: 30px; font-weight: 400; color: #333; max-width: 650px;}
+        .summary { margin-bottom: 25px; font-weight: 400; color: #333; max-width: 650px;}
 
         /* JOBS */
-        .job-block { margin-bottom: 30px; }
+        .job-block { margin-bottom: 20px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             flex-wrap: wrap; 
         }
         
-        .company { font-weight: 700; font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #444; display: block; margin-bottom: 10px;}
+        .company { font-weight: 700; font-size: 1.1rem; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #444; display: block; margin-bottom: 8px;}
         .dates { font-size: 0.9rem; color: #888; white-space: nowrap; }
         .location { font-size: 0.9rem; color: #aaa; margin-left: 5px; }
 
@@ -102,8 +102,8 @@
         
         li {
             position: relative;
-            padding-left: 18px;
-            margin-bottom: 8px;
+            padding-left: 16px;
+            margin-bottom: 6px;
             color: #333;
         }
         
@@ -120,7 +120,7 @@
             display: grid;
             grid-template-columns: 100px 1fr;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 1rem;
         }
         .skill-label { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
@@ -137,40 +137,40 @@
             z-index: 999;
         }
 
-        /* --- THE ONE-PAGE FIX --- */
+        /* --- PRINT OPTIMIZATION (BALANCED) --- */
         @media print { 
-            @page { margin: 0.3in 0.3in; size: auto; } /* Minimized margins */
+            @page { margin: 0.5in 0.5in; size: auto; } /* Standard Margins */
             
             body { 
                 background: white; 
-                font-size: 9pt; /* Efficient sizing */
-                line-height: 1.2; /* Tighter line height */
+                font-size: 10pt; /* Readable Font Size */
+                line-height: 1.4; /* Comfortable Spacing */
             } 
             
             .page { width: 100%; max-width: 100%; margin: 0; padding: 0; box-shadow: none; }
             .no-print, .download-btn, .back-link { display: none !important; }
 
             /* Header */
-            header { margin-bottom: 10px; padding-bottom: 5px; border-width: 1px; }
-            h1 { font-size: 20pt; margin-bottom: 0px; }
-            .role-title { font-size: 10pt; margin-bottom: 3px; color: #000; }
-            .contact-row { gap: 12px; font-size: 8pt; }
+            header { margin-bottom: 20px; padding-bottom: 10px; border-width: 1px; }
+            h1 { font-size: 24pt; margin-bottom: 5px; }
+            .role-title { font-size: 11pt; margin-bottom: 5px; color: #000; }
+            .contact-row { gap: 15px; font-size: 9pt; }
 
             /* Sections */
-            .section-title { margin-top: 10px; margin-bottom: 4px; padding-bottom: 2px; font-size: 8pt; border-bottom: 1px solid #ccc; }
-            .summary { margin-bottom: 8px; font-size: 9pt; max-width: 100%; text-align: justify;}
+            .section-title { margin-top: 15px; margin-bottom: 8px; padding-bottom: 4px; font-size: 9pt; border-bottom: 1px solid #ccc; }
+            .summary { margin-bottom: 15px; font-size: 10pt; max-width: 100%; text-align: left;}
 
             /* Jobs */
-            .job-block { margin-bottom: 6px; page-break-inside: avoid; } 
-            .job-header { margin-bottom: 1px; }
-            .company { font-size: 9.5pt; }
-            .role { font-size: 9pt; margin-bottom: 1px; }
-            .dates { font-size: 8pt; }
+            .job-block { margin-bottom: 12px; page-break-inside: avoid; } 
+            .job-header { margin-bottom: 2px; }
+            .company { font-size: 11pt; }
+            .role { font-size: 10pt; margin-bottom: 3px; }
+            .dates { font-size: 9pt; }
             
-            li { margin-bottom: 1px; padding-left: 10px; } 
+            li { margin-bottom: 3px; padding-left: 12px; } 
 
             /* Skills & Education */
-            .skills-grid { grid-template-columns: 70px 1fr; gap: 8px; margin-bottom: 2px; font-size: 8.5pt; }
+            .skills-grid { grid-template-columns: 85px 1fr; gap: 10px; margin-bottom: 4px; font-size: 9.5pt; }
         }
 
         @media (max-width: 600px) {
