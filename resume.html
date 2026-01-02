@@ -12,27 +12,36 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1a1a1a;
-            background: #ffffff; /* White background for better readability */
-            font-size: 16px; /* Larger base font for screen reading */
+            background: #ffffff;
+            font-size: 16px;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PAPER SHEET (Responsive) */
+        /* PAPER SHEET */
         .page {
             width: 100%;
-            max-width: 800px; /* Caps width for readability */
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
             background: white;
+            position: relative;
         }
 
-        /* PRINT SETTINGS (Forces 8.5x11 only when printing) */
+        /* BACK BUTTON (New) */
+        .back-link {
+            display: inline-block; margin-bottom: 30px;
+            text-decoration: none; color: #666; font-size: 14px; font-weight: 500;
+        }
+        .back-link:hover { color: #000; text-decoration: underline; }
+
+        /* PRINT SETTINGS */
         @media print { 
             @page { margin: 0; size: auto; }
             body { background: white; font-size: 11pt; } 
             .page { max-width: 100%; width: 8.5in; margin: 0; padding: 0.5in; box-shadow: none; }
             .no-print { display: none !important; }
+            .back-link { display: none; }
         }
 
         /* HEADER */
@@ -40,7 +49,7 @@
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem; /* Large and responsive */
+            font-size: 3rem; 
             font-weight: 700;
             letter-spacing: -1.5px;
             line-height: 1;
@@ -58,7 +67,7 @@
 
         .contact-row {
             display: flex;
-            flex-wrap: wrap; /* Wraps on mobile */
+            flex-wrap: wrap;
             gap: 20px;
             font-size: 0.95rem;
             color: #666;
@@ -90,7 +99,7 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 8px;
-            flex-wrap: wrap; /* Responsive wrap */
+            flex-wrap: wrap; 
         }
         
         .company { font-weight: 700; font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif; }
@@ -133,11 +142,24 @@
             .dates { width: 100%; text-align: left; margin-top: 4px; }
             .contact-row { flex-direction: column; gap: 8px; }
         }
+
+        /* Floating Print Button */
+        .download-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #000; color: white; padding: 15px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
 
     <div class="page">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+
         <header>
             <h1>Dan Kirk</h1>
             <div class="role-title">Senior Social Strategist & Creative Director</div>
@@ -239,6 +261,10 @@
                 <div class="skill-list">Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.</div>
             </div>
         </section>
+    </div>
+
+    <div class="download-btn no-print" onclick="window.print()">
+        Save as PDF
     </div>
 
 </body>
