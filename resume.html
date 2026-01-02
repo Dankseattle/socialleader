@@ -2,62 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* PRINT SETTINGS */
-        @page { margin: 0; size: auto; }
-        @media print { 
-            body { -webkit-print-color-adjust: exact; } 
-            .no-print { display: none !important; }
-        }
-
         /* RESET & TYPOGRAPHY */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
             font-family: 'Inter', sans-serif;
             color: #1a1a1a;
-            background: #f4f4f4; /* Grey background for screen */
-            font-size: 10.5pt;
-            line-height: 1.5;
+            background: #ffffff; /* White background for better readability */
+            font-size: 16px; /* Larger base font for screen reading */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* PAPER SHEET */
+        /* PAPER SHEET (Responsive) */
         .page {
-            width: 8.5in;
-            min-height: 11in;
+            width: 100%;
+            max-width: 800px; /* Caps width for readability */
+            margin: 0 auto;
+            padding: 40px 20px;
             background: white;
-            margin: 40px auto;
-            padding: 0.65in 0.75in;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* PRINT SETTINGS (Forces 8.5x11 only when printing) */
+        @media print { 
+            @page { margin: 0; size: auto; }
+            body { background: white; font-size: 11pt; } 
+            .page { max-width: 100%; width: 8.5in; margin: 0; padding: 0.5in; box-shadow: none; }
+            .no-print { display: none !important; }
         }
 
         /* HEADER */
-        header { margin-bottom: 25px; border-bottom: 2px solid #000; padding-bottom: 20px; }
+        header { margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 30px; }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 32pt;
+            font-size: 3rem; /* Large and responsive */
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .role-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 14pt;
+            font-size: 1.25rem;
             font-weight: 500;
             color: #444;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .contact-row {
             display: flex;
+            flex-wrap: wrap; /* Wraps on mobile */
             gap: 20px;
-            font-size: 9pt;
+            font-size: 0.95rem;
             color: #666;
             font-weight: 500;
         }
@@ -66,40 +69,41 @@
         /* SECTIONS */
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 10pt;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 25px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-top: 40px;
+            margin-bottom: 20px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
             color: #888;
         }
 
-        .summary { margin-bottom: 20px; font-weight: 400; color: #333; }
+        .summary { margin-bottom: 30px; font-weight: 400; color: #333; max-width: 650px;}
 
         /* JOBS */
-        .job-block { margin-bottom: 20px; }
+        .job-block { margin-bottom: 30px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            flex-wrap: wrap; /* Responsive wrap */
         }
         
-        .company { font-weight: 700; font-size: 12pt; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #444; }
-        .dates { font-size: 9pt; color: #888; text-align: right; }
-        .location { font-size: 9pt; color: #aaa; margin-left: 5px; }
+        .company { font-weight: 700; font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #444; display: block; margin-bottom: 10px;}
+        .dates { font-size: 0.9rem; color: #888; white-space: nowrap; }
+        .location { font-size: 0.9rem; color: #aaa; margin-left: 5px; }
 
         ul { list-style: none; }
         
         li {
             position: relative;
-            padding-left: 14px;
-            margin-bottom: 6px;
+            padding-left: 18px;
+            margin-bottom: 8px;
             color: #333;
         }
         
@@ -114,38 +118,22 @@
         /* SKILLS GRID */
         .skills-grid {
             display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-size: 9.5pt;
+            grid-template-columns: 100px 1fr;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 1rem;
         }
         .skill-label { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
         .skill-list { color: #444; }
 
-        /* UTILITY: Hide button inside iframe */
-        .download-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #000; color: white; padding: 15px 30px;
-            border-radius: 50px; text-decoration: none; font-weight: 600;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        /* If this page is loaded in an iframe (like on your site), hide the button */
-        @media screen and (max-width: 1000px) {
-           .download-btn { display: none; }
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 4px; margin-bottom: 20px; }
+            .dates { width: 100%; text-align: left; margin-top: 4px; }
+            .contact-row { flex-direction: column; gap: 8px; }
         }
     </style>
-    <script>
-        // Extra check: Hide button if inside iframe context
-        window.onload = function() {
-            if (window.self !== window.top) {
-                document.querySelector('.download-btn').style.display = 'none';
-            }
-        }
-    </script>
 </head>
 <body>
 
@@ -179,7 +167,7 @@
                     </div>
                     <span class="dates">2023 – Present</span>
                 </div>
-                <div class="role" style="margin-bottom: 6px;">Senior Manager, Social Media</div>
+                <span class="role">Senior Manager, Social Media</span>
                 <ul>
                     <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Salesforce Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
                     <li><strong>Content Operations:</strong> Architected the "Cyber Week" real-time newsroom, leading a cross-functional team of 10+ (writers, designers, analysts) to turn 1.5 billion shopper data points into 50+ live creative assets in 48 hours.</li>
@@ -196,7 +184,7 @@
                     </div>
                     <span class="dates">2021 – 2023</span>
                 </div>
-                <div class="role" style="margin-bottom: 6px;">Senior Social Media Manager</div>
+                <span class="role">Senior Social Media Manager</span>
                 <ul>
                     <li><strong>Go-To-Market (GTM):</strong> Led the end-to-end social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions to overcome public skepticism.</li>
                     <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk during regulatory scrutiny.</li>
@@ -212,7 +200,7 @@
                     </div>
                     <span class="dates">2018 – 2021</span>
                 </div>
-                <div class="role" style="margin-bottom: 6px;">Senior Social Strategist</div>
+                <span class="role">Senior Social Strategist</span>
                 <ul>
                     <li><strong>Super Bowl Social Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and a dominant <strong>80% share-of-voice</strong> against competitors. The campaign generated <strong>3.9M engagements</strong>—surpassing the previous three years of performance combined.</li>
                     <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher engagement and recall than traditional product assets.</li>
@@ -228,7 +216,7 @@
                     </div>
                     <span class="dates">2016 – 2018</span>
                 </div>
-                <div class="role" style="margin-bottom: 6px;">Social Strategist</div>
+                <span class="role">Social Strategist</span>
                 <ul>
                     <li><strong>Influencer Strategy:</strong> Modernized the "Starbucks At Home" CPG brand by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework, handing creative control to Tier-1 creators.</li>
                     <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency-produced assets by 300% in watch time.</li>
@@ -251,10 +239,6 @@
                 <div class="skill-list">Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.</div>
             </div>
         </section>
-    </div>
-
-    <div class="download-btn no-print" onclick="window.print()">
-        Save as PDF
     </div>
 
 </body>
