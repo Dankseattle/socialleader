@@ -27,7 +27,6 @@
             position: relative;
         }
 
-        /* --- 1. FILM GRAIN TEXTURE --- */
         body::before {
             content: "";
             position: fixed;
@@ -37,19 +36,10 @@
             z-index: 50;
         }
 
-        /* --- 2. SELECTION COLOR --- */
-        ::selection {
-            background: #000;
-            color: #fff;
-        }
+        ::selection { background: #000; color: #fff; }
 
-        /* --- LAYOUT GRID --- */
-        .wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
+        .wrapper { display: flex; min-height: 100vh; }
 
-        /* --- SIDEBAR --- */
         .sidebar {
             width: 40%;
             height: 100vh;
@@ -65,208 +55,46 @@
             z-index: 10;
         }
 
-        .logo { 
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px; 
-            font-weight: 700; 
-            letter-spacing: -1.5px; 
-            margin-bottom: 24px;
-            cursor: pointer;
-        }
-
-        .tagline { 
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px; 
-            font-weight: 300; 
-            line-height: 1.4; 
-            max-width: 440px; 
-            opacity: 0.9;
-        }
-
-        .location-text {
-            font-family: 'Space Grotesk', sans-serif;
-            margin-top: 24px; 
-            font-size: 16px; 
-            color: #ffffff; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px;
-            font-weight: 400;
-        }
-
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 24px; cursor: pointer; }
+        .tagline { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 300; line-height: 1.4; max-width: 440px; opacity: 0.9; }
+        .location-text { font-family: 'Space Grotesk', sans-serif; margin-top: 24px; font-size: 16px; color: #ffffff; display: flex; align-items: center; gap: 6px; font-weight: 400; }
         .no-break { white-space: nowrap; }
         
-        .contact-info { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 16px; 
-            font-size: 16px; 
-        }
-
-        .contact-link { 
-            text-decoration: none; 
-            color: inherit; 
-            opacity: 0.7;
-            font-weight: 500;
-            transition: opacity 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-        }
+        .contact-info { display: flex; flex-direction: column; gap: 16px; font-size: 16px; }
+        .contact-link { text-decoration: none; color: inherit; opacity: 0.7; font-weight: 500; transition: opacity 0.2s; display: flex; align-items: center; gap: 8px; width: fit-content; }
         .contact-link:hover { opacity: 1; }
         
         .resume-btn {
-            margin-bottom: 12px;
-            margin-top: 10px; 
-            background: rgba(255,255,255,0.15);
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            opacity: 1;
-            transition: background 0.2s, color 0.2s;
-            border: 1px solid transparent;
+            margin-bottom: 12px; margin-top: 10px; background: rgba(255,255,255,0.15); padding: 14px 28px;
+            border-radius: 50px; font-weight: 600; opacity: 1; transition: background 0.2s, color 0.2s; border: 1px solid transparent;
         }
         .resume-btn:hover { background: #ffffff; color: #000; }
 
-        /* --- CONTENT --- */
-        .content {
-            width: 60%;
-            background: #ffffff;
-        }
+        .content { width: 60%; background: #ffffff; }
 
-        /* --- ANIMATION STYLES (Punchy) --- */
         .project-section {
-            min-height: 100vh;
-            padding: 100px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            border-bottom: 1px solid rgba(0,0,0,0.03);
-            position: relative;
-            
-            /* Initial Hidden State */
-            opacity: 0;
-            transform: translateY(60px); 
-            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1); 
+            min-height: 100vh; padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; 
+            border-bottom: 1px solid rgba(0,0,0,0.03); position: relative;
+            opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.2, 1, 0.3, 1); 
         }
+        .project-section.visible { opacity: 1; transform: translateY(0); }
 
-        /* Visible State */
-        .project-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .intro-section { min-height: 80vh; justify-content: center; padding-bottom: 10vh; }
+        .project-number { font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: #ccc; margin-bottom: 40px; font-weight: 600; }
+        .header-group { margin-bottom: 30px; border-left: 4px solid #eee; padding-left: 24px; }
+        .brand-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 8px; display: block; }
+        .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1.1; color: #111; margin-bottom: 16px; letter-spacing: -1px; }
+        .role-pill { display: inline-block; background: #1a1a1a; color: #fff; padding: 8px 16px; border-radius: 50px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .intro-section {
-            min-height: 80vh; 
-            justify-content: center;
-            padding-bottom: 10vh; 
-        }
+        .media-wrapper { width: 100%; max-width: 650px; border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 15px 30px rgba(0,0,0,0.06); background: #000; transform: translateZ(0); position: relative; }
+        .media-wrapper img, .media-wrapper video { width: 100%; height: auto; display: block; }
 
-        .project-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-            color: #ccc;
-            margin-bottom: 40px; 
-            font-weight: 600;
-        }
-
-        .header-group {
-            margin-bottom: 30px;
-            border-left: 4px solid #eee; 
-            padding-left: 24px;
-        }
-
-        .brand-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px; 
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .project-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 42px; 
-            font-weight: 700;
-            line-height: 1.1;
-            color: #111;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .role-pill {
-            display: inline-block;
-            background: #1a1a1a; 
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- MEDIA STYLES --- */
-        .media-wrapper {
-            width: 100%;
-            max-width: 650px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-            background: #000;
-            transform: translateZ(0); 
-            position: relative;
-        }
-        
-        .media-wrapper img, 
-        .media-wrapper video { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-        }
-
-        .body-text {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #444;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
+        .body-text { font-size: 18px; line-height: 1.7; color: #444; max-width: 600px; margin-bottom: 40px; }
         .body-text strong { color: #111; font-weight: 600; }
 
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 30px;
-            max-width: 500px;
-        }
-
-        .stat-box strong { 
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 32px; font-weight: 700; display: block; color: #111; line-height: 1.1; margin-bottom: 4px;
-        }
-        .stat-box span { 
-            font-size: 13px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; font-weight: 500;
-        }
-
-        /* --- RESUME MODAL --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; backdrop-filter: blur(5px); align-items: center; justify-content: center;
-        }
-        .modal-overlay.active { display: flex; }
-        .modal-container { width: 90%; height: 90%; max-width: 1000px; background: white; border-radius: 8px; position: relative; display: flex; flex-direction: column; }
-        
-        .close-btn { 
-            position: absolute; top: -40px; right: 0; 
-            background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px;
-        }
-        
-        .resume-frame { width: 100%; height: 100%; border: none; border-radius: 8px; }
-        .mobile-download-btn { display: none; padding: 20px; background: #00a1e0; color: white; text-align: center; text-decoration: none; font-weight: 700; margin: auto; border-radius: 50px; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; border-top: 1px solid #eee; padding-top: 30px; max-width: 500px; }
+        .stat-box strong { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; display: block; color: #111; line-height: 1.1; margin-bottom: 4px; }
+        .stat-box span { font-size: 13px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; font-weight: 500; }
 
         @media (max-width: 900px) {
             .wrapper { flex-direction: column; }
@@ -274,41 +102,32 @@
             .content { width: 100%; }
             .project-section { padding: 80px 30px; min-height: auto; }
             .intro-section { min-height: auto; padding-top: 80px; padding-bottom: 80px; }
-            .resume-frame { display: none; }
-            .mobile-download-btn { display: block; }
-            .modal-container { height: auto; padding: 40px 20px; background: transparent; box-shadow: none; justify-content: center; }
-            .close-btn { top: 20px; right: 20px; }
             .header-group { border-left: none; padding-left: 0; }
             .project-title { font-size: 34px; }
-            .stat-grid { gap: 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        
         <aside class="sidebar" id="sidebar">
             <div class="top-content">
                 <div class="logo" onclick="window.scrollTo(0,0)">Dan Kirk.</div>
                 <div class="tagline">
                     I help brands like <span class="no-break">Salesforce</span>, <span class="no-break">T-Mobile</span> and <span class="no-break">Starbucks</span> behave like humans on the internet.
                 </div>
-                
-                <div class="location-text">
-                    📍 Based in Seattle, WA
-                </div>
+                <div class="location-text">📍 Based in Seattle, WA</div>
             </div>
             
             <nav class="contact-info">
-                <a href="#" onclick="openResume(event)" class="contact-link resume-btn">View Resume</a>
+                <a href="resume.html" class="contact-link resume-btn">View Resume</a>
+                
                 <a href="mailto:daniel.lawrence.kirk@gmail.com" class="contact-link">Email Me ↗</a>
                 <a href="https://linkedin.com/in/danksocial" target="_blank" class="contact-link">LinkedIn ↗</a>
             </nav>
         </aside>
 
         <main class="content">
-
             <section class="project-section intro-section" data-color="#1a1a1a" data-text="#ffffff">
                 <div class="project-number">INTRO</div>
                 <h1 class="project-title" style="font-size: 52px;">Award-Winning Social Strategist.</h1>
@@ -319,24 +138,20 @@
 
             <section class="project-section" data-color="#00a1e0" data-text="#ffffff">
                 <div class="project-number">01 / 04</div>
-                
                 <div class="header-group" style="border-left-color: #00a1e0;">
                     <span class="brand-name" style="color: #00a1e0;">Salesforce</span>
                     <h2 class="project-title">Activating 1.5 Billion Shopper Data for Cyber Week</h2>
                     <span class="role-pill">Senior Manager, Social Media</span>
                 </div>
-                
                 <div class="media-wrapper">
                     <video controls loop playsinline poster="images/salesforce-poster.jpg">
                         <source src="images/salesforce-loop.mp4" type="video/mp4">
                     </video>
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> Cyber Week is dominated by B2C retail noise. How does a B2B giant with data on 1.5B global shoppers cut through the clutter to showcase industry leadership? <br><br>
                     <strong>The Solution:</strong> I developed a social strategy to transform our data into an indispensable industry resource. I structured and led a cross-functional content engine—working with designers, writers, and data analysts—that produced 50+ real-time insights in 48 hours. No charts, just culture.
                 </p>
-                
                 <div class="stat-grid">
                     <div class="stat-box"><strong>197%</strong><span>YoY Eng. Growth</span></div>
                     <div class="stat-box"><strong>7M</strong><span>Impressions</span></div>
@@ -345,24 +160,20 @@
 
             <section class="project-section" data-color="#ff4d00" data-text="#ffffff">
                 <div class="project-number">02 / 04</div>
-
                 <div class="header-group" style="border-left-color: #ff4d00;">
                     <span class="brand-name" style="color: #ff4d00;">Cruise</span>
                     <h2 class="project-title">Launching the Driverless Future</h2>
                     <span class="role-pill">Sr. Social Media Manager</span>
                 </div>
-                
                 <div class="media-wrapper">
                     <video controls playsinline poster="images/cruise-poster.jpg">
                         <source src="images/driverlessrides.mp4" type="video/mp4">
                     </video>
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> Autonomous vehicles suffer from a "Trust Gap." The technology is incredible, but the public perception is often fear. <br><br>
                     <strong>The Solution:</strong> For the first fully driverless ride in San Francisco, I pivoted the strategy from "Tech Specs" to "Human Magic." We captured raw, unfiltered reactions of the first riders experiencing the ghost wheel, turning sci-fi skepticism into viral FOMO.
                 </p>
-                
                 <div class="stat-grid">
                     <div class="stat-box"><strong>359%</strong><span>Eng. Growth</span></div>
                     <div class="stat-box"><strong>75%</strong><span>Audience Growth</span></div>
@@ -371,24 +182,20 @@
 
             <section class="project-section" data-color="#ea0a8e" data-text="#ffffff">
                 <div class="project-number">03 / 04</div>
-
                 <div class="header-group" style="border-left-color: #ea0a8e;">
                     <span class="brand-name no-break" style="color: #ea0a8e;">T-Mobile</span>
                     <h2 class="project-title">Digitizing Joy in a Global Lockdown</h2>
                     <span class="role-pill">Sr. Social Strategist</span>
                 </div>
-                
                 <div class="media-wrapper">
                     <video controls playsinline poster="images/tmobile-poster.jpg">
                         <source src="images/tmobile-sizzle.mp4" type="video/mp4">
                     </video>
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> The 2020 holidays were bleak. With retail stores closed and morale at an all-time low, T-Mobile needed a way to connect with families that didn't feel like a sales pitch. <br><br>
                     <strong>The Solution:</strong> I led the strategic pivot to "Santa Calling"—a first-of-its-kind virtual experience. We transformed T-Mobile from a utility provider into a family connector, building a custom video platform that allowed thousands of families to meet Santa face-to-face safely.
                 </p>
-                
                 <div class="stat-grid">
                     <div class="stat-box"><strong>2M+</strong><span>Impressions</span></div>
                     <div class="stat-box"><strong>🏆</strong><span>Shorty Award</span></div>
@@ -397,31 +204,18 @@
 
             <section class="project-section" data-color="#00704a" data-text="#ffffff">
                 <div class="project-number">04 / 04</div>
-
                 <div class="header-group" style="border-left-color: #00704a;">
                     <span class="brand-name" style="color: #00704a;">Starbucks</span>
                     <h2 class="project-title">Doubleshot "Uploaded"</h2>
                     <span class="role-pill">Social Strategist</span>
                 </div>
-                
                 <div class="media-wrapper" style="background: #000;">
-                    <iframe 
-                        width="100%" 
-                        height="365" 
-                        src="https://www.youtube.com/embed/OAKPKPd2Rl0" 
-                        title="Starbucks Uploaded" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen 
-                        style="display: block; aspect-ratio: 16/9;">
-                    </iframe>
+                    <iframe width="100%" height="365" src="https://www.youtube.com/embed/OAKPKPd2Rl0" title="Starbucks Uploaded" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: block; aspect-ratio: 16/9;"></iframe>
                 </div>
-                
                 <p class="body-text">
                     <strong>The Challenge:</strong> Launching Starbucks Doubleshot to a younger, digital-native audience that skips traditional advertising. <br><br>
                     <strong>The Solution:</strong> I developed "Uploaded," a YouTube-first content series that handed creative control to top-tier creators. Instead of forcing a script, we integrated the product into their native formats—from tech unboxings to gaming streams—driving authenticity and massive watch time.
                 </p>
-                
                 <div class="stat-grid">
                     <div class="stat-box"><strong>1.2M</strong><span>Video Views</span></div>
                     <div class="stat-box"><strong>7X</strong><span>Audience Growth</span></div>
@@ -434,14 +228,6 @@
                 <p style="margin-top: 40px; color: #888; font-size: 14px;">© 2026 Dan Kirk. Built in Seattle.</p>
             </section>
         </main>
-    </div>
-
-    <div id="resumeModal" class="modal-overlay" onclick="closeResume(event)">
-        <div class="modal-content modal-container" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeResume(event)">×</button>
-            <iframe src="resume.html" class="resume-frame"></iframe>
-            <a href="resume.html" target="_blank" class="mobile-download-btn">Open Full Resume</a>
-        </div>
     </div>
 
     <script>
@@ -457,10 +243,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Triggers the Animation
                     entry.target.classList.add('visible'); 
-
-                    // Changes Colors
                     const newColor = entry.target.getAttribute('data-color');
                     const newTextColor = entry.target.getAttribute('data-text');
                     
@@ -473,38 +256,21 @@
                         
                         links.forEach(link => {
                             if (!link.classList.contains('resume-btn')) {
-                                link.style.borderBottomColor = newTextColor === '#ffffff' 
-                                    ? 'rgba(255,255,255,0.3)' 
-                                    : 'rgba(0,0,0,0.2)';
+                                link.style.borderBottomColor = newTextColor === '#ffffff' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)';
                             }
                         });
                         
                         if (newTextColor === '#ffffff') {
-                            btn.style.background = 'rgba(255,255,255,0.15)';
-                            btn.style.color = '#fff';
+                            btn.style.background = 'rgba(255,255,255,0.15)'; btn.style.color = '#fff';
                         } else {
-                            btn.style.background = '#000';
-                            btn.style.color = '#fff';
+                            btn.style.background = '#000'; btn.style.color = '#fff';
                         }
                     }
                 }
             });
         }, observerOptions);
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        function openResume(e) {
-            e.preventDefault();
-            document.getElementById('resumeModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function closeResume(e) {
-            document.getElementById('resumeModal').classList.remove('active');
-            document.body.style.overflow = 'auto'; 
-        }
+        sections.forEach(section => { observer.observe(section); });
     </script>
 </body>
 </html>
