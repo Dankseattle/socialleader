@@ -28,21 +28,12 @@
             position: relative;
         }
 
-        /* BACK BUTTON (New) */
+        /* BACK BUTTON */
         .back-link {
             display: inline-block; margin-bottom: 30px;
             text-decoration: none; color: #666; font-size: 14px; font-weight: 500;
         }
         .back-link:hover { color: #000; text-decoration: underline; }
-
-        /* PRINT SETTINGS */
-        @media print { 
-            @page { margin: 0; size: auto; }
-            body { background: white; font-size: 11pt; } 
-            .page { max-width: 100%; width: 8.5in; margin: 0; padding: 0.5in; box-shadow: none; }
-            .no-print { display: none !important; }
-            .back-link { display: none; }
-        }
 
         /* HEADER */
         header { margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 30px; }
@@ -135,14 +126,6 @@
         .skill-label { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
         .skill-list { color: #444; }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .skills-grid { grid-template-columns: 1fr; gap: 4px; margin-bottom: 20px; }
-            .dates { width: 100%; text-align: left; margin-top: 4px; }
-            .contact-row { flex-direction: column; gap: 8px; }
-        }
-
         /* Floating Print Button */
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
@@ -152,6 +135,47 @@
             font-family: 'Inter', sans-serif;
             cursor: pointer;
             z-index: 999;
+        }
+
+        /* --- PRINT OPTIMIZATION (ONE PAGE FIX) --- */
+        @media print { 
+            @page { margin: 0.4in 0.5in; size: auto; }
+            
+            body { 
+                background: white; 
+                font-size: 9.5pt; 
+                line-height: 1.35; 
+            } 
+            
+            .page { 
+                width: 100%; max-width: 100%; margin: 0; padding: 0; box-shadow: none; 
+            }
+            
+            .no-print, .download-btn, .back-link { display: none !important; }
+
+            header { margin-bottom: 15px; padding-bottom: 10px; border-width: 1px; }
+            h1 { font-size: 24pt; margin-bottom: 2px; }
+            .role-title { font-size: 11pt; margin-bottom: 6px; }
+            .contact-row { gap: 15px; font-size: 9pt; }
+
+            .section-title { margin-top: 15px; margin-bottom: 8px; padding-bottom: 4px; font-size: 9pt; }
+            .summary { margin-bottom: 15px; font-size: 10pt; max-width: 100%; }
+
+            .job-block { margin-bottom: 10px; } 
+            .job-header { margin-bottom: 2px; }
+            .company { font-size: 10.5pt; }
+            .role { font-size: 10pt; margin-bottom: 3px; }
+            .dates { font-size: 9pt; }
+            li { margin-bottom: 2px; padding-left: 12px; } 
+
+            .skills-grid { grid-template-columns: 80px 1fr; gap: 10px; margin-bottom: 4px; font-size: 9pt; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 4px; margin-bottom: 20px; }
+            .dates { width: 100%; text-align: left; margin-top: 4px; }
+            .contact-row { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -243,6 +267,21 @@
                     <li><strong>Influencer Strategy:</strong> Modernized the "Starbucks At Home" CPG brand by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework, handing creative control to Tier-1 creators.</li>
                     <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency-produced assets by 300% in watch time.</li>
                 </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Education & Recognition</div>
+            <div class="skills-grid">
+                <div class="skill-label">Education</div>
+                <div class="skill-list">
+                    <strong>Master of Communication, Digital Media</strong> — University of Washington (2014)<br>
+                    <strong>B.A. Journalism & Media Studies</strong> — Rutgers University (2012)
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-label">Awards</div>
+                <div class="skill-list">Shorty Award (2021), AdWeek Experiential Campaign of the Year (2021).</div>
             </div>
         </section>
 
