@@ -37,6 +37,12 @@
             z-index: 50;
         }
 
+        /* --- 2. SELECTION COLOR (New Polish) --- */
+        ::selection {
+            background: #000;
+            color: #fff;
+        }
+
         /* --- LAYOUT GRID --- */
         .wrapper {
             display: flex;
@@ -129,6 +135,7 @@
             background: #ffffff;
         }
 
+        /* --- ANIMATION STYLES (New Fade Up) --- */
         .project-section {
             min-height: 100vh;
             padding: 100px 80px;
@@ -137,6 +144,17 @@
             justify-content: center; 
             border-bottom: 1px solid rgba(0,0,0,0.03);
             position: relative;
+            
+            /* Hidden state for animation */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Visible state triggered by JS */
+        .project-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .intro-section {
@@ -189,7 +207,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- MEDIA STYLES (Updated for Video) --- */
+        /* --- MEDIA STYLES --- */
         .media-wrapper {
             width: 100%;
             max-width: 650px;
@@ -197,7 +215,7 @@
             overflow: hidden;
             margin-bottom: 40px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-            background: #000; /* Black background for video */
+            background: #000;
             transform: translateZ(0); 
             position: relative;
         }
@@ -234,6 +252,13 @@
         .stat-box span { 
             font-size: 13px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; font-weight: 500;
         }
+
+        /* --- ARCHIVE LIST STYLE --- */
+        .archive-list { width: 100%; max-width: 650px; }
+        .archive-item { 
+            display: flex; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid #eee; align-items: baseline; transition: padding-left 0.3s;
+        }
+        .archive-item:hover { padding-left: 10px; border-bottom-color: #ccc; }
 
         /* --- RESUME MODAL --- */
         .modal-overlay {
@@ -382,22 +407,63 @@
 
                 <div class="header-group" style="border-left-color: #00704a;">
                     <span class="brand-name" style="color: #00704a;">Starbucks</span>
-                    <h2 class="project-title">Evolving "Starbucks At Home"</h2>
+                    <h2 class="project-title">Doubleshot "Uploaded"</h2>
                     <span class="role-pill">Social Strategist</span>
                 </div>
                 
-                <div class="media-wrapper">
-                     <img src="https://via.placeholder.com/1000x600/00704a/ffffff?text=Starbucks+Lifestyle" alt="Starbucks">
+                <div class="media-wrapper" style="background: #000;">
+                    <iframe 
+                        width="100%" 
+                        height="365" 
+                        src="https://www.youtube.com/embed/OAKPKPd2Rl0" 
+                        title="Starbucks Uploaded" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        style="display: block; aspect-ratio: 16/9;">
+                    </iframe>
                 </div>
                 
                 <p class="body-text">
-                    <strong>The Challenge:</strong> Starbucks CPG channels felt too corporate and disconnected from the cafe experience. <br><br>
-                    <strong>The Solution:</strong> I evolved the "Starbucks At Home" social presence from a standard CPG channel into a lifestyle brand leader. By shifting focus to community-driven content and modern aesthetics, we drove massive organic reach and engagement.
+                    <strong>The Challenge:</strong> Launching Starbucks Doubleshot to a younger, digital-native audience that skips traditional advertising. <br><br>
+                    <strong>The Solution:</strong> I developed "Uploaded," a YouTube-first content series that handed creative control to top-tier creators. Instead of forcing a script, we integrated the product into their native formats—from tech unboxings to gaming streams—driving authenticity and massive watch time.
                 </p>
                 
                 <div class="stat-grid">
-                    <div class="stat-box"><strong>280M+</strong><span>Impressions</span></div>
-                    <div class="stat-box"><strong>7x</strong><span>Follower Growth</span></div>
+                    <div class="stat-box"><strong>1.2M</strong><span>Video Views</span></div>
+                    <div class="stat-box"><strong>7X</strong><span>Audience Growth</span></div>
+                </div>
+            </section>
+
+            <section class="project-section" data-color="#f4f4f4" data-text="#1a1a1a" style="min-height: auto; padding-top: 100px; padding-bottom: 100px;">
+                <div class="header-group" style="border-left: none; padding-left: 0; margin-bottom: 40px;">
+                    <h2 class="project-title" style="font-size: 24px; opacity: 0.4;">Previously</h2>
+                </div>
+                
+                <div class="archive-list">
+                    <div class="archive-item">
+                        <div>
+                            <span style="font-weight: 700; font-size: 18px; display: block;">Microsoft</span>
+                            <span style="font-size: 14px; color: #666;">Surface Launch Strategy</span>
+                        </div>
+                        <span style="font-family: 'Space Grotesk'; font-size: 14px; opacity: 0.5;">2018</span>
+                    </div>
+
+                    <div class="archive-item">
+                        <div>
+                            <span style="font-weight: 700; font-size: 18px; display: block;">Amazon</span>
+                            <span style="font-size: 14px; color: #666;">Prime Day Social War Room</span>
+                        </div>
+                        <span style="font-family: 'Space Grotesk'; font-size: 14px; opacity: 0.5;">2016</span>
+                    </div>
+
+                    <div class="archive-item">
+                        <div>
+                            <span style="font-weight: 700; font-size: 18px; display: block;">Freelance</span>
+                            <span style="font-size: 14px; color: #666;">Various Brand Identity Projects</span>
+                        </div>
+                        <span style="font-family: 'Space Grotesk'; font-size: 14px; opacity: 0.5;">2013-2015</span>
+                    </div>
                 </div>
             </section>
 
@@ -430,6 +496,10 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // NEW: Triggers the Fade Up Animation
+                    entry.target.classList.add('visible'); 
+
+                    // Existing Color Logic
                     const newColor = entry.target.getAttribute('data-color');
                     const newTextColor = entry.target.getAttribute('data-text');
                     
