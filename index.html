@@ -37,6 +37,12 @@
             z-index: 50;
         }
 
+        /* --- 2. SELECTION COLOR --- */
+        ::selection {
+            background: #000;
+            color: #fff;
+        }
+
         /* --- LAYOUT GRID --- */
         .wrapper {
             display: flex;
@@ -129,6 +135,7 @@
             background: #ffffff;
         }
 
+        /* --- ANIMATION STYLES (Upgraded) --- */
         .project-section {
             min-height: 100vh;
             padding: 100px 80px;
@@ -137,6 +144,17 @@
             justify-content: center; 
             border-bottom: 1px solid rgba(0,0,0,0.03);
             position: relative;
+            
+            /* Initial Hidden State */
+            opacity: 0;
+            transform: translateY(60px); /* Increased distance for visibility */
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1); /* "Snap" effect */
+        }
+
+        /* Visible State */
+        .project-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .intro-section {
@@ -189,7 +207,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- MEDIA STYLES (Updated for Video) --- */
+        /* --- MEDIA STYLES --- */
         .media-wrapper {
             width: 100%;
             max-width: 650px;
@@ -197,7 +215,7 @@
             overflow: hidden;
             margin-bottom: 40px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.06);
-            background: #000; /* Black background for video */
+            background: #000;
             transform: translateZ(0); 
             position: relative;
         }
@@ -439,6 +457,10 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // NEW: Triggers the Fade Up Animation
+                    entry.target.classList.add('visible'); 
+
+                    // Existing Color Logic
                     const newColor = entry.target.getAttribute('data-color');
                     const newTextColor = entry.target.getAttribute('data-text');
                     
