@@ -6,179 +6,142 @@
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* RESET & TYPOGRAPHY */
+        /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
             font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            background: #ffffff;
-            font-size: 16px;
-            line-height: 1.6;
+            color: #111;
+            background: #fff;
+            font-size: 10pt; /* Perfect resume size */
+            line-height: 1.45;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PAPER SHEET */
+        /* PAGE CONTAINER */
         .page {
-            width: 100%;
-            max-width: 800px;
+            width: 8.5in;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0.5in 0.6in; /* Balanced margins */
             background: white;
-            position: relative;
         }
 
-        /* BACK BUTTON */
+        /* BACK LINK (Screen Only) */
         .back-link {
-            display: inline-block; margin-bottom: 30px;
-            text-decoration: none; color: #666; font-size: 14px; font-weight: 500;
+            display: block; margin-bottom: 20px;
+            text-decoration: none; color: #666; font-size: 14px;
         }
-        .back-link:hover { color: #000; text-decoration: underline; }
 
         /* HEADER */
-        header { margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 20px; }
+        header { 
+            border-bottom: 2px solid #000; 
+            padding-bottom: 15px; 
+            margin-bottom: 20px; 
+        }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem; 
+            font-size: 26pt; /* Large but not huge */
             font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1;
-            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 6px;
         }
 
         .role-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
+            font-size: 11pt;
             font-weight: 500;
-            color: #444;
-            margin-bottom: 20px;
+            color: #000;
+            margin-bottom: 6px;
         }
 
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 0.95rem;
-            color: #666;
-            font-weight: 500;
+        .contact-line {
+            font-size: 9pt;
+            color: #555;
+            font-weight: 400;
         }
-        .contact-row a { color: inherit; text-decoration: none; border-bottom: 1px solid #ccc; }
+        .contact-line a { color: inherit; text-decoration: none; }
+        .separator { margin: 0 6px; color: #ccc; }
 
         /* SECTIONS */
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
+            font-size: 9pt;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            color: #888;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+            color: #666;
         }
 
-        .summary { margin-bottom: 25px; font-weight: 400; color: #333; max-width: 650px;}
+        /* CONTENT */
+        .summary { margin-bottom: 18px; text-align: justify; }
 
-        /* JOBS */
-        .job-block { margin-bottom: 20px; }
+        .job-block { margin-bottom: 14px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 6px;
-            flex-wrap: wrap; 
+            margin-bottom: 3px;
         }
         
-        .company { font-weight: 700; font-size: 1.1rem; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #444; display: block; margin-bottom: 8px;}
-        .dates { font-size: 0.9rem; color: #888; white-space: nowrap; }
-        .location { font-size: 0.9rem; color: #aaa; margin-left: 5px; }
+        .company { font-weight: 700; font-size: 10.5pt; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #333; font-size: 10pt; }
+        .dates { font-size: 9pt; color: #666; }
+        .location { font-size: 9pt; color: #999; margin-left: 6px; font-weight: normal;}
 
-        ul { list-style: none; }
-        
+        /* BULLETS */
+        ul { list-style: none; margin-top: 2px; }
         li {
             position: relative;
-            padding-left: 16px;
-            margin-bottom: 6px;
-            color: #333;
+            padding-left: 12px;
+            margin-bottom: 2px;
+            color: #222;
         }
-        
         li::before {
             content: "•";
             position: absolute;
             left: 0;
+            top: 0;
             color: #000;
-            font-weight: bold;
+            font-size: 10px;
         }
 
-        /* SKILLS GRID */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 15px;
-            margin-bottom: 8px;
-            font-size: 1rem;
+        /* COMPACT BOTTOM SECTION */
+        .compact-list {
+            margin-bottom: 4px;
+            font-size: 9.5pt;
         }
-        .skill-label { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
-        .skill-list { color: #444; }
+        .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            margin-right: 6px;
+            color: #000;
+        }
 
-        /* Floating Print Button */
+        /* PRINT SETTINGS */
+        @media print { 
+            @page { margin: 0; }
+            body { -webkit-print-color-adjust: exact; } 
+            .no-print, .back-link { display: none !important; }
+        }
+
+        /* DOWNLOAD BUTTON */
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: #000; color: white; padding: 15px 30px;
             border-radius: 50px; text-decoration: none; font-weight: 600;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            font-family: 'Inter', sans-serif;
             cursor: pointer;
             z-index: 999;
         }
-
-        /* --- PRINT OPTIMIZATION (BALANCED) --- */
-        @media print { 
-            @page { margin: 0.5in 0.5in; size: auto; } /* Standard Margins */
-            
-            body { 
-                background: white; 
-                font-size: 10pt; /* Readable Font Size */
-                line-height: 1.4; /* Comfortable Spacing */
-            } 
-            
-            .page { width: 100%; max-width: 100%; margin: 0; padding: 0; box-shadow: none; }
-            .no-print, .download-btn, .back-link { display: none !important; }
-
-            /* Header */
-            header { margin-bottom: 20px; padding-bottom: 10px; border-width: 1px; }
-            h1 { font-size: 24pt; margin-bottom: 5px; }
-            .role-title { font-size: 11pt; margin-bottom: 5px; color: #000; }
-            .contact-row { gap: 15px; font-size: 9pt; }
-
-            /* Sections */
-            .section-title { margin-top: 15px; margin-bottom: 8px; padding-bottom: 4px; font-size: 9pt; border-bottom: 1px solid #ccc; }
-            .summary { margin-bottom: 15px; font-size: 10pt; max-width: 100%; text-align: left;}
-
-            /* Jobs */
-            .job-block { margin-bottom: 12px; page-break-inside: avoid; } 
-            .job-header { margin-bottom: 2px; }
-            .company { font-size: 11pt; }
-            .role { font-size: 10pt; margin-bottom: 3px; }
-            .dates { font-size: 9pt; }
-            
-            li { margin-bottom: 3px; padding-left: 12px; } 
-
-            /* Skills & Education */
-            .skills-grid { grid-template-columns: 85px 1fr; gap: 10px; margin-bottom: 4px; font-size: 9.5pt; }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .skills-grid { grid-template-columns: 1fr; gap: 4px; margin-bottom: 20px; }
-            .dates { width: 100%; text-align: left; margin-top: 4px; }
-            .contact-row { flex-direction: column; gap: 8px; }
-        }
+        @media screen and (max-width: 900px) { .download-btn { display: none; } }
     </style>
 </head>
 <body>
@@ -189,10 +152,13 @@
         <header>
             <h1>Dan Kirk</h1>
             <div class="role-title">Senior Social Strategist & Creative Director</div>
-            <div class="contact-row">
-                <span>Seattle, WA</span>
+            <div class="contact-line">
+                Seattle, WA
+                <span class="separator">|</span>
                 <a href="mailto:daniel.lawrence.kirk@gmail.com">daniel.lawrence.kirk@gmail.com</a>
+                <span class="separator">|</span>
                 <a href="https://www.linkedin.com/in/danksocial" target="_blank">LinkedIn</a>
+                <span class="separator">|</span>
                 <a href="https://www.dankirk.net" target="_blank">www.dankirk.net</a>
             </div>
         </header>
@@ -209,97 +175,74 @@
 
             <div class="job-block">
                 <div class="job-header">
-                    <div>
-                        <span class="company">SALESFORCE</span>
-                        <span class="location">Seattle, WA</span>
-                    </div>
+                    <div><span class="company">SALESFORCE</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2023 – Present</span>
                 </div>
-                <span class="role">Senior Manager, Social Media</span>
+                <div class="role">Senior Manager, Social Media</div>
                 <ul>
-                    <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Salesforce Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
-                    <li><strong>Content Operations:</strong> Architected the "Cyber Week" real-time newsroom, leading a cross-functional team of 10+ (writers, designers, analysts) to turn 1.5 billion shopper data points into 50+ live creative assets in 48 hours.</li>
-                    <li><strong>Audience Growth:</strong> Reversed a trend of declining reach by overhauling the brand voice from "corporate" to "editorial," resulting in <strong>197% YoY engagement growth</strong> and <strong>7M+ organic impressions</strong>.</li>
-                    <li><strong>Thought Leadership:</strong> Partnered with leadership to develop LinkedIn content pillars that positioned stakeholders as industry authorities, driving a 40% increase in share-of-voice against competitors.</li>
+                    <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
+                    <li><strong>Content Operations:</strong> Architected the "Cyber Week" real-time newsroom, leading a team of 10+ to turn 1.5 billion shopper data points into 50+ live creative assets in 48 hours.</li>
+                    <li><strong>Audience Growth:</strong> Reversed declining reach by overhauling the brand voice, resulting in <strong>197% YoY engagement growth</strong> and <strong>7M+ organic impressions</strong>.</li>
+                    <li><strong>Thought Leadership:</strong> Partnered with leadership to develop LinkedIn content pillars that positioned stakeholders as industry authorities, driving a 40% increase in share-of-voice.</li>
                 </ul>
             </div>
 
             <div class="job-block">
                 <div class="job-header">
-                    <div>
-                        <span class="company">CRUISE AUTOMATION</span>
-                        <span class="location">San Francisco, CA</span>
-                    </div>
+                    <div><span class="company">CRUISE AUTOMATION</span><span class="location">San Francisco, CA</span></div>
                     <span class="dates">2021 – 2023</span>
                 </div>
-                <span class="role">Senior Social Media Manager</span>
+                <div class="role">Senior Social Media Manager</div>
                 <ul>
-                    <li><strong>Go-To-Market (GTM):</strong> Led the end-to-end social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions to overcome public skepticism.</li>
-                    <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk during regulatory scrutiny.</li>
-                    <li><strong>Channel Expansion:</strong> Launched Cruise’s presence on TikTok. Grew the audience by <strong>75% in under 12 months</strong> while maintaining a 359% increase in engagement.</li>
+                    <li><strong>Go-To-Market (GTM):</strong> Led the social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions.</li>
+                    <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk.</li>
+                    <li><strong>Channel Expansion:</strong> Launched Cruise on TikTok. Grew the audience by <strong>75% in under 12 months</strong> while maintaining a 359% increase in engagement.</li>
                 </ul>
             </div>
 
             <div class="job-block">
                 <div class="job-header">
-                    <div>
-                        <span class="company">T-MOBILE</span>
-                        <span class="location">Seattle, WA</span>
-                    </div>
+                    <div><span class="company">T-MOBILE</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2018 – 2021</span>
                 </div>
-                <span class="role">Senior Social Strategist</span>
+                <div class="role">Senior Social Strategist</div>
                 <ul>
-                    <li><strong>Super Bowl Social Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and a dominant <strong>80% share-of-voice</strong> against competitors. The campaign generated <strong>3.9M engagements</strong>—surpassing the previous three years of performance combined.</li>
-                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher engagement and recall than traditional product assets.</li>
-                    <li><strong>Campaign Innovation:</strong> Directed "Santa Calling," a digital utility campaign during the 2020 lockdown. Secured a <strong>Shorty Award</strong> and generated <strong>2M+ organic impressions</strong> with zero paid media.</li>
+                    <li><strong>Super Bowl Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and <strong>80% share-of-voice</strong>. Generated <strong>3.9M engagements</strong>.</li>
+                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher recall than traditional product assets.</li>
+                    <li><strong>Campaign Innovation:</strong> Directed "Santa Calling," a digital utility campaign during the 2020 lockdown. Secured a <strong>Shorty Award</strong> and generated <strong>2M+ organic impressions</strong>.</li>
                 </ul>
             </div>
 
             <div class="job-block">
                 <div class="job-header">
-                    <div>
-                        <span class="company">STARBUCKS</span>
-                        <span class="location">Seattle, WA</span>
-                    </div>
+                    <div><span class="company">STARBUCKS</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2016 – 2018</span>
                 </div>
-                <span class="role">Social Strategist</span>
+                <div class="role">Social Strategist</div>
                 <ul>
-                    <li><strong>Influencer Strategy:</strong> Modernized the "Starbucks At Home" CPG brand by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework, handing creative control to Tier-1 creators.</li>
-                    <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency-produced assets by 300% in watch time.</li>
+                    <li><strong>Influencer Strategy:</strong> Modernized "Starbucks At Home" by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework with Tier-1 creators.</li>
+                    <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency assets by 300% in watch time.</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <div class="section-title">Education & Recognition</div>
-            <div class="skills-grid">
-                <div class="skill-label">Education</div>
-                <div class="skill-list">
-                    <strong>Master of Communication, Digital Media</strong> — University of Washington (2014)<br>
-                    <strong>B.A. Journalism & Media Studies</strong> — Rutgers University (2012)
-                </div>
+            <div class="section-title">Skills, Education & Awards</div>
+            
+            <div class="compact-list">
+                <span class="label">Strategy:</span> Brand Positioning, GTM Strategy, Crisis Communications, Creative Briefing, Paid/Organic Hybrid Models.
             </div>
-            <div class="skills-grid">
-                <div class="skill-label">Awards</div>
-                <div class="skill-list">Shorty Award (2021), AdWeek Experiential Campaign of the Year (2021).</div>
+            <div class="compact-list">
+                <span class="label">Creative:</span> Creative Direction, Video Storytelling, Copywriting, Social Video Production.
             </div>
-        </section>
-
-        <section>
-            <div class="section-title">Skills & Tools</div>
-            <div class="skills-grid">
-                <div class="skill-label">Strategy</div>
-                <div class="skill-list">Brand Positioning, GTM Strategy, Crisis Communications, Creative Briefing, Paid/Organic Hybrid Models.</div>
+            <div class="compact-list">
+                <span class="label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
             </div>
-            <div class="skills-grid">
-                <div class="skill-label">Creative</div>
-                <div class="skill-list">Creative Direction, Video Storytelling, Copywriting, Social Video Production.</div>
+            <div class="compact-list" style="margin-top: 10px;">
+                <span class="label">Education:</span> Master of Communication (U of Washington) | B.A. Journalism (Rutgers University)
             </div>
-            <div class="skills-grid">
-                <div class="skill-label">Tools</div>
-                <div class="skill-list">Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.</div>
+            <div class="compact-list">
+                <span class="label">Awards:</span> Shorty Award Winner (2021) | AdWeek Experiential Campaign of the Year (2021)
             </div>
         </section>
     </div>
