@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
     <style>
         /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,92 +13,100 @@
             font-family: 'Inter', sans-serif;
             color: #111;
             background: #fff;
-            font-size: 9.5pt; /* Slightly smaller for safety */
-            line-height: 1.35; /* Tighter line height */
+            font-size: 16px;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* RESUME CONTAINER */
-        #resume-element {
-            width: 8.5in;
-            height: 11in;
+        /* PAGE CONTAINER (View Only) */
+        .page {
+            width: 100%;
+            max-width: 800px;
             margin: 0 auto;
-            /* Tighter Vertical Padding (0.35in) allows more content */
-            padding: 0.35in 0.6in; 
+            padding: 40px 20px;
             background: white;
-            position: relative;
+            padding-bottom: 100px; /* Space for button */
         }
+
+        /* BACK LINK */
+        .back-link {
+            display: inline-block; margin-bottom: 30px;
+            text-decoration: none; color: #666; font-size: 14px; font-weight: 500;
+        }
+        .back-link:hover { color: #000; text-decoration: underline; }
 
         /* HEADER */
         header { 
             border-bottom: 2px solid #000; 
-            padding-bottom: 8px; 
-            margin-bottom: 12px; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
         }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24pt; /* Reduced from 26pt */
+            font-size: 2.5rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -1px;
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 10px;
         }
 
         .role-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 10.5pt;
+            font-size: 1.2rem;
             font-weight: 500;
             color: #000;
-            margin-bottom: 4px;
+            margin-bottom: 15px;
         }
 
         .contact-line {
-            font-size: 8.5pt;
+            font-size: 0.95rem;
             color: #555;
             font-weight: 400;
+            display: flex; flex-wrap: wrap; gap: 10px;
         }
         .contact-line a { color: inherit; text-decoration: none; border-bottom: 1px solid #ddd; }
-        .separator { margin: 0 6px; color: #ccc; }
+        .separator { color: #ccc; }
 
         /* SECTIONS */
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 9pt;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 14px; /* Reduced gap */
-            margin-bottom: 6px;
+            margin-top: 40px;
+            margin-bottom: 15px;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 2px;
+            padding-bottom: 5px;
             color: #666;
         }
 
-        .summary { margin-bottom: 12px; text-align: left; }
+        /* CONTENT */
+        .summary { margin-bottom: 30px; }
 
-        /* JOB BLOCKS */
-        .job-block { margin-bottom: 10px; } /* Reduced from 14px */
+        .job-block { margin-bottom: 30px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 1px;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
         }
         
-        .company { font-weight: 700; font-size: 10pt; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #333; font-size: 9.5pt; }
-        .dates { font-size: 8.5pt; color: #666; }
-        .location { font-size: 8.5pt; color: #999; margin-left: 6px; font-weight: normal;}
+        .company { font-weight: 700; font-size: 1.1rem; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #333; font-size: 1rem; margin-bottom: 8px; display: block;}
+        .dates { font-size: 0.9rem; color: #666; }
+        .location { font-size: 0.9rem; color: #999; margin-left: 6px; font-weight: normal;}
 
         /* BULLETS */
-        ul { list-style: none; margin-top: 1px; }
+        ul { list-style: none; }
         li {
             position: relative;
-            padding-left: 10px;
-            margin-bottom: 1px;
+            padding-left: 15px;
+            margin-bottom: 6px;
             color: #222;
         }
         li::before {
@@ -109,44 +115,48 @@
             left: 0;
             top: 0;
             color: #000;
-            font-size: 10px;
-            line-height: 1.4;
+            font-weight: bold;
         }
 
-        /* LINEAR BOTTOM SECTION */
+        /* BOTTOM SECTION */
         .linear-item {
-            margin-bottom: 2px;
-            font-size: 9pt;
-            line-height: 1.4;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
         .linear-label {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            margin-right: 4px;
+            margin-right: 6px;
             color: #000;
             text-transform: uppercase;
-            font-size: 8.5pt;
+            font-size: 0.9rem;
         }
 
-        /* UI ELEMENTS */
-        .back-link {
-            display: block; width: 8.5in; margin: 20px auto 10px;
-            text-decoration: none; color: #666; font-size: 14px;
-        }
+        /* DOWNLOAD BUTTON */
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
-            background: #000; color: white; padding: 15px 30px;
+            background: #000; color: white; padding: 16px 32px;
             border-radius: 50px; text-decoration: none; font-weight: 600;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            cursor: pointer; z-index: 999; font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
+            transition: transform 0.2s;
+            z-index: 100;
+        }
+        .download-btn:hover { transform: translateY(-2px); }
+
+        @media (max-width: 600px) {
+            .contact-line { flex-direction: column; gap: 5px; }
+            .separator { display: none; }
+            .dates { width: 100%; margin-bottom: 4px; }
+            .download-btn { width: 90%; left: 5%; right: 5%; text-align: center; bottom: 20px;}
         }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <div class="page">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
 
-    <div id="resume-element">
         <header>
             <h1>Dan Kirk</h1>
             <div class="role-title">Senior Social Strategist & Creative Director</div>
@@ -176,7 +186,7 @@
                     <div><span class="company">SALESFORCE</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2023 – Present</span>
                 </div>
-                <div class="role">Senior Manager, Social Media</div>
+                <span class="role">Senior Manager, Social Media</span>
                 <ul>
                     <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
                     <li><strong>Content Operations:</strong> Architected the "Cyber Week" real-time newsroom, leading a team of 10+ to turn 1.5 billion shopper data points into 50+ live creative assets in 48 hours.</li>
@@ -190,7 +200,7 @@
                     <div><span class="company">CRUISE AUTOMATION</span><span class="location">San Francisco, CA</span></div>
                     <span class="dates">2021 – 2023</span>
                 </div>
-                <div class="role">Senior Social Media Manager</div>
+                <span class="role">Senior Social Media Manager</span>
                 <ul>
                     <li><strong>Go-To-Market (GTM):</strong> Led the social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions.</li>
                     <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk.</li>
@@ -203,7 +213,7 @@
                     <div><span class="company">T-MOBILE</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2018 – 2021</span>
                 </div>
-                <div class="role">Senior Social Strategist</div>
+                <span class="role">Senior Social Strategist</span>
                 <ul>
                     <li><strong>Super Bowl Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and <strong>80% share-of-voice</strong>. Generated <strong>3.9M engagements</strong>.</li>
                     <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher recall than traditional product assets.</li>
@@ -216,7 +226,7 @@
                     <div><span class="company">STARBUCKS</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2016 – 2018</span>
                 </div>
-                <div class="role">Social Strategist</div>
+                <span class="role">Social Strategist</span>
                 <ul>
                     <li><strong>Influencer Strategy:</strong> Modernized "Starbucks At Home" by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework with Tier-1 creators.</li>
                     <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency assets by 300% in watch time.</li>
@@ -237,30 +247,20 @@
                 <span class="linear-label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
             </div>
             
-            <div style="height: 4px;"></div> <div class="linear-item">
-                <span class="linear-label">Education:</span> Master of Communication (U of Washington) <span class="separator">|</span> B.A. Journalism (Rutgers University)
+            <div style="height: 10px;"></div>
+
+            <div class="linear-item">
+                <span class="linear-label">Education:</span> Master of Communication (U of Washington) | B.A. Journalism (Rutgers University)
             </div>
             <div class="linear-item">
-                <span class="linear-label">Awards:</span> Shorty Award Winner (2021) <span class="separator">|</span> AdWeek Experiential Campaign of the Year (2021)
+                <span class="linear-label">Awards:</span> Shorty Award Winner (2021) | AdWeek Experiential Campaign of the Year (2021)
             </div>
         </section>
     </div>
 
-    <div class="download-btn" onclick="generatePDF()">Download PDF</div>
-
-    <script>
-        function generatePDF() {
-            const element = document.getElementById('resume-element');
-            const opt = {
-                margin:       0,
-                filename:     'Dan_Kirk_Resume.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
-        }
-    </script>
+    <a href="Dan_Kirk_Resume.pdf" download class="download-btn">
+        Download PDF
+    </a>
 
 </body>
 </html>
