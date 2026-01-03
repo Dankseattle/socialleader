@@ -15,8 +15,8 @@
             font-family: 'Inter', sans-serif;
             color: #111;
             background: #fff;
-            font-size: 10pt;
-            line-height: 1.4;
+            font-size: 9.5pt; /* Slightly smaller for safety */
+            line-height: 1.35; /* Tighter line height */
             -webkit-font-smoothing: antialiased;
         }
 
@@ -25,7 +25,8 @@
             width: 8.5in;
             height: 11in;
             margin: 0 auto;
-            padding: 0.5in 0.6in;
+            /* Tighter Vertical Padding (0.35in) allows more content */
+            padding: 0.35in 0.6in; 
             background: white;
             position: relative;
         }
@@ -33,30 +34,30 @@
         /* HEADER */
         header { 
             border-bottom: 2px solid #000; 
-            padding-bottom: 12px; 
-            margin-bottom: 16px; 
+            padding-bottom: 8px; 
+            margin-bottom: 12px; 
         }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 26pt;
+            font-size: 24pt; /* Reduced from 26pt */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -1px;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .role-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 11pt;
+            font-size: 10.5pt;
             font-weight: 500;
             color: #000;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .contact-line {
-            font-size: 9pt;
+            font-size: 8.5pt;
             color: #555;
             font-weight: 400;
         }
@@ -70,36 +71,36 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 18px;
-            margin-bottom: 8px;
+            margin-top: 14px; /* Reduced gap */
+            margin-bottom: 6px;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
+            padding-bottom: 2px;
             color: #666;
         }
 
-        .summary { margin-bottom: 16px; text-align: left; }
+        .summary { margin-bottom: 12px; text-align: left; }
 
         /* JOB BLOCKS */
-        .job-block { margin-bottom: 12px; }
+        .job-block { margin-bottom: 10px; } /* Reduced from 14px */
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
         }
         
-        .company { font-weight: 700; font-size: 10.5pt; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #333; font-size: 10pt; }
-        .dates { font-size: 9pt; color: #666; }
-        .location { font-size: 9pt; color: #999; margin-left: 6px; font-weight: normal;}
+        .company { font-weight: 700; font-size: 10pt; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #333; font-size: 9.5pt; }
+        .dates { font-size: 8.5pt; color: #666; }
+        .location { font-size: 8.5pt; color: #999; margin-left: 6px; font-weight: normal;}
 
         /* BULLETS */
-        ul { list-style: none; margin-top: 2px; }
+        ul { list-style: none; margin-top: 1px; }
         li {
             position: relative;
-            padding-left: 12px;
-            margin-bottom: 2px;
+            padding-left: 10px;
+            margin-bottom: 1px;
             color: #222;
         }
         li::before {
@@ -109,13 +110,13 @@
             top: 0;
             color: #000;
             font-size: 10px;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
-        /* LINEAR BOTTOM SECTION (The Fix) */
+        /* LINEAR BOTTOM SECTION */
         .linear-item {
-            margin-bottom: 4px;
-            font-size: 9.5pt;
+            margin-bottom: 2px;
+            font-size: 9pt;
             line-height: 1.4;
         }
         .linear-label {
@@ -124,10 +125,10 @@
             margin-right: 4px;
             color: #000;
             text-transform: uppercase;
-            font-size: 9pt;
+            font-size: 8.5pt;
         }
 
-        /* NAVIGATION UI */
+        /* UI ELEMENTS */
         .back-link {
             display: block; width: 8.5in; margin: 20px auto 10px;
             text-decoration: none; color: #666; font-size: 14px;
@@ -236,7 +237,7 @@
                 <span class="linear-label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
             </div>
             
-            <div style="height: 6px;"></div> <div class="linear-item">
+            <div style="height: 4px;"></div> <div class="linear-item">
                 <span class="linear-label">Education:</span> Master of Communication (U of Washington) <span class="separator">|</span> B.A. Journalism (Rutgers University)
             </div>
             <div class="linear-item">
