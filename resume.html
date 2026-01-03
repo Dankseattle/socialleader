@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,23 +16,20 @@
             font-family: 'Inter', sans-serif;
             color: #111;
             background: #fff;
-            font-size: 10pt; /* Perfect resume size */
+            font-size: 10pt;
             line-height: 1.45;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PAGE CONTAINER */
-        .page {
+        /* THE RESUME CONTAINER */
+        /* We set this to specific dimensions to ensure the PDF generator captures it perfectly */
+        #resume-element {
             width: 8.5in;
+            height: 11in;
             margin: 0 auto;
-            padding: 0.5in 0.6in; /* Balanced margins */
+            padding: 0.5in 0.6in;
             background: white;
-        }
-
-        /* BACK LINK (Screen Only) */
-        .back-link {
-            display: block; margin-bottom: 20px;
-            text-decoration: none; color: #666; font-size: 14px;
+            position: relative;
         }
 
         /* HEADER */
@@ -41,7 +41,7 @@
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 26pt; /* Large but not huge */
+            font-size: 26pt;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -1px;
@@ -125,14 +125,13 @@
             color: #000;
         }
 
-        /* PRINT SETTINGS */
-        @media print { 
-            @page { margin: 0; }
-            body { -webkit-print-color-adjust: exact; } 
-            .no-print, .back-link { display: none !important; }
+        /* BACK LINK (Outside PDF container) */
+        .back-link {
+            display: block; width: 8.5in; margin: 20px auto 0;
+            text-decoration: none; color: #666; font-size: 14px;
         }
 
-        /* DOWNLOAD BUTTON */
+        /* DOWNLOAD BUTTON (Outside PDF container) */
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: #000; color: white; padding: 15px 30px;
@@ -140,15 +139,15 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             cursor: pointer;
             z-index: 999;
+            font-family: 'Inter', sans-serif;
         }
-        @media screen and (max-width: 900px) { .download-btn { display: none; } }
     </style>
 </head>
 <body>
 
-    <div class="page">
-        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
 
+    <div id="resume-element">
         <header>
             <h1>Dan Kirk</h1>
             <div class="role-title">Senior Social Strategist & Creative Director</div>
@@ -247,9 +246,25 @@
         </section>
     </div>
 
-    <div class="download-btn no-print" onclick="window.print()">
-        Save as PDF
+    <div class="download-btn" onclick="generatePDF()">
+        Download PDF
     </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('resume-element');
+            const opt = {
+                margin:       0, // We set margins in the CSS
+                filename:     'Dan_Kirk_Resume.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 }, // Higher scale for better text clarity
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // This forces the library to run and download
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 
 </body>
 </html>
