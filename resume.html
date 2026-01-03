@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         /* RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,100 +16,92 @@
             font-family: 'Inter', sans-serif;
             color: #111;
             background: #fff;
-            font-size: 16px;
-            line-height: 1.5;
+            /* Precise font sizing for one-page fit */
+            font-size: 9.5pt; 
+            line-height: 1.35;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PAGE CONTAINER (View Only) */
-        .page {
-            width: 100%;
-            max-width: 800px;
+        /* RESUME CONTAINER */
+        #resume-element {
+            width: 8.5in;
+            height: 11in;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0.45in 0.6in; /* Tighter vertical padding to fit everything safely */
             background: white;
-            padding-bottom: 100px; /* Space for button */
+            position: relative;
         }
-
-        /* BACK LINK */
-        .back-link {
-            display: inline-block; margin-bottom: 30px;
-            text-decoration: none; color: #666; font-size: 14px; font-weight: 500;
-        }
-        .back-link:hover { color: #000; text-decoration: underline; }
 
         /* HEADER */
         header { 
             border-bottom: 2px solid #000; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px; 
+            padding-bottom: 10px; 
+            margin-bottom: 14px; 
         }
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
+            font-size: 24pt;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -1px;
             line-height: 1;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
 
         .role-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
+            font-size: 10.5pt;
             font-weight: 500;
             color: #000;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         .contact-line {
-            font-size: 0.95rem;
+            font-size: 9pt;
             color: #555;
             font-weight: 400;
-            display: flex; flex-wrap: wrap; gap: 10px;
         }
         .contact-line a { color: inherit; text-decoration: none; border-bottom: 1px solid #ddd; }
-        .separator { color: #ccc; }
+        .separator { margin: 0 6px; color: #ccc; }
 
         /* SECTIONS */
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
+            font-size: 9pt;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 40px;
-            margin-bottom: 15px;
+            margin-top: 16px;
+            margin-bottom: 8px;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            padding-bottom: 2px;
             color: #666;
         }
 
-        /* CONTENT */
-        .summary { margin-bottom: 30px; }
+        .summary { margin-bottom: 14px; text-align: left; }
 
-        .job-block { margin-bottom: 30px; }
+        /* JOB BLOCKS */
+        .job-block { margin-bottom: 12px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 5px;
-            flex-wrap: wrap;
+            margin-bottom: 2px;
         }
         
-        .company { font-weight: 700; font-size: 1.1rem; font-family: 'Space Grotesk', sans-serif; }
-        .role { font-weight: 500; font-style: italic; color: #333; font-size: 1rem; margin-bottom: 8px; display: block;}
-        .dates { font-size: 0.9rem; color: #666; }
-        .location { font-size: 0.9rem; color: #999; margin-left: 6px; font-weight: normal;}
+        .company { font-weight: 700; font-size: 10.5pt; font-family: 'Space Grotesk', sans-serif; }
+        .role { font-weight: 500; font-style: italic; color: #333; font-size: 10pt; }
+        .dates { font-size: 9pt; color: #666; }
+        .location { font-size: 9pt; color: #999; margin-left: 6px; font-weight: normal;}
 
         /* BULLETS */
-        ul { list-style: none; }
+        ul { list-style: none; margin-top: 2px; }
         li {
             position: relative;
-            padding-left: 15px;
-            margin-bottom: 6px;
+            padding-left: 12px;
+            margin-bottom: 2px;
             color: #222;
         }
         li::before {
@@ -115,51 +110,49 @@
             left: 0;
             top: 0;
             color: #000;
-            font-weight: bold;
+            font-size: 10px;
+            line-height: 1.4;
         }
 
-        /* BOTTOM SECTION */
+        /* LINEAR BOTTOM SECTION */
         .linear-item {
-            margin-bottom: 8px;
-            font-size: 1rem;
+            margin-bottom: 3px;
+            font-size: 9pt;
+            line-height: 1.4;
         }
         .linear-label {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            margin-right: 6px;
+            margin-right: 4px;
             color: #000;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 8.5pt;
         }
 
-        /* DOWNLOAD BUTTON */
+        /* UI ELEMENTS (Buttons/Links) */
+        .back-link {
+            display: block; width: 8.5in; margin: 20px auto 10px;
+            text-decoration: none; color: #666; font-size: 14px;
+        }
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
-            background: #000; color: white; padding: 16px 32px;
+            background: #000; color: white; padding: 15px 30px;
             border-radius: 50px; text-decoration: none; font-weight: 600;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            font-family: 'Inter', sans-serif;
+            cursor: pointer; z-index: 999; font-family: 'Inter', sans-serif;
             transition: transform 0.2s;
-            z-index: 100;
         }
         .download-btn:hover { transform: translateY(-2px); }
-
-        @media (max-width: 600px) {
-            .contact-line { flex-direction: column; gap: 5px; }
-            .separator { display: none; }
-            .dates { width: 100%; margin-bottom: 4px; }
-            .download-btn { width: 90%; left: 5%; right: 5%; text-align: center; bottom: 20px;}
-        }
     </style>
 </head>
 <body>
 
-    <div class="page">
-        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
 
+    <div id="resume-element">
         <header>
             <h1>Dan Kirk</h1>
-            <div class="role-title">Senior Social Strategist & Creative Director</div>
+            <div class="role-title">Senior Social Strategist | Digital Marketer</div>
             <div class="contact-line">
                 Seattle, WA
                 <span class="separator">|</span>
@@ -174,50 +167,50 @@
         <section>
             <div class="section-title">Professional Summary</div>
             <p class="summary">
-                Award-winning Social Strategist with 13+ years of experience building digital ecosystems for Fortune 500 brands. Proven track record of turning enterprise business goals into internet culture for Salesforce, T-Mobile, Starbucks, and Cruise. Specialist in data-driven creative direction, cross-functional leadership, and high-stakes crisis management.
+                Award-winning Social Strategist with 13+ years of experience building digital ecosystems for Fortune 500 brands. Proven track record of turning enterprise business goals into internet culture for Salesforce, T-Mobile, Starbucks, and Cruise. Specialist in data-driven creative direction, cross-functional partnership, campaign strategy and execution, and high-stakes crisis management.
             </p>
         </section>
 
         <section>
-            <div class="section-title">Experience</div>
+            <div class="section-title">Professional Experience</div>
 
             <div class="job-block">
                 <div class="job-header">
                     <div><span class="company">SALESFORCE</span><span class="location">Seattle, WA</span></div>
-                    <span class="dates">2023 – Present</span>
+                    <span class="dates">2024 – Present</span>
                 </div>
-                <span class="role">Senior Manager, Social Media</span>
+                <div class="role">Senior Manager, Social Media</div>
                 <ul>
-                    <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
-                    <li><strong>Content Operations:</strong> Architected the "Cyber Week" real-time newsroom, leading a team of 10+ to turn 1.5 billion shopper data points into 50+ live creative assets in 48 hours.</li>
-                    <li><strong>Audience Growth:</strong> Reversed declining reach by overhauling the brand voice, resulting in <strong>197% YoY engagement growth</strong> and <strong>7M+ organic impressions</strong>.</li>
-                    <li><strong>Thought Leadership:</strong> Partnered with leadership to develop LinkedIn content pillars that positioned stakeholders as industry authorities, driving a 40% increase in share-of-voice.</li>
+                    <li><strong>Global Strategy:</strong> Developed and executed the social strategy for Salesforce Commerce Cloud, aligning organic content with broad B2B revenue goals and product roadmaps.</li>
+                    <li><strong>Content Operations:</strong> Architected the "Cyber Week" insights program, leading a cross-functional team of 10+ (writers, designers, analysts) to turn 1.5 billion shopper data points into 50+ live creative assets across owned social profiles.</li>
+                    <li><strong>Audience Growth:</strong> Reversed a trend of declining reach by overhauling the brand voice from "corporate" to "editorial," creating value-driven video content that resulted in <strong>197% YoY engagement growth</strong>.</li>
+                    <li><strong>Event Strategy:</strong> Owned social strategy and content creation for major events like Dreamforce, surpassing engagement benchmarks by <strong>215%</strong>.</li>
                 </ul>
             </div>
 
             <div class="job-block">
                 <div class="job-header">
-                    <div><span class="company">CRUISE AUTOMATION</span><span class="location">San Francisco, CA</span></div>
-                    <span class="dates">2021 – 2023</span>
+                    <div><span class="company">CRUISE</span><span class="location">San Francisco, CA (Remote)</span></div>
+                    <span class="dates">2022 – 2024</span>
                 </div>
-                <span class="role">Senior Social Media Manager</span>
+                <div class="role">Senior Social Media Manager</div>
                 <ul>
-                    <li><strong>Go-To-Market (GTM):</strong> Led the social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions.</li>
-                    <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk.</li>
-                    <li><strong>Channel Expansion:</strong> Launched Cruise on TikTok. Grew the audience by <strong>75% in under 12 months</strong> while maintaining a 359% increase in engagement.</li>
+                    <li><strong>Go-To-Market (GTM):</strong> Led the end-to-end social launch strategy for the first public driverless rides in SF. Pivoted messaging from "technical safety" to "human experience," capturing viral reactions to overcome public skepticism.</li>
+                    <li><strong>Crisis Management:</strong> Served as social lead for the Crisis Response Team. Navigated 50+ real-time incidents, coordinating with Legal and PR to mitigate brand risk during regulatory scrutiny.</li>
+                    <li><strong>Channel Expansion:</strong> Launched Cruise’s presence on TikTok. Grew overall social audiences by <strong>75% in under 12 months</strong> while maintaining a 359% increase in engagement.</li>
                 </ul>
             </div>
 
             <div class="job-block">
                 <div class="job-header">
-                    <div><span class="company">T-MOBILE</span><span class="location">Seattle, WA</span></div>
-                    <span class="dates">2018 – 2021</span>
+                    <div><span class="company">T-MOBILE</span><span class="location">Bellevue, WA</span></div>
+                    <span class="dates">2019 – 2021</span>
                 </div>
-                <span class="role">Senior Social Strategist</span>
+                <div class="role">Senior Social Strategist</div>
                 <ul>
-                    <li><strong>Super Bowl Command:</strong> Orchestrated the real-time social war room, securing <strong>#1 Most Talked About Brand</strong> status and <strong>80% share-of-voice</strong>. Generated <strong>3.9M engagements</strong>.</li>
-                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher recall than traditional product assets.</li>
-                    <li><strong>Campaign Innovation:</strong> Directed "Santa Calling," a digital utility campaign during the 2020 lockdown. Secured a <strong>Shorty Award</strong> and generated <strong>2M+ organic impressions</strong>.</li>
+                    <li><strong>Super Bowl Social Command:</strong> Orchestrated the real-time social strategy, securing <strong>#1 Most Talked About Brand</strong> status and a dominant <strong>80% share-of-voice</strong> against competitors. The campaign generated <strong>3.9M engagements</strong>.</li>
+                    <li><strong>5G Creator Strategy:</strong> Launched a high-impact influencer campaign to translate abstract "5G Specs" into tangible consumer benefits, driving higher engagement and recall than traditional product assets.</li>
+                    <li><strong>Campaign Innovation:</strong> Directed "Santa Calling," a digital utility campaign during the 2020 lockdown. Secured a <strong>Shorty Award</strong> and generated <strong>2M+ impressions</strong>.</li>
                 </ul>
             </div>
 
@@ -226,41 +219,51 @@
                     <div><span class="company">STARBUCKS</span><span class="location">Seattle, WA</span></div>
                     <span class="dates">2016 – 2018</span>
                 </div>
-                <span class="role">Social Strategist</span>
+                <div class="role">Social Strategist</div>
                 <ul>
-                    <li><strong>Influencer Strategy:</strong> Modernized "Starbucks At Home" by shifting budget to the Creator Economy. Developed the "Uploaded" YouTube framework with Tier-1 creators.</li>
-                    <li><strong>Performance Marketing:</strong> Delivered <strong>1.2M video views</strong> and <strong>7x audience growth</strong>, outperforming traditional agency assets by 300% in watch time.</li>
+                    <li><strong>Channel Growth:</strong> Developed and implemented a new social strategy for Starbucks Doubleshot, growing the channels to over <strong>300K followers</strong> in the first year while successfully launching new product lines.</li>
+                    <li><strong>Influencer Series:</strong> Created a YouTube series featuring top creators (Unbox Therapy, MatPat). The content garnered <strong>1.2 million views</strong> and grew the channel following by <strong>7X</strong>.</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <div class="section-title">Skills & Recognition</div>
+            <div class="section-title">Skills, Education & Awards</div>
             
             <div class="linear-item">
-                <span class="linear-label">Strategy:</span> Brand Positioning, GTM Strategy, Crisis Communications, Creative Briefing, Paid/Organic Hybrid Models.
+                <span class="linear-label">Strategy:</span> Social Strategy, Influencer Strategy, Brand Positioning, Crisis Comms, Creative Briefing, Paid/Organic Models.
             </div>
             <div class="linear-item">
-                <span class="linear-label">Creative:</span> Creative Direction, Video Storytelling, Copywriting, Social Video Production.
+                <span class="linear-label">Creative:</span> Creative Direction, Video Storytelling, Copywriting, Social Video Production, Graphic Design.
             </div>
             <div class="linear-item">
-                <span class="linear-label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
+                <span class="linear-label">Tools:</span> Sprinklr, Sprout Social, Opal, Figma, CapCut, Adobe Creative Suite, BrandWatch.
             </div>
             
-            <div style="height: 10px;"></div>
-
-            <div class="linear-item">
-                <span class="linear-label">Education:</span> Master of Communication (U of Washington) | B.A. Journalism (Rutgers University)
+            <div style="height: 6px;"></div> <div class="linear-item">
+                <span class="linear-label">Education:</span> Master of Communication (U of Washington) <span class="separator">|</span> B.A. Journalism & Media (Rutgers)
             </div>
             <div class="linear-item">
-                <span class="linear-label">Awards:</span> Shorty Award Winner (2021) | AdWeek Experiential Campaign of the Year (2021)
+                <span class="linear-label">Awards:</span> Shorty Award Winner (2021) <span class="separator">|</span> AdWeek Experiential Campaign of the Year (2021)
             </div>
         </section>
     </div>
 
-    <a href="Dan_Kirk_Resume.pdf" download class="download-btn">
-        Download PDF
-    </a>
+    <div class="download-btn" onclick="generatePDF()">Download PDF</div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('resume-element');
+            const opt = {
+                margin:       0,
+                filename:     'Dan_Kirk_Resume.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 
 </body>
 </html>
