@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dan Kirk - Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -17,12 +16,11 @@
             color: #111;
             background: #fff;
             font-size: 10pt;
-            line-height: 1.45;
+            line-height: 1.4;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* THE RESUME CONTAINER */
-        /* We set this to specific dimensions to ensure the PDF generator captures it perfectly */
+        /* RESUME CONTAINER */
         #resume-element {
             width: 8.5in;
             height: 11in;
@@ -35,8 +33,8 @@
         /* HEADER */
         header { 
             border-bottom: 2px solid #000; 
-            padding-bottom: 15px; 
-            margin-bottom: 20px; 
+            padding-bottom: 12px; 
+            margin-bottom: 16px; 
         }
         
         h1 {
@@ -62,7 +60,7 @@
             color: #555;
             font-weight: 400;
         }
-        .contact-line a { color: inherit; text-decoration: none; }
+        .contact-line a { color: inherit; text-decoration: none; border-bottom: 1px solid #ddd; }
         .separator { margin: 0 6px; color: #ccc; }
 
         /* SECTIONS */
@@ -72,23 +70,23 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 18px;
+            margin-bottom: 8px;
             border-bottom: 1px solid #ddd;
             padding-bottom: 4px;
             color: #666;
         }
 
-        /* CONTENT */
-        .summary { margin-bottom: 18px; text-align: justify; }
+        .summary { margin-bottom: 16px; text-align: left; }
 
-        .job-block { margin-bottom: 14px; }
+        /* JOB BLOCKS */
+        .job-block { margin-bottom: 12px; }
         
         .job-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
         
         .company { font-weight: 700; font-size: 10.5pt; font-family: 'Space Grotesk', sans-serif; }
@@ -111,35 +109,35 @@
             top: 0;
             color: #000;
             font-size: 10px;
+            line-height: 1.5;
         }
 
-        /* COMPACT BOTTOM SECTION */
-        .compact-list {
+        /* LINEAR BOTTOM SECTION (The Fix) */
+        .linear-item {
             margin-bottom: 4px;
             font-size: 9.5pt;
+            line-height: 1.4;
         }
-        .label {
+        .linear-label {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            margin-right: 6px;
+            margin-right: 4px;
             color: #000;
+            text-transform: uppercase;
+            font-size: 9pt;
         }
 
-        /* BACK LINK (Outside PDF container) */
+        /* NAVIGATION UI */
         .back-link {
-            display: block; width: 8.5in; margin: 20px auto 0;
+            display: block; width: 8.5in; margin: 20px auto 10px;
             text-decoration: none; color: #666; font-size: 14px;
         }
-
-        /* DOWNLOAD BUTTON (Outside PDF container) */
         .download-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: #000; color: white; padding: 15px 30px;
             border-radius: 50px; text-decoration: none; font-weight: 600;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 999;
-            font-family: 'Inter', sans-serif;
+            cursor: pointer; z-index: 999; font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
@@ -226,42 +224,39 @@
         </section>
 
         <section>
-            <div class="section-title">Skills, Education & Awards</div>
+            <div class="section-title">Skills & Recognition</div>
             
-            <div class="compact-list">
-                <span class="label">Strategy:</span> Brand Positioning, GTM Strategy, Crisis Communications, Creative Briefing, Paid/Organic Hybrid Models.
+            <div class="linear-item">
+                <span class="linear-label">Strategy:</span> Brand Positioning, GTM Strategy, Crisis Communications, Creative Briefing, Paid/Organic Hybrid Models.
             </div>
-            <div class="compact-list">
-                <span class="label">Creative:</span> Creative Direction, Video Storytelling, Copywriting, Social Video Production.
+            <div class="linear-item">
+                <span class="linear-label">Creative:</span> Creative Direction, Video Storytelling, Copywriting, Social Video Production.
             </div>
-            <div class="compact-list">
-                <span class="label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
+            <div class="linear-item">
+                <span class="linear-label">Tools:</span> Sprinklr, Sprout Social, Salesforce Marketing Cloud, Figma, CapCut, Adobe Creative Suite, Jira.
             </div>
-            <div class="compact-list" style="margin-top: 10px;">
-                <span class="label">Education:</span> Master of Communication (U of Washington) | B.A. Journalism (Rutgers University)
+            
+            <div style="height: 6px;"></div> <div class="linear-item">
+                <span class="linear-label">Education:</span> Master of Communication (U of Washington) <span class="separator">|</span> B.A. Journalism (Rutgers University)
             </div>
-            <div class="compact-list">
-                <span class="label">Awards:</span> Shorty Award Winner (2021) | AdWeek Experiential Campaign of the Year (2021)
+            <div class="linear-item">
+                <span class="linear-label">Awards:</span> Shorty Award Winner (2021) <span class="separator">|</span> AdWeek Experiential Campaign of the Year (2021)
             </div>
         </section>
     </div>
 
-    <div class="download-btn" onclick="generatePDF()">
-        Download PDF
-    </div>
+    <div class="download-btn" onclick="generatePDF()">Download PDF</div>
 
     <script>
         function generatePDF() {
             const element = document.getElementById('resume-element');
             const opt = {
-                margin:       0, // We set margins in the CSS
+                margin:       0,
                 filename:     'Dan_Kirk_Resume.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 }, // Higher scale for better text clarity
+                html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
-
-            // This forces the library to run and download
             html2pdf().set(opt).from(element).save();
         }
     </script>
